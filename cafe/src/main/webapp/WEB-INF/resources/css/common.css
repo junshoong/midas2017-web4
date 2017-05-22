@@ -1,0 +1,35 @@
+@CHARSET "UTF-8";
+
+/* 스타일 공통 설정 */
+table {
+	text-align: center;
+}
+
+form#searchForm a {
+	padding : 3px;
+	text-decoration: none;
+	color:#333;
+	font-size :12px;
+	margin-right :3px;
+}
+
+form#searchForm a.page {
+	background-color: #EEE;
+	border : 1px solid #AAA;
+}
+
+form#searchForm a > b {
+	color : #F00
+}
+
+form#searchForm a:LINK, form#searchFrom a:VISTIED{
+	
+}
+
+form#searchFrom a:ACTIVE {
+
+}
+
+form#searchFrom a:HOVER {
+	color:#F00;
+}

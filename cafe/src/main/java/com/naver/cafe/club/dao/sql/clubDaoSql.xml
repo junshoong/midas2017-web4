@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="ClubDao">
+	
+	<resultMap type="ClubVO" id="clubMap">
+	
+		<id column="AR_ID" property="articleId" />
+		<result column="SBJ" property="subject" />
+		<result column="CONT" property="content" />
+		<result column="C_MBR_ID" property="memberId" />
+		<result column="CRT_DT" property="createdDate" />
+		<result column="MDFY_DT" property="modifiedDate" />
+		<result column="RD_CNT" property="readCount" />
+		<result column="C_MN_ID" property="menuId" />
+
+		<association property="memberVO" javaType="MemberVO">
+			<id column="MBR_ID" property="memberId" />
+			<id column="NCK_NM" property="nickName" />
+			<id column="AUTH" property="auth" />
+		</association>
+		
+		<association property="menuVO" javaType="MenuVO">
+			<id column="MN_ID" property="menuId" />
+			<id column="MN_NM" property="menuName" />
+			<id column="PRNT_MN_ID" property="parentMenuId" />
+			<id column="MN_AUTH" property="auth" />
+		</association>
+		
+		<association select="ReplyDao.selectRepliesCount"
+		 			property="repliesCount" 
+		 			column="AR_ID"
+		 			javaType="_int"/>
+	</resultMap>
+	
+	<insert id="insertNewClub" parameterType="ClubVO">
+			/*[ClubDao][insertNewClub]*/
+			INSERT	INTO	CLB	(
+									SBJ
+									, CONT
+									, MBR_ID
+									, CRT_DT
+									, MDFY_DT
+									, RD_CNT
+									, MN_ID
+								)
+			VALUES				(
+									#{subject}
+									, #{content}
+									, #{memberId}
+									, NOW()
+									, NOW()
+									, 0
+									, #{menuId}
+								) 
+	</insert>
+	
+	<select id="selectOneClub" parameterType="ClubSearchVO" resultMap="clubMap">
+					SELECT		C.AR_ID
+								,	C.SBJ
+								, 	C.CONT
+								, 	C.MBR_ID
+								, 	C.CRT_DT
+								, 	C.MDFY_DT
+								,	C.RD_CNT
+								,	C.MN_ID
+					FROM		CLB C
+								, MBR M
+								, MN
+					WHERE	C.MBR_ID = M.MBR_ID
+					AND		MN.AUTH = M.AUTH
+					AND		MN.MN_ID = C.MN_ID
+					AND		C.AR_ID = #{articleId}
+	</select>
+	
+	
+	<select id="selectAllClub" parameterType="ClubSearchVO" resultMap="clubMap">
+		<!--  <include refid="CommonDao.PAGING_HEADER" />  -->
+		SELECT	@ROWNUM :=@ROWNUM + 1 AS ROWNUM
+				, C.AR_ID
+				, C.SBJ
+				, C.CONT
+				, C.MBR_ID C_MBR_ID
+				, DATE_FORMAT(C.CRT_DT, '%Y/%c/%e') CRT_DT
+				, C.MDFY_DT
+				, C.RD_CNT
+				, C.MN_ID C_MN_ID
+				, M.MBR_ID
+				, M.NCK_NM
+				, M.AUTH
+				, MN.MN_ID
+				, MN.MN_NM
+				, MN.PRNT_MN_ID
+				, MN.AUTH	MN_AUTH
+		FROM	CLB C
+				, MBR M
+				, MN
+				, (SELECT @ROWNUM := 0) R
+		WHERE	C.MBR_ID = M.MBR_ID
+		AND		MN.AUTH = M.AUTH
+		AND		MN.MN_ID = C.MN_ID
+		AND		MN.MN_ID = #{menuId}
+		ORDER	BY	MDFY_DT DESC
+				, AR_ID DESC
+		<!--  <include refid="CommonDao.PAGING_FOOTER" />  -->
+	</select>
+	
+	
+	<select id="selectAllClubCount" parameterType="ClubSearchVO" resultType="_int">
+		SELECT	COUNT(1)
+		FROM	CLB C
+				, MBR M
+				, MN
+		WHERE	C.MBR_ID = M.MBR_ID
+		AND		MN.AUTH = M.AUTH
+		AND		MN.MN_ID = C.MN_ID
+		AND		MN.MN_ID = #{menuId}
+	</select>
+	
+	<update id="updateReadCount" parameterType="ClubVO">
+		UPDATE	CLB	
+		SET		RD_CNT	=	#{readCount} + 1
+		WHERE	AR_ID	=	#{articleId}
+	</update>
+	
+	<delete id="deleteOneClub" parameterType="string">
+		DELETE	*	
+		FROM	CLB
+		WHERE	AR_ID	=	#{menuId}
+	</delete>
+	
+		
+</mapper>
+

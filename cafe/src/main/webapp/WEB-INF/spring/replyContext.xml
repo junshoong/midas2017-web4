@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="replyDaoImpl" class="com.naver.cafe.reply.dao.ReplyDaoImpl">
+		<property name="sqlSessionTemplate" ref="sqlSessionTemplate"></property>
+	</bean>
+	
+	<bean id="replyBizImpl" class="com.naver.cafe.reply.biz.ReplyBizImpl">
+		<property name="replyDao" ref="replyDaoImpl"></property>
+	</bean>
+	
+
+</beans>
