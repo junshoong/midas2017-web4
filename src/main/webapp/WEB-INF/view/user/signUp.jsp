@@ -13,7 +13,7 @@
 		$("#signUpForm").find("input[type=button]").click(function() {
 			
 			$("#signUpForm").attr({
-				"action" : "<c:url value="/club/signup" />",
+				"action" : "<c:url value="/signup" />",
 				"method" : "post"
 			});
 			

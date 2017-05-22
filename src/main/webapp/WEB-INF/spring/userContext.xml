@@ -4,15 +4,15 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
-	<bean id="userDaoImpl" class="com.naver.cafe.user.dao.UserDaoImpl">
+	<bean id="userDaoImpl" class="com.midas.websolution.user.dao.UserDaoImpl">
 		<property name="sqlSessionTemplate" ref="sqlSessionTemplate"></property>
 	</bean>
 	
-	<bean id="userBizImpl" class="com.naver.cafe.user.biz.UserBizImpl">
+	<bean id="userBizImpl" class="com.midas.websolution.user.biz.UserBizImpl">
 		<property name="userDao" ref="userDaoImpl"></property>
 	</bean>
 	<bean id="userServiceImpl"
-		class="com.naver.cafe.user.service.UserServiceImpl">
+		class="com.midas.websolution.user.service.UserServiceImpl">
 	<property name="userBiz" ref="userBizImpl"></property>
 	</bean>
 	
