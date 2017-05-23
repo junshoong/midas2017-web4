@@ -6,11 +6,14 @@
 
 	<typeAliases>
 		<typeAlias type="com.midas.websolution.user.vo.UserVO" alias="UserVO"/>	
+		<typeAlias type="com.midas.websolution.board.vo.BoardVO" alias="BoardVO"/>	
+		<typeAlias type="com.midas.websolution.board.vo.BoardSearchVO" alias="BoardSearchVO"/>	
 	</typeAliases>
 
     <mappers>
     	<!-- Paging 관련 쿼리들이 있는 매퍼 -->
         <mapper resource="commonDaoSql.xml"/>
+		<mapper resource="com/midas/websolution/board/dao/sql/boardDaoSql.xml"/> 
 		<mapper resource="com/midas/websolution/user/dao/sql/userDaoSql.xml"/>
     </mappers>
 

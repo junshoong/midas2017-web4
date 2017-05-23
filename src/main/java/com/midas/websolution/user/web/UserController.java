@@ -40,9 +40,11 @@ public class UserController {
 			HttpSession session = request.getSession();
 			logger.info(user.getUserId());
 			session.setAttribute("_USER_", user);
+			request.setAttribute("content", "basic/basic.jsp");
 			return "/index";
 		}
-		
+	
+	
 		return "user/signIn";
 	}
 	
@@ -84,11 +86,6 @@ public class UserController {
 		return "redirect:/signin";
 	}
 	
-	
-	@RequestMapping(value="/bootstrap-template", method=RequestMethod.GET)
-	public String bootstrapTemplate() {
-		return "template/bootstrap-template";
-	}
 	
 	
 	

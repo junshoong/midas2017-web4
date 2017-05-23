@@ -41,6 +41,10 @@
 		<property name="userService" ref="userServiceImpl"></property>
 	</bean>
 	
+	<bean id="boardController" class="com.midas.websolution.board.web.BoardController">
+		<property name="boardService" ref="boardServiceImpl"></property>
+	</bean>
+	
 	<bean id="mainController" class="com.midas.websolution.common.web.mainController">
 	</bean>
 	
