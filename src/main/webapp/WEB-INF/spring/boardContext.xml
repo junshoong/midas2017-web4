@@ -20,5 +20,8 @@
 	<bean id="boardDaoImpl" class="com.midas.websolution.board.dao.BoardDaoImpl">
 		<property name="sqlSessionTemplate" ref="sqlSessionTemplate"></property>
 	</bean>
+	
+	<bean id="elonServiceImpl" class="com.midas.websolution.board.service.ElonServiceImpl">
+	</bean>
 
 </beans>
