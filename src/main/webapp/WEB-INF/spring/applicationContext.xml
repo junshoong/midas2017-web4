@@ -53,7 +53,7 @@
 	</bean>
 	
 	<bean id="elonController" class="com.midas.websolution.board.web.ElonController">
-		<property name="elonService" ref="ElonServiceImpl"></property>
+		<property name="elonService" ref="elonServiceImpl"></property>
 	</bean>
 	
 </beans>
