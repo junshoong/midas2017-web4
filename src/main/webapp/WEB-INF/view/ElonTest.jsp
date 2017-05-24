@@ -16,7 +16,7 @@
 <body>
 	<div class="container">
 			<h1>Bootstrap template</h1>
-			<h2>${value}</h2>
+			<h2>${value.subject}</h2>
 	</div>
 
 

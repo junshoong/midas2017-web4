@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ElonDao">
+
+	<resultMap type="BoardVO" id="boardMap">
+	
+		<id column="AR_ID" property="articleId" />
+		<result column="SBJ" property="subject" />
+		<result column="CONT" property="content" />
+		<result column="WRITER" property="writer" />
+		<result column="CRT_DT" property="createdDate" />
+		<result column="MDFY_DT" property="modifiedDate" />
+		<result column="RD_CNT" property="readCount" />
+
+	</resultMap>
+	
+	<select id="getOneArticleElon" parameterType="_int" resultMap="boardMap">
+		SELECT
+		B.SBJ
+		FROM BOARD B
+		WHERE	
+		B.AR_ID = #{articleId}
+	</select>
+	
+</mapper>

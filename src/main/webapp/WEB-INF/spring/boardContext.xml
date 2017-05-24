@@ -25,6 +25,11 @@
 	</bean>
 	
 	<bean id="elonServiceImpl" class="com.midas.websolution.board.service.ElonServiceImpl">
+		<property name="elonDao" ref="elonDaoImpl"></property>
+	</bean>
+	
+	<bean id="elonDaoImpl" class="com.midas.websolution.board.dao.ElonDaoImpl">
+		<property name="sqlSessionTemplate" ref="sqlSessionTemplate"></property>
 	</bean>
 
 </beans>
