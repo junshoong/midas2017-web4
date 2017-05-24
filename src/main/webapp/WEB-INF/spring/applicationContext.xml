@@ -45,6 +45,9 @@
 		<property name="boardService" ref="boardServiceImpl"></property>
 	</bean>
 	
+	<bean id="junsuController" class="com.midas.websolution.board.web.JunsuController">
+	</bean>
+
 	<bean id="mainController" class="com.midas.websolution.common.web.mainController">
 	</bean>
 	
