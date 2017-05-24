@@ -11,6 +11,10 @@
 		class="com.midas.websolution.board.service.BoardServiceImpl">
 	<property name="boardBiz" ref="boardBizImpl"></property>
 	</bean>
+
+	<bean id="junsuServiceImpl"
+		class="com.midas.websolution.board.service.JunsuServiceImpl">
+	</bean>
 	
 	
 	<bean id="boardDaoImpl" class="com.midas.websolution.board.dao.BoardDaoImpl">

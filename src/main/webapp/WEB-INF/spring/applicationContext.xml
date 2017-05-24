@@ -46,6 +46,7 @@
 	</bean>
 	
 	<bean id="junsuController" class="com.midas.websolution.board.web.JunsuController">
+		<property name="junsuService" ref="junsuServiceImpl"></property>
 	</bean>
 
 	<bean id="mainController" class="com.midas.websolution.common.web.mainController">
