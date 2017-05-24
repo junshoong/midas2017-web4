@@ -12,6 +12,14 @@
 		WHERE					USR_ID = #{userId} 	
 		AND						USR_PWD = #{userPassword}		
 	</select>
+	
+	<select id="selectById" parameterType="String" resultType="UserVO">
+		SELECT					USR_ID userId	
+						,		USR_NM userName       
+						,		USR_PWD userPassword      
+		FROM					USRS         
+		WHERE					USR_ID = #{userId} 	
+	</select>
 
 	
 	

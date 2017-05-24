@@ -64,16 +64,17 @@ public class UserController {
 		
 		UserVO user = new UserVO();
 		
+		if(userService.isDuplicateUserId(userId))
+			return "user/signUp";
+		
 		user.setUserId(userId);
 		user.setUserPassword(userPassword);
 		user.setUserName(userName);
 		
-		if(userService.registNewUser(user)) {
+		if(userService.registNewUser(user))
 			return "redirect:/signin";
-		}
-		
-		else
-			return "user/signUp";
+
+		return "user/signUp";
 		
 	}
 	

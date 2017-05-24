@@ -6,6 +6,6 @@ public interface UserDao {
 	
 	public int insertNewUser(UserVO userVO);
 	public UserVO selectOneUser(UserVO userVO);
-
+	public UserVO selectOneUser(String userId);
 
 }
