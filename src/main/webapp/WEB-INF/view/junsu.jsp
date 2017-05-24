@@ -8,7 +8,7 @@
 </head>
 <body>
 <h1> Junsu Page OK!!</h1>
-<h2> ${value} </h2>
+<h2> ${value.subject} </h2>
 
 </body>
 </html>
