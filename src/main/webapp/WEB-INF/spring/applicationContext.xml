@@ -48,4 +48,7 @@
 	<bean id="mainController" class="com.midas.websolution.common.web.mainController">
 	</bean>
 	
+	<bean id="elonController" class="com.midas.websolution.board.web.ElonController">
+	</bean>
+	
 </beans>
