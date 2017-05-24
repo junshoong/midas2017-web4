@@ -61,8 +61,8 @@
 
       <form class="form-signin">
         <h2 class="form-signin-heading">Please sign in</h2>
-        <input type="text" name="userId" class="form-control" placeholder="아이디" required="" autofocus=""> 
-        <input type="password" name="userPassword" class="form-control" placeholder="패스워드" required="">
+        <input type="text" name="userId" class="form-control" placeholder="아이디" required autofocus> 
+        <input type="password" name="userPassword" class="form-control" placeholder="패스워드" required>
         <div class="checkbox">
           <label>
             <input type="checkbox" value="remember-me"> Remember me
