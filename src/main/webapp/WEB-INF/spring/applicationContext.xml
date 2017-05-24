@@ -52,6 +52,7 @@
 	</bean>
 	
 	<bean id="elonController" class="com.midas.websolution.board.web.ElonController">
+		<property name="elonService" ref="ElonServiceImpl"></property>
 	</bean>
 	
 </beans>
