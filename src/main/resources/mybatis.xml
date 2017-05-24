@@ -15,6 +15,7 @@
         <mapper resource="commonDaoSql.xml"/>
 		<mapper resource="com/midas/websolution/board/dao/sql/boardDaoSql.xml"/> 
 		<mapper resource="com/midas/websolution/user/dao/sql/userDaoSql.xml"/>
+		<mapper resource="com/midas/websolution/board/dao/sql/ElonDaoSql.xml"/>
     </mappers>
 
 </configuration>
