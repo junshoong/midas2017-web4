@@ -42,7 +42,7 @@ public class LoginFilter implements Filter {
 	
 		if(user == null) {
 			HttpServletResponse res = (HttpServletResponse) response;
-			res.sendRedirect("/sample/signin");
+			res.sendRedirect("signin");
 		}
 		
 		else {

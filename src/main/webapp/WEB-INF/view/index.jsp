@@ -72,8 +72,8 @@
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li><a href="/sample">Overview <span class="sr-only">(current)</span></a></li>
-            <li><a href="/sample/board">게시판</a></li>
+            <li><a href="<c:url value="/"/>"> Overview <span class="sr-only">(current)</span></a></li>
+            <li><a href="board">게시판</a></li>
             <li><a href="#">${content}</a></li>
             <li><a href="#">Export</a></li>
           </ul>
