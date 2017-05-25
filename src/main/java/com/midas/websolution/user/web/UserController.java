@@ -40,8 +40,7 @@ public class UserController {
 			HttpSession session = request.getSession();
 			logger.info(user.getUserId());
 			session.setAttribute("_USER_", user);
-			request.setAttribute("content", "basic/basic.jsp");
-			return "/index";
+			return "redirect:/";
 		}
 	
 	
