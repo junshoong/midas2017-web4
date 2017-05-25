@@ -44,7 +44,7 @@
 				<tr>
 					<td>${board.articleId}</td>
 					<td><a href="<c:url value="/board/detail/${board.articleId}"/>">${board.subject}</a></td>
-					<td>${board.writer}</td>
+					<td>${board.userVO.userName}</td>
 					<td>${board.createdDate}</td>
 					<td>${board.readCount}</td>
 				</tr>

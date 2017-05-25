@@ -69,6 +69,7 @@ public class BoardController {
 	@RequestMapping(value="/board/write", method=RequestMethod.POST)
 	public String doWriteArticleAction(BoardVO boardVO) {
 	
+		
 		boolean isSuccess = boardService.insertOneArticle(boardVO);
 		
 		return "redirect:/board";

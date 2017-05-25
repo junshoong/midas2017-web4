@@ -57,7 +57,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">웹솔루션 4조</a>
+          <a class="navbar-brand" href="<c:url value="/"/>">웹솔루션 4조</a>
         </div>
 
           <ul class="nav navbar-nav navbar-right">

@@ -27,7 +27,7 @@
 <body>
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 	 <form id="writeForm">
-	 		<input type="hidden" name="writer" value="${sessionScope._USER_.userName}"/>
+	 		<input type="hidden" name="userNo" value="${sessionScope._USER_.userNo}"/>
 	 		<input type="text" name="subject" id="subject"/>
             <textarea name="content" id="editor1" rows="10" cols="80">
                 This is my textarea to be replaced with CKEditor.

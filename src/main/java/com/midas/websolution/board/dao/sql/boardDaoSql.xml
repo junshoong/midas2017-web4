@@ -9,29 +9,46 @@
 		<id column="AR_ID" property="articleId" />
 		<result column="SBJ" property="subject" />
 		<result column="CONT" property="content" />
-		<result column="WRITER" property="writer" />
 		<result column="CRT_DT" property="createdDate" />
 		<result column="MDFY_DT" property="modifiedDate" />
 		<result column="RD_CNT" property="readCount" />
-
+		
+		<association property="userVO" javaType="UserVO">
+			<id column="USR_NO" property="userNo" />
+			<id column="USR_ID" property="userId" />
+			<id column="USR_NM" property="userName" />
+		</association>
+		
+		
 	</resultMap>
 
 
 	<select id="getAllArticles" parameterType="BoardSearchVO" resultMap="boardMap">
 		
 		<include refid="CommonDao.PAGING_HEADER" />
-		<!-- /*[ClubDao][selectAllClub]*/ -->
-		SELECT	@ROWNUM :=@ROWNUM + 1 AS ROWNUM
-				, B.AR_ID
-				, B.SBJ
-				, B.CONT
-				, B.WRITER
-				, DATE_FORMAT(B.CRT_DT, '%Y-%m-%d') CRT_DT
-				, B.MDFY_DT
-				, B.RD_CNT
-		FROM	BOARD B
-				, (SELECT @ROWNUM := 0) R
-		ORDER	BY	B.AR_ID DESC
+			SELECT	@ROWNUM :=@ROWNUM + 1 AS ROWNUM
+					, D.*
+			FROM	(
+									SELECT	
+											 B.AR_ID
+											, B.SBJ
+											, B.CONT
+											, B.USR_NO
+											, U.USR_NM
+											, DATE_FORMAT(B.CRT_DT, '%Y-%m-%d') CRT_DT
+											, B.MDFY_DT
+											, B.RD_CNT
+									FROM	BOARD B
+											, USRS U
+										
+									WHERE	B.USR_NO = U.USR_NO		
+									ORDER	BY	CRT_DT DESC
+										
+									LIMIT 18446744073709551615
+
+						) AS D
+						, (SELECT @ROWNUM := 0) R	
+			ORDER BY AR_ID DESC	
 		<include refid="CommonDao.PAGING_FOOTER" />
 	</select>
 	
@@ -39,12 +56,15 @@
 		SELECT	B.AR_ID
 				, B.SBJ
 				, B.CONT
-				, B.WRITER
+				, B.USR_NO
+				, U.USR_NM
 				, DATE_FORMAT(B.CRT_DT, '%Y-%m-%d') CRT_DT
 				, B.MDFY_DT
 				, B.RD_CNT
 		FROM	BOARD B
+				, USRS U
 		WHERE	B.AR_ID = #{articleId}
+		AND		B.USR_NO = U.USR_NO
 	</select>
 	
 	
@@ -58,7 +78,7 @@
 			INSERT	INTO	BOARD	(
 									SBJ
 									, CONT
-									, WRITER
+									, USR_NO
 									, CRT_DT
 									, MDFY_DT
 									, RD_CNT
@@ -66,7 +86,7 @@
 			VALUES				(
 									#{subject}
 									, #{content}
-									, #{writer}
+									, #{userNo}
 									, NOW()
 									, NOW()
 									, 0

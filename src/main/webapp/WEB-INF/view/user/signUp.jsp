@@ -21,10 +21,10 @@
 			
 		});
 		
-		
+/* 		
 		$("#userPassword").keyup(function() {
 			
-			$.post("<c:url value="/club/signup/passwordcheck/"/>", {
+			$.post("<c:url value="/signup/passwordcheck/"/>", {
 				
 				"userPassword" : $("#userPassword").val()
 
@@ -39,7 +39,7 @@
 			});
 			
 		});
-		
+		 */
 		
 	});
 

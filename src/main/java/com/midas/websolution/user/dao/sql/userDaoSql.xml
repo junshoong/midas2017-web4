@@ -5,7 +5,8 @@
 <mapper namespace="UserDao">
 	
 	<select id="selectOneUser" parameterType="UserVO" resultType="UserVO">
-		SELECT					USR_ID userId	
+		SELECT					USR_NO userNo
+						,		USR_ID userId	
 						,		USR_NM userName       
 						,		USR_PWD userPassword      
 		FROM					USRS         
@@ -26,7 +27,7 @@
 	<insert id="insertNewUser" parameterType="UserVO">
 			INSERT	INTO	USRS	(                
 											USR_ID  	 
-										,	USR_NM  	 
+										,	USR_NM 	 
 										,	USR_PWD 	 
 										,	JOIN_DT 	 
 									)               	 

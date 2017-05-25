@@ -1,14 +1,32 @@
 package com.midas.websolution.board.vo;
 
+import com.midas.websolution.user.vo.UserVO;
+
 public class BoardVO {
 	
 	private String articleId;
 	private String subject;
 	private String content;
-	private String writer;
+
 	private String createdDate;
 	private String modifiedDate;
 	private int readCount;
+	
+	private int userNo;
+	
+	private UserVO userVO;
+	
+	public UserVO getUserVO() {
+		
+		if(userVO == null) {
+			return new UserVO();
+		}
+		
+		return userVO;
+	}
+	public void setUserVO(UserVO userVO) {
+		this.userVO = userVO;
+	}
 	
 	public String getArticleId() {
 		return articleId;
@@ -47,11 +65,12 @@ public class BoardVO {
 	public void setReadCount(int readCount) {
 		this.readCount = readCount;
 	}
-	public String getWriter() {
-		return writer;
+	public int getUserNo() {
+		return userNo;
 	}
-	public void setWriter(String writer) {
-		this.writer = writer;
+	public void setUserNo(int userNo) {
+		this.userNo = userNo;
 	}
+
 
 }
