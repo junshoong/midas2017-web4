@@ -53,31 +53,34 @@
     
     
     
- </head>
+</head>
 
-  <body>
+<body>
 
-    <div class="container">
-
-      <form class="form-signin">
-        <h2 class="form-signin-heading">Please sign in</h2>
-        <input type="text" name="userId" class="form-control" placeholder="아이디" required autofocus> 
-        <input type="password" name="userPassword" class="form-control" placeholder="패스워드" required>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" value="remember-me"> Remember me
-          </label>
-        </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-        
-        <p class="media">
-        	계정이 없다면?
-        <a href="<c:url value="/signup"/>">Create an account</a>.
-      	</p>
-        
-      </form>
-
-    </div> <!-- /container -->
+	<div class="container">
+	
+		<form class="form-signin">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<h2 class="form-signin-heading">Please sign in</h2>
+					<input type="text" name="userId" class="form-control" placeholder="아이디" required autofocus> 
+					<input type="password" name="userPassword" class="form-control" placeholder="패스워드" required>
+					<div class="checkbox">
+						<label>
+							<input type="checkbox" value="remember-me"> Remember me
+						</label>
+					</div>
+					<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+					    
+					<p class="media">
+						계정이 없다면?
+						<a href="<c:url value="/signup"/>">Create an account</a>.
+					</p>
+				</div>
+			</div>
+		</form>
+	
+	</div> <!-- /container -->
 
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
