@@ -8,6 +8,7 @@
 		<typeAlias type="com.midas.websolution.user.vo.UserVO" alias="UserVO"/>	
 		<typeAlias type="com.midas.websolution.board.vo.BoardVO" alias="BoardVO"/>	
 		<typeAlias type="com.midas.websolution.board.vo.BoardSearchVO" alias="BoardSearchVO"/>	
+		<typeAlias type="com.midas.websolution.menu.vo.MenuVO" alias="MenuVO"/>	
 	</typeAliases>
 
     <mappers>
@@ -15,6 +16,7 @@
         <mapper resource="commonDaoSql.xml"/>
 		<mapper resource="com/midas/websolution/board/dao/sql/boardDaoSql.xml"/>  
 		<mapper resource="com/midas/websolution/user/dao/sql/userDaoSql.xml"/>
+		<mapper resource="com/midas/websolution/menu/dao/sql/menuDaoSql.xml"/>
     </mappers>
 
 </configuration>
