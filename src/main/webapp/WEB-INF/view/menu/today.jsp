@@ -19,6 +19,7 @@ $().ready(function() {
 			return;
 		}
 		
+	
 		
 		$.post("<c:url value="/menu/checkLike/"/>", {
 			
@@ -26,17 +27,17 @@ $().ready(function() {
 			"menu_no" : $("#likeBreakfast").val() 
 
 		}, function(response) {
-			if(response.SUCCESS == "YES") {
-				alert("좋아요를 클릭하셨습니다.");
+			
+			
+			if(response.SUCCESS == "NO") {
+				alert("이미 좋아요 or 싫어요 누르셨습니다.");
 				$("#likeBreakfast").attr("disabled", true);
 				$("#dislikeBreakfast").attr("disabled", true);
+				return ;
 			}
 			
-			else{
-				alert("클릭을 실패하였습니다.");
-			}
+			
 		});
-		
 		
 		
 		
@@ -74,6 +75,23 @@ $().ready(function() {
 			return;
 		}
 		
+		
+		$.post("<c:url value="/menu/checkLike/"/>", {
+			
+			"user_no" : $("#user_no").val() ,
+			"menu_no" : $("#dislikeBreakfast").val() 
+
+		}, function(response) {
+			if(response.SUCCESS == "NO") {
+				alert("이미 좋아요 or 싫어요 누르셨습니다.");
+				$("#likeBreakfast").attr("disabled", true);
+				$("#dislikeBreakfast").attr("disabled", true);
+				return ;
+			}
+			
+			
+		});
+		
 			$.post("<c:url value="/menu/insertLike/"/>", {
 					
 				"user_no" : $("#user_no").val() ,
@@ -103,6 +121,23 @@ $().ready(function() {
 			$("#dislikeLunch").attr("disabled", true);
 			return;
 		}
+		
+		
+		$.post("<c:url value="/menu/checkLike/"/>", {
+			
+			"user_no" : $("#user_no").val() ,
+			"menu_no" : $("#likeLunch").val() 
+
+		}, function(response) {
+			if(response.SUCCESS == "NO") {
+				alert("이미 좋아요 or 싫어요 누르셨습니다.");
+				$("#likeLunch").attr("disabled", true);
+				$("#dislikeLunch").attr("disabled", true);
+				return ;
+			}
+			
+			
+		});
 						
 		$.post("<c:url value="/menu/insertLike/"/>", {
 							
@@ -130,10 +165,26 @@ $().ready(function() {
 								
 								if($("#dislikeLunch").val() == 0) {
 									alert("중식에는 아무 것도 없습니다.");
-									$("#likeDinner").attr("disabled", true);
-									$("#dislikeDinner").attr("disabled", true);
+									$("#likeLunch").attr("disabled", true);
+									$("#dislikeLunch").attr("disabled", true);
 									return;
 								}
+								
+								$.post("<c:url value="/menu/checkLike/"/>", {
+									
+									"user_no" : $("#user_no").val() ,
+									"menu_no" : $("#dislikeLunch").val() 
+
+								}, function(response) {
+									if(response.SUCCESS == "NO") {
+										alert("이미 좋아요 or 싫어요 누르셨습니다.");
+										$("#likelunch").attr("disabled", true);
+										$("#dislikeLunch").attr("disabled", true);
+										return ;
+									}
+									
+									
+								});
 									
 								
 								$.post("<c:url value="/menu/insertLike/"/>", {
@@ -165,6 +216,22 @@ $().ready(function() {
 											return;
 										}
 											
+										
+										$.post("<c:url value="/menu/checkLike/"/>", {
+											
+											"user_no" : $("#user_no").val() ,
+											"menu_no" : $("#likeDinner").val() 
+
+										}, function(response) {
+											if(response.SUCCESS == "NO") {
+												alert("이미 좋아요 or 싫어요 누르셨습니다.");
+												$("#likeDinner").attr("disabled", true);
+												$("#dislikeDinner").attr("disabled", true);
+												return ;
+											}
+											
+											
+										});
 										
 										$.post("<c:url value="/menu/insertLike/"/>", {
 											
@@ -198,6 +265,22 @@ $().ready(function() {
 													return;
 												}
 												
+												$.post("<c:url value="/menu/checkLike/"/>", {
+													
+													"user_no" : $("#user_no").val() ,
+													"menu_no" : $("#dislikeDinner").val() 
+
+												}, function(response) {
+													if(response.SUCCESS == "NO") {
+														alert("이미 좋아요 or 싫어요 누르셨습니다.");
+														$("#likeDinner").attr("disabled", true);
+														$("#dislikeDinner").attr("disabled", true);
+														return ;
+													}
+													
+													
+												});
+												
 												$.post("<c:url value="/menu/insertLike/"/>", {
 													
 													"user_no" : $("#user_no").val() ,
@@ -226,7 +309,7 @@ $().ready(function() {
 
 </script>
 
-<title>Insert title here</title>
+<title>오늘의 식단</title>
 </head>
 <body>
 

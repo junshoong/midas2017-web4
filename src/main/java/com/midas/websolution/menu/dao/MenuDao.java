@@ -22,6 +22,7 @@ public interface MenuDao {
 	public int updateOneFood(FoodVO foodVO);
 
 	public int insertLike(MenuLikeRequestVO menuLikeRequestVO);
+	public MenuLikeRequestVO checkLike(MenuLikeRequestVO menuLikeRequestVO);
 	
 	public int insertOneFoodSet(FoodSetVO foodSetVO);
 	public int getFoodNoByFoodName(String food_name);
@@ -29,6 +30,6 @@ public interface MenuDao {
 	public void deleteFoodSetByMenuNo(int menu_no);
 	public void deleteMenuByMenuNo(int menu_no);
 	public MenuResultVO getOneMenu(int menu_no);
-	public void updateOneMenu(MenuVO menuVO);
+	public int updateOneMenu(MenuVO menuVO);
 	
 }

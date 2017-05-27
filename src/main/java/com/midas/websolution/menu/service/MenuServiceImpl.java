@@ -230,9 +230,14 @@ public class MenuServiceImpl implements MenuService{
 	}
 
 	@Override
-	public void updateOneMenu(MenuVO menuVO) {
-		menuDao.updateOneMenu(menuVO);
+	public boolean updateOneMenu(MenuVO menuVO) {
+		return menuDao.updateOneMenu(menuVO) > 0;
 		
+	}
+
+	@Override
+	public MenuLikeRequestVO checkLike(MenuLikeRequestVO menuLikeRequestVO) {
+		return menuDao.checkLike(menuLikeRequestVO);
 	}
 	
 }

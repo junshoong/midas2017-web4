@@ -190,10 +190,19 @@
 	</select>
 	
 	<update id="updateOneMenu">
-	UPDATE MENU SET
-		MENU_DT = #{menu_date}
-		, MENU_KIND = #{menu_kind}
-	WHERE MENU_NO = #{menu_number}
-</update>
+		UPDATE MENU SET
+			MENU_DT = #{menu_date}
+			, MENU_KIND = #{menu_kind}
+		WHERE MENU_NO = #{menu_number}
+	</update>
+	
+	<select id="checkLike" resultType="menuLikeRequestVO">
+		SELECT 		USR_NO
+					,	MENU_NO
+		FROM		LOG
+		WHERE		USR_NO = #{user_no}
+		AND			MENU_NO = #{menu_no}
+	</select>
+	
 	
 </mapper>

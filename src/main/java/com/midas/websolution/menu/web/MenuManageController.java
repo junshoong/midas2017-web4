@@ -60,7 +60,7 @@ public class MenuManageController {
 	@RequestMapping(value="/menu/modify/{menu_no}", method=RequestMethod.GET)
 	public ModelAndView modify(@PathVariable int menu_no) {
 		ModelAndView view = new ModelAndView();
-		view.addObject("menu_info", menuService.getOneMenu(menu_no));
+		view.addObject("menu_info", menuService.getOneWeekMenu(menu_no));
 		
 		view.setViewName("/menu/modify");
 		return view;
@@ -201,7 +201,25 @@ public class MenuManageController {
 		}
 		
 		else {
-			result.put("NO", "FAIL");
+			result.put("SUCCESS", "NO");
+		}
+		
+		return result;
+	}
+	
+	
+	@ResponseBody
+	@RequestMapping(value="/menu/checkLike", method=RequestMethod.POST)
+	public Map<String, String> checkLike(MenuLikeRequestVO menuLikeRequestVO) {
+		
+		Map<String, String> result = new HashMap<String, String>();
+		MenuLikeRequestVO test = menuService.checkLike(menuLikeRequestVO);
+		if(test.getUser_no() != 0) {
+			result.put("SUCCESS", "YES");
+		}
+		
+		else {
+			result.put("SUCCESS", "NO");
 		}
 		
 		return result;
