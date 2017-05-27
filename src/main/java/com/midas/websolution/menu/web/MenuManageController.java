@@ -84,7 +84,7 @@ public class MenuManageController {
 		
 		System.out.println(todayMenu.size());
 		
-		while(menu_kind <= 30) {
+		while(i < todayMenu.size()) {
 			
 			if(menu_kind!= todayMenu.get(i).getMenu_kind()) {
 				menu_kind += 10;

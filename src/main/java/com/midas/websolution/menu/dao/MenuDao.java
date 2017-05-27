@@ -5,7 +5,6 @@ import java.util.List;
 import com.midas.websolution.menu.vo.FoodSetVO;
 import com.midas.websolution.menu.vo.FoodVO;
 import com.midas.websolution.menu.vo.MenuMainRequestVO;
-import com.midas.websolution.menu.vo.MenuRegistRequestVO;
 import com.midas.websolution.menu.vo.MenuVO;
 
 public interface MenuDao {

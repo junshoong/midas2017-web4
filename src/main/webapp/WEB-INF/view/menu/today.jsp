@@ -8,8 +8,14 @@
 <title>Insert title here</title>
 </head>
 <body>
+
 	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-		<table border="1">
+		<div class="pull-left right">
+		<h1> 오늘의 식단 </h1>
+		<br/><br/>
+		
+		<table class="table">
+		 
 			<tr> 
 				<th colspan="2"> 조식 </th>
 				<th colspan="2"> 중식 </th>
@@ -48,7 +54,7 @@
 			</tr>
 		
 		</table>
-	
+		</div>
 	
 	</div>
 </body>

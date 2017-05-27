@@ -42,11 +42,23 @@ public class LoginFilter implements Filter {
 	
 		if(user == null) {
 			HttpServletResponse res = (HttpServletResponse) response;
-			res.sendRedirect("signin");
+			
+			res.sendRedirect(req.getContextPath()+"/signin");
 		}
 		
 		else {
 			logger.info(user.getUser_id());
+			System.out.println(req.getContextPath()+"/menu/manage");
+	
+			
+		/*	if(user.getUser_permission() == 20 && "/websolution/menu/manage".equals(req.getContextPath()+"/menu/manage")) {
+				
+				HttpServletResponse res = (HttpServletResponse) response;
+				res.sendRedirect(req.getContextPath()+"/signin");
+				chain.doFilter(request, response);
+				return ;
+			}*/
+			
 			request.setAttribute("_USER_", user);
 		}
 		

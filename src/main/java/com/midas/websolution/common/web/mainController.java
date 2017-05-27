@@ -39,46 +39,42 @@ public class mainController {
 		view.setViewName("/index");
 		view.addObject("content", "menu/weekmenu.jsp");
 		
-		for(int i = 10; i <= 10; i += 10) {
+		for(int i = 10; i <= 30; i += 10) {
 			 weekMenu = menuService.getOneWeekMenu(i);
-		}
-		
-		
-		for(int i = 0; i < weekMenu.size(); i ++)
-			System.out.println(weekMenu.get(i));
-		
-		/*
-		for(int j = 0; j < 3; j ++) {
+			 
 			
-			while(week <= 6) {
-					cal.set(Calendar.DAY_OF_WEEK, week);
-					if(!dateFmt.format(cal.getTime()).equals(weekMenu.get(count++).getMenu_date())) {
-						week++;
-						continue;
-					}
+				 
+				 	if(weekMenu.size() == 0) break;
 					
-					else {
-						menuText[j][week] += weekMenu.get(count++).getFoodSetVO().getFoodVO().getFood_name();
-						menuText[j][week] +="\n";
-						//System.out.println(menuText[j][week]);
-					}
-				
-			}
-			
-			count = 0;
-			week = 2;
+					while(week <= 6) {
+							cal.set(Calendar.DAY_OF_WEEK, week);
+							if(!dateFmt.format(cal.getTime()).equals(weekMenu.get(count++).getMenu_date())) {
+								week++;
+								continue;
+							}
+							
+							else {
+								menuText[(i/10) - 1][week] += weekMenu.get(count++).getFood_name();
+								menuText[(i/10) - 1][week] += "<br/>";
+								//System.out.println(menuText[j][week]);
+							}
+						
+					
+					
+					count = 0;
+					week = 2;
+				}
+			 
 		}
-
-		for(int i = 0; i < 3; i ++) {
-			for(int j = 0; j < 6; j ++) {
-				System.out.println(menuText[i][j]);
-			}
-			System.out.println();
-		}
+		
+		
+		System.out.println(menuText[0]);
+		System.out.println(menuText[1]);
+		System.out.println(menuText[2]);
 
 		view.addObject("weekMenuBreakFast",  menuText[0]);
 		view.addObject("weekMenuLunch",  menuText[1]);
-		view.addObject("weekMenuDinner",  menuText[2]);*/
+		view.addObject("weekMenuDinner",  menuText[2]);
 
 		
 		return view;
