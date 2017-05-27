@@ -8,7 +8,7 @@ import com.midas.websolution.menu.vo.MenuVO;
 public class MenuDaoImpl extends SqlSessionDaoSupport implements MenuDao {
 
 	@Override
-	public MenuVO selectOneUser(String menu_number) {
+	public MenuVO selectById(String menu_number) {
 		return getSqlSession().selectOne(MD + ".selectById", menu_number);
 	}
 

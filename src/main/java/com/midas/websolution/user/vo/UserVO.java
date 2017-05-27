@@ -3,12 +3,14 @@ package com.midas.websolution.user.vo;
 
 public class UserVO {
 	
+	//PK
+	private int userNo;
+
 	private String userId;
 	private String userPassword;
 	private String userName;
 	private int userPermission;
-	private int userNo;
-
+	private String userJoinDate;
 
 	public int getUserNo() {
 		return userNo;
@@ -39,6 +41,12 @@ public class UserVO {
 	}
 	public void setUserPermission(int userPermission) {
 		this.userPermission = userPermission;
+	}
+	public String getUserJoinDate() {
+		return userJoinDate;
+	}
+	public void setUserJoinDate(String userJoinDate) {
+		this.userJoinDate = userJoinDate;
 	}
 
 }

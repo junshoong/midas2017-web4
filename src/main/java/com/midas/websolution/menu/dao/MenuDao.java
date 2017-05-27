@@ -5,6 +5,6 @@ import com.midas.websolution.menu.vo.MenuVO;
 public interface MenuDao {
 	
 	public static final String MD = "MenuDao";
-	public MenuVO selectOneUser(String menu_number);
+	public MenuVO selectById(String menu_number);
 	
 }

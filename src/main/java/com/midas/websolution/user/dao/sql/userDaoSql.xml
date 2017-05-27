@@ -3,22 +3,34 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 	
 <mapper namespace="UserDao">
+
+	<resultMap type="UserVO" id="userMap">
 	
-	<select id="selectOneUser" parameterType="UserVO" resultType="UserVO">
-		SELECT					USR_NO userNo
-						,		USR_ID userId	
-						,		USR_NM userName       
-						,		USR_PWD userPassword 
-						,		USR_PM userPermission     
-		FROM					USRS         
-		WHERE					USR_ID = #{userId} 	
-		AND						USR_PWD = #{userPassword}		
+		<id column="USR_NO" property="userNo" />
+		<result column="USR_ID" property="userId" />
+		<result column="USR_NM" property="userName" />
+		<result column="USR_PWD" property="userPassword" />
+		<result column="USR_PM" property="userPermission" />
+		<result column="JOIN_DT" property="userJoinDate" />
+		
+	</resultMap>
+	
+	<select id="selectOneUser" parameterType="UserVO" resultMap="userMap">
+		SELECT					USR_NO
+						,		USR_ID
+						,		USR_NM
+						,		USR_PWD
+						,		USR_PM
+						,		JOIN_DT
+		FROM					USRS
+		WHERE					USR_ID = #{userId}
+		AND						USR_PWD = #{userPassword}
 	</select>
 	
-	<select id="selectById" parameterType="String" resultType="UserVO">
-		SELECT					USR_ID userId	
-						,		USR_NM userName       
-						,		USR_PWD userPassword      
+	<select id="selectById" parameterType="String" resultMap="userMap">
+		SELECT					USR_ID
+						,		USR_NM
+						,		USR_PWD
 		FROM					USRS         
 		WHERE					USR_ID = #{userId} 	
 	</select>
@@ -39,8 +51,6 @@
 										,	NOW()        
 									)                  
 	</insert>
-	
-
 
 </mapper>
 
