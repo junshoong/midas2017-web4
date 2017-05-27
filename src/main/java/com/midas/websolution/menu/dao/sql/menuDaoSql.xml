@@ -132,7 +132,7 @@
 					, M.MENU_KIND 
 	</select>
 	
-<<<<<<< HEAD
+
 	<insert id="insertLike" parameterType="menuLikeRequestVO">
 			INSERT	INTO	LOG	(
 									USR_NO
@@ -145,8 +145,7 @@
 									, #{like}
 								) 
 	</insert>
-	
-=======
+
 	<select id="getMenuList" resultMap="MenuResultMap">
 		SELECT M.MENU_NO
 			, M.MENU_DT
@@ -164,7 +163,6 @@
 		join FOOD F on F.FOOD_NO = FS.FOOD_NO 
 		where FS.MENU_NO = #{MENU_NO}
 	</select>
->>>>>>> 749fed50a1f7482736c89b76c58bebfad21702ed
 	
 	<delete id="deleteFoodSetByMenuNo" parameterType="int">
   		DELETE FROM FOOD_SET
