@@ -6,6 +6,7 @@ public class UserVO {
 	private String userId;
 	private String userPassword;
 	private String userName;
+	private int userPermission;
 	private int userNo;
 
 
@@ -32,6 +33,12 @@ public class UserVO {
 	}
 	public void setUserName(String userName) {
 		this.userName = userName;
+	}
+	public int getUserPermission() {
+		return userPermission;
+	}
+	public void setUserPermission(int userPermission) {
+		this.userPermission = userPermission;
 	}
 
 }

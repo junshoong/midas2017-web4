@@ -71,24 +71,20 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
+        
+        <c:if test="${sessionScope._USER_.userPermission=='10'}">
           <ul class="nav nav-sidebar">
-            <li><a href="<c:url value="/"/>"> Overview <span class="sr-only">(current)</span></a></li>
             <li><a href="board">게시판</a></li>
-            <li><a href="#">${content}</a></li>
-            <li><a href="#">Export</a></li>
+            <li><a href="#">식단 등록</a></li>
+            <li><a href="#">식단 관리</a></li>
           </ul>
+       </c:if>   
           <ul class="nav nav-sidebar">
-            <li><a href="">Nav item</a></li>
-            <li><a href="">Nav item again</a></li>
-            <li><a href="">One more nav</a></li>
-            <li><a href="">Another nav item</a></li>
-            <li><a href="">More navigation</a></li>
+            <li><a href="">식단 조회/검색</a></li>
+            <li><a href="">오늘의 식사</a></li>
+            <li><a href="">통계</a></li>
           </ul>
-          <ul class="nav nav-sidebar">
-            <li><a href="">Nav item again</a></li>
-            <li><a href="">One more nav</a></li>
-            <li><a href="">Another nav item</a></li>
-          </ul>
+
         </div>
         
        

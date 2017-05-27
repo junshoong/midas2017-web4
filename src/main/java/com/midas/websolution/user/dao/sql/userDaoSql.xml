@@ -8,7 +8,8 @@
 		SELECT					USR_NO userNo
 						,		USR_ID userId	
 						,		USR_NM userName       
-						,		USR_PWD userPassword      
+						,		USR_PWD userPassword 
+						,		USR_PM userPermission     
 		FROM					USRS         
 		WHERE					USR_ID = #{userId} 	
 		AND						USR_PWD = #{userPassword}		

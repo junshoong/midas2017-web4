@@ -12,9 +12,9 @@
 	</sql>
 	<sql id="PAGING_FOOTER">
 							) A
-					WHERE	ROWNUM <![CDATA[<= ]]> #{endArticleNumber}
+					WHERE	RWNUM <![CDATA[<= ]]> #{endArticleNumber}
 				) B
-		WHERE	ROWNUM >= #{startArticleNumber}		
+		WHERE	RWNUM >= #{startArticleNumber}		
 	</sql>
 	
 		
