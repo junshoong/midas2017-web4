@@ -2,35 +2,42 @@ package com.midas.websolution.menu.vo;
 
 
 public class MenuVO {
-	private int MENU_NO;
-	private String MENU_DT;
-	private int MENU_KIND;
-	private String MENU_FILE_NAME;
+	private int menu_number;
+	private String menu_date;
+	private int menu_kind;
+	private String menu_file_name;
 	
 	
-	public int getMENU_NO() {
-		return MENU_NO;
+	public int getMenu_number() {
+		return menu_number;
 	}
-	public void setMENU_NO(int mENU_NO) {
-		MENU_NO = mENU_NO;
+	public void setMenu_number(int menu_number) {
+		this.menu_number = menu_number;
 	}
-	public String getMENU_DT() {
-		return MENU_DT;
+	public String getMenu_date() {
+		return menu_date;
 	}
-	public void setMENU_DT(String mENU_DT) {
-		MENU_DT = mENU_DT;
+	public void setMenu_date(String menu_date) {
+		this.menu_date = menu_date;
 	}
-	public int getMENU_KIND() {
-		return MENU_KIND;
+	public int getMenu_kind() {
+		return menu_kind;
 	}
-	public void setMENU_KIND(int mENU_KIND) {
-		MENU_KIND = mENU_KIND;
+	public void setMenu_kind(int menu_kind) {
+		this.menu_kind = menu_kind;
 	}
-	public String getMENU_FILE_NAME() {
-		return MENU_FILE_NAME;
+	public String getMenu_file_name() {
+		return menu_file_name;
 	}
-	public void setMENU_FILE_NAME(String mENU_FILE_NAME) {
-		MENU_FILE_NAME = mENU_FILE_NAME;
+	public void setMenu_file_name(String menu_file_name) {
+		this.menu_file_name = menu_file_name;
+	}
+	
+	
+	@Override
+	public String toString() {
+		return "MenuVO [menu_number=" + menu_number + ", menu_date=" + menu_date + ", menu_kind=" + menu_kind
+				+ ", menu_file_name=" + menu_file_name + "]";
 	}
 	
 	
