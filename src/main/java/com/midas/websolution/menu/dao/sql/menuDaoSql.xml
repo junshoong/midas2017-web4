@@ -13,7 +13,13 @@
 	
 	</resultMap>
 	
-	
+	<resultMap type="MenuLogVO" id="MenuLogMap">
+		<id column="MENU_NO" property="menu_number" />
+		<result column="MENU_DT" property="menu_date" />
+		<result column="MENU_KIND" property="menu_kind" />
+		<result column="MENU_FILE_NAME" property="menu_file_name" />
+		<result column="LIKE" property="log_like" />
+	</resultMap>
 
 	<resultMap type="MenuMainRequestVO" id="MenuMainMap">
 	
@@ -24,20 +30,14 @@
 
 	</resultMap>
 	
-	<resultMap id="MenuRegistMap" type="MenuRegistRequestVO">
-		<association property="menuVO" javaType="MenuVO">
-			<id column="MENU_NO" property="menu_number" />
-			<result column="MENU_DT" property="menu_date" />
-			<result column="MENU_KIND" property="menu_kind" />
-			<result column="MENU_FILE_NAME" property="menu_file_name" />
-		</association>
+	<resultMap id="MenuResultMap" type="MenuResultVO">
+		<id column="MENU_NO" property="menu_no" />
+		<result column="MENU_DT" property="menu_date" />
+		<result column="MENU_KIND" property="menu_kind" />
+		<result column="MENU_FILE_NAME" property="menu_file_name" />
+		
+		<collection property="foodVO" javaType="ArrayList" column="MENU_NO" ofType="FoodVO" select="getFoodListByMenuNo"/>
 
-		<collection property="foodVO" ofType="FoodVO">
-			<id column="FOOD_NO" property="food_no" />
-			<result column="FOOD_NAME" property="food_name" />
-			<result column="FOOD_CAL" property="food_calory" />
-			<result column="FOOD_KIND" property="food_kind" />
-		</collection>
 	</resultMap>
 	
 	
@@ -47,14 +47,14 @@
 		WHERE MENU_NO = #{menu_number}
 	</select>
 
-	<select id="selectByUserNumber" parameterType="int" resultMap="MenuMap">
-		SELECT M.MENU_NO, M.MENU_DT, M.MENU_KIND, M.MENU_FILE_NAME
+	<select id="selectByUserNumber" parameterType="int" resultMap="MenuLogMap">
+		SELECT M.MENU_NO, M.MENU_DT, M.MENU_KIND, M.MENU_FILE_NAME, L.LIKE
 		FROM LOG L
-		RIGHT JOIN MENU M
+		JOIN MENU M
 		ON L.MENU_NO = M.MENU_NO
 		WHERE USR_NO = #{user_number}
-		
 	</select>
+	
 
 	<select id="getOneWeekMenu" parameterType="_int" resultMap="MenuMainMap">
 		SELECT	M.MENU_NO
@@ -132,19 +132,22 @@
 					, M.MENU_KIND 
 	</select>
 	
-	<select id="getMenuList" resultMap="MenuRegistMap">
-		SELECT DISTINCT M.MENU_NO
+	<select id="getMenuList" resultMap="MenuResultMap">
+		SELECT M.MENU_NO
 			, M.MENU_DT
 			, M.MENU_KIND
 			, M.MENU_FILE_NAME
-			, F.FOOD_NAME
+		FROM MENU M
+		ORDER BY m.MENU_DT DESC
+	</select>
+	
+	<select id="getFoodListByMenuNo" resultType="FoodVO">
+		SELECT F.FOOD_NAME
 			, F.FOOD_CAL
 			, F.FOOD_KIND
-		FROM MENU M
-		join FOOD_SET FS on M.MENU_NO = FS.MENU_NO
-		join FOOD F on FS.FOOD_NO = F.FOOD_NO
-
-		ORDER BY m.MENU_DT DESC
+		FROM FOOD_SET FS
+		join FOOD F on F.FOOD_NO = FS.FOOD_NO 
+		where FS.MENU_NO = #{MENU_NO}
 	</select>
 	
 </mapper>

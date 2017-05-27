@@ -15,8 +15,9 @@ import org.springframework.web.multipart.MultipartFile;
 import com.midas.websolution.menu.dao.MenuDao;
 import com.midas.websolution.menu.vo.FoodSetVO;
 import com.midas.websolution.menu.vo.FoodVO;
+import com.midas.websolution.menu.vo.MenuLogVO;
 import com.midas.websolution.menu.vo.MenuMainRequestVO;
-import com.midas.websolution.menu.vo.MenuRegistRequestVO;
+import com.midas.websolution.menu.vo.MenuResultVO;
 import com.midas.websolution.menu.vo.MenuVO;
 
 public class MenuServiceImpl implements MenuService{
@@ -39,13 +40,13 @@ public class MenuServiceImpl implements MenuService{
 	}
 	
 	@Override
-	public List<MenuVO> getMenuListByUserNumber(int user_number) {
+	public List<MenuLogVO> getMenuListByUserNumber(int user_number) {
 		return menuDao.selectByUserNumber(user_number);
 	}
 	
 	@Override
 	public Map<String, int[]> getTimesOfMeal(int user_number) {
-		List<MenuVO> menus = menuDao.selectByUserNumber(user_number);
+		List<MenuLogVO> menus = menuDao.selectByUserNumber(user_number);
 		Map<String, int[]> map = new HashMap<String, int[]>();
 		int meals[][] = new int[3][3];
 		Date now = new Date();
@@ -53,7 +54,7 @@ public class MenuServiceImpl implements MenuService{
 		SimpleDateFormat yearFormat = new SimpleDateFormat("yyyy");
 		SimpleDateFormat monthFormat = new SimpleDateFormat("MM");
 
-		for(MenuVO menu: menus) {
+		for(MenuLogVO menu: menus) {
 			String from = menu.getMenu_date();
 			if (menu.getMenu_kind() == 10)
 				meals[0][0]++;
@@ -140,7 +141,7 @@ public class MenuServiceImpl implements MenuService{
 	}
 
 	@Override
-	public List<MenuRegistRequestVO> getMenuList() {
+	public List<MenuResultVO> getMenuList() {
 		return menuDao.getMenuList();
 	}
 	

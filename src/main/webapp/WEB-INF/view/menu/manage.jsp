@@ -35,29 +35,31 @@
 					<tbody>
 						<c:forEach var="ml" items="${menu_list }" varStatus="status">
 						<c:choose>
-							<c:when test="${ml.menuVO.menu_kind == 10 }">
+							<c:when test="${ml.menu_kind == 10 }">
 								<c:set var="menuKind" value="아침" />
 							</c:when>
-							<c:when test="${ml.menuVO.menu_kind == 20 }">
+							<c:when test="${ml.menu_kind == 20 }">
 								<c:set var="menuKind" value="점심" />
 							</c:when>
-							<c:when test="${ml.menuVO.menu_kind == 30 }">
+							<c:when test="${ml.menu_kind == 30 }">
 								<c:set var="menuKind" value="저녁" />
 							</c:when>
 						</c:choose>
 						
 						<tr>
 							<td>
-								${ml.menuVO.menu_date } - ${menuKind }
+								${ml.menu_date } - ${menuKind }
 							</td>
-							<td>
-<%-- 								<c:forEach var="mlf" items="${ml.foodVO }" varStatus="status"> --%>
-<%-- 								${mlf.food_name } --%>
-<%-- 								</c:forEach> --%>
-								${ml.foodVO }
+							<td class="text_center">
+								<c:forEach var="mlf" items="${ml.foodVO }" varStatus="status">
+								${mlf.food_name } <br />
+								</c:forEach>
 							</td>
 							<td>
 								<img class="img-responsive" src="" style="max-height:150px;" />
+							</td>
+							<td>
+								<a class="btn btn-default" href="modify">수정</a>
 							</td>
 						</tr>
 						</c:forEach>
