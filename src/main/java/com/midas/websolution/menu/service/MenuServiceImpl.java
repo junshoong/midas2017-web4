@@ -16,6 +16,17 @@ public class MenuServiceImpl implements MenuService{
 	}
 
 	@Override
+	public MenuVO selectById(String menu_number) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<MenuVO> getOneWeekMenu(int menu_kind) {
+		return menuDao.getOneWeekMenu(menu_kind);
+	}
+	
+	@Override
 	public List<MenuVO> getMenuListByIdAndMonth(int user_number, int month) {
 		return menuDao.selectByIdAndMonth(user_number, month);
 		

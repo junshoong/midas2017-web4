@@ -6,7 +6,6 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -37,6 +36,7 @@ public class UserController {
 		user = userService.loginUser(user);
 		
 		if(user != null) {
+			System.out.println("쉬고싶다");
 			HttpSession session = request.getSession();
 			logger.info(user.getUser_id());
 			session.setAttribute("_USER_", user);

@@ -58,6 +58,7 @@
 	</bean>
 
 	<bean id="mainController" class="com.midas.websolution.common.web.mainController">
+		<property name="menuService" ref="menuServiceImpl"></property>
 	</bean>
 	
 

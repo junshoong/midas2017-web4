@@ -9,6 +9,9 @@
 		<typeAlias type="com.midas.websolution.board.vo.BoardVO" alias="BoardVO"/>	
 		<typeAlias type="com.midas.websolution.board.vo.BoardSearchVO" alias="BoardSearchVO"/>	
 		<typeAlias type="com.midas.websolution.menu.vo.MenuVO" alias="MenuVO"/>	
+		<typeAlias type="com.midas.websolution.menu.vo.FoodVO" alias="FoodVO"/>	
+		<typeAlias type="com.midas.websolution.menu.vo.FoodSetVO" alias="FoodSetVO"/>
+		<typeAlias type="com.midas.websolution.menu.vo.MenuRegistRequestVO" alias="MenuRegistRequestVO"/>	
 	</typeAliases>
 
     <mappers>

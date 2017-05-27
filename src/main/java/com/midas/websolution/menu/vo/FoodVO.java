@@ -1,4 +1,4 @@
-package com.midas.websolution.food.vo;
+package com.midas.websolution.menu.vo;
 
 public class FoodVO {
 	

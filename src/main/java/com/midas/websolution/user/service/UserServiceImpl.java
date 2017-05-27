@@ -24,8 +24,8 @@ public class UserServiceImpl implements UserService{
 
 
 	@Override
-	public boolean isDuplicateUserId(String userId) {
-		return userBiz.isDuplicateUserId(userId);
+	public boolean isDuplicateUserId(String user_id) {
+		return userBiz.isDuplicateUserId(user_id);
 	}
 
 	
