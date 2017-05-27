@@ -153,17 +153,13 @@ public class MenuManageController {
 		
 		List<MenuMainRequestVO> todayMenu = menuService.getTodayMenu();
 		
-<<<<<<< HEAD
+
 		System.out.println(todayMenu.size());
 		
-		
+
 		for(int z = 0; z < todayMenu.size(); z++) {
 				menuThreeNo[(todayMenu.get(z).getMenu_kind() / 10) - 1] = todayMenu.get(z).getMenu_number();
-=======
-		for(int z = 0; z < todayMenu.size(); z++) {
-				menuThreeNo[(todayMenu.get(z).getMenu_kind() / 10) - 1] = todayMenu.get(z).getMenu_number();
-				menu_kind += 10;
->>>>>>> d5685f11f223670a13b2f3878bc4c8919ce152e9
+
 		}
 		
 

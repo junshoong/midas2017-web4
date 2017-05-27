@@ -19,6 +19,30 @@ $().ready(function() {
 			return;
 		}
 		
+		
+		$.post("<c:url value="/menu/checkLike/"/>", {
+			
+			"user_no" : $("#user_no").val() ,
+			"menu_no" : $("#likeBreakfast").val() 
+
+		}, function(response) {
+			if(response.SUCCESS == "YES") {
+				alert("좋아요를 클릭하셨습니다.");
+				$("#likeBreakfast").attr("disabled", true);
+				$("#dislikeBreakfast").attr("disabled", true);
+			}
+			
+			else{
+				alert("클릭을 실패하였습니다.");
+			}
+		});
+		
+		
+		
+		
+	
+		
+		
 		$.post("<c:url value="/menu/insertLike/"/>", {
 			
 			"user_no" : $("#user_no").val() ,
