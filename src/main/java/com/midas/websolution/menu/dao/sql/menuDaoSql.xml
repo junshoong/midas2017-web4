@@ -10,15 +10,18 @@
 		<result column="MENU_DT" property="menu_date" />
 		<result column="MENU_KIND" property="menu_kind" />
 		<result column="MENU_FILE_NAME" property="menu_file_name" />
-		
+	
 	</resultMap>
+	
+	
+
 	<resultMap type="MenuMainRequestVO" id="MenuMainMap">
 	
 		<result column="MENU_NO" property="menu_number" />
 		<result column="MENU_DT" property="menu_date" />
 		<result column="MENU_KIND" property="menu_kind" />
 		<result column="FOOD_NAME" property="food_name" />
-		
+
 	</resultMap>
 	
 	<resultMap id="MenuRegistMap" type="MenuRegistRequestVO">
@@ -114,7 +117,7 @@
 		WHERE FOOD_NAME = #{food_name}
 	</select>
 
-	<select id="getTodayMenu" resultMap="MenuMap">
+	<select id="getTodayMenu" resultMap="MenuMainMap">
 		SELECT	M.MENU_NO
 				, 	M.MENU_DT
 				,	M.MENU_KIND
@@ -124,7 +127,7 @@
 				,	FOOD F
 		WHERE	M.MENU_NO = FS.MENU_NO
 		AND		FS.FOOD_NO = F.FOOD_NO 
-		AND		M.MENU_DT = CURDATE()
+		AND		M.MENU_DT = curdate()
 		ORDER 	BY 	M.MENU_NO
 					, M.MENU_KIND 
 	</select>

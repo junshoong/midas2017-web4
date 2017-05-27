@@ -29,9 +29,10 @@ public class MenuDaoImpl extends SqlSessionDaoSupport implements MenuDao {
 	}
 
 	@Override
-	public List<MenuVO> getTodayMenu() {
+	public List<MenuMainRequestVO> getTodayMenu() {
 		return getSqlSession().selectList(MD + ".getTodayMenu");
 	}
+
 
 	@Override
 	public int insertOneMenu(MenuVO menuVO) {

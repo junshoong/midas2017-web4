@@ -9,7 +9,7 @@
 </head>
 <body>
 	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-		<table>
+		<table class="table">
 			<tr> 
 				<th> 5월(test) </th>
 				<th> 월 </th>

@@ -8,8 +8,14 @@
 <title>Insert title here</title>
 </head>
 <body>
+
 	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-		<table border="1">
+		<div class="pull-left right">
+		<h1> 오늘의 식단 </h1>
+		<br/><br/>
+		
+		<table class="table">
+		 
 			<tr> 
 				<th colspan="2"> 조식 </th>
 				<th colspan="2"> 중식 </th>
@@ -18,39 +24,37 @@
 			</tr>
 			
 			<tr>
-				<td>
+				<td colspan="2">
 					<c:forEach items="${todayBreakFast}" var="menuList">
-							${menuList}
+							${menuList} 
 					</c:forEach>
 				</td>
 				
-				<td>
+				<td colspan="2">
 					<c:forEach items="${todayLunch}" var="menuList">
 							${menuList} 
 					</c:forEach>
 				</td>
 				 
-				 <td>
+				 <td colspan="2">
 					<c:forEach items="${todayDinner}" var="menuList">
-							${menuList}
+							${menuList} 
 					</c:forEach>
 				</td>
 				 
 			</tr>
-				<td> 좋아요 </td>
-				<td> 싫어요 </td>
-				<td> 좋아요 </td>
-				<td> 싫어요 </td>
-				<td> 좋아요 </td>
-				<td> 싫어요 </td>
+		
 			<tr>
-					
-					<td></td>
-							
+				<td> 좋아요 </td>
+				<td> 싫어요 </td>
+				<td> 좋아요 </td>
+				<td> 싫어요 </td>
+				<td> 좋아요 </td>
+				<td> 싫어요 </td>
 			</tr>
 		
 		</table>
-	
+		</div>
 	
 	</div>
 </body>

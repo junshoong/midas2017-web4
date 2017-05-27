@@ -12,9 +12,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.midas.websolution.menu.service.MenuService;
-import com.midas.websolution.menu.vo.MenuVO;
 import com.midas.websolution.user.vo.UserVO;
 
 @Controller
@@ -28,7 +28,7 @@ public class MenuStatisticsController {
 	}
 	
 	@RequestMapping(value="/menu/statistics")
-	public String hello(HttpServletRequest request) {
+	public ModelAndView hello(HttpServletRequest request) {
 		Date date= new Date();
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(date);
@@ -40,13 +40,15 @@ public class MenuStatisticsController {
 		UserVO userVO = (UserVO) session.getAttribute("_USER_");
 		
 //		List<MenuVO> list = menuService.getMenuListByIdAndMonth(userVO.getUser_no(), month);
-		int[] nn = menuService.getTimesOfMeal(userVO.getUser_no());
 		
-		logger.info(""+nn.length);
+		ModelAndView view = new ModelAndView();
+		view.setViewName("/index");
+		view.addObject("meals", menuService.getTimesOfMeal(userVO.getUser_no()));
+		view.addObject("content", "menu/statistics.jsp");
+		
 
 
-
-		return "menu/statistics";
+		return view;
 	}
 
 }

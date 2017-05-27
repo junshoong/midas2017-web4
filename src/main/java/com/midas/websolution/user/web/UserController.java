@@ -36,7 +36,6 @@ public class UserController {
 		user = userService.loginUser(user);
 		
 		if(user != null) {
-			System.out.println("쉬고싶다");
 			HttpSession session = request.getSession();
 			logger.info(user.getUser_id());
 			session.setAttribute("_USER_", user);

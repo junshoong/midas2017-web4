@@ -68,7 +68,6 @@
 	
 	<filter-mapping>
     	<filter-name>loginFilter</filter-name>
-    	<url-pattern>/</url-pattern>
     	<url-pattern>/menu/*</url-pattern>
   </filter-mapping>	
 

@@ -1,6 +1,7 @@
 package com.midas.websolution.menu.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -15,8 +16,8 @@ public interface MenuService {
 	public MenuVO selectById(String menu_number);
 	public List<MenuMainRequestVO> getOneWeekMenu(int menu_kind);
 	public List<MenuVO> getMenuListByUserNumber(int user_number);
-	public int[] getTimesOfMeal(int user_number);
-	public List<MenuVO> getTodayMenu();
+	public Map<String, int[]> getTimesOfMeal(int user_number);
+	public List<MenuMainRequestVO> getTodayMenu();
 	public void uploadFile(MultipartFile file, String file_path);
 	public int insertOneMenu(MenuVO menuVO);
 	public int updateOneFood(FoodVO foodVO);
