@@ -32,4 +32,7 @@ public interface MenuService {
 	public List<MenuResultVO> getMenuListByDate(String menu_date);
 	public void deleteFoodSetByMenuNo(int menu_no);
 	public void deleteMenuByMenuNo(int menu_no);
+	public MenuResultVO getOneMenu(int menu_no);
+	public void updateOneMenu(MenuVO menuVO);
+
 }

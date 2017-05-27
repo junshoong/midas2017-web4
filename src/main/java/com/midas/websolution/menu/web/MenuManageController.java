@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -55,6 +56,49 @@ public class MenuManageController {
 		return view;
 	}
 	
+	// 식단 수정
+	@RequestMapping(value="/menu/modify/{menu_no}", method=RequestMethod.GET)
+	public ModelAndView modify(@PathVariable int menu_no) {
+		ModelAndView view = new ModelAndView();
+		view.addObject("menu_info", menuService.getOneMenu(menu_no));
+		
+		view.setViewName("/menu/modify");
+		return view;
+	}
+	
+	@RequestMapping(value="/menu/modify", method=RequestMethod.POST)
+	public ModelAndView registMenu(MenuRegistRequestVO menuRegistRequestVO) {
+		
+		 System.out.println(menuRegistRequestVO.toString());
+
+		 int menu_no = menuRegistRequestVO.getMenuVO().getMenu_number();
+		 menuService.updateOneMenu(menuRegistRequestVO.getMenuVO());
+		 
+		 menuService.deleteFoodSetByMenuNo(menu_no);
+		 
+		List<FoodVO> foodVOs = menuRegistRequestVO.getFoodVO();
+		for(int i=0; i<foodVOs.size(); i++) {
+			int food_no = menuService.updateOneFood(foodVOs.get(i));
+			if(food_no == 0) {
+				String food_name = foodVOs.get(i).getFood_name();
+				food_no = menuService.getFoodNoByFoodName(food_name);
+			}
+			
+			FoodSetVO foodSetVO = new FoodSetVO();
+			foodSetVO.setMenu_no(menu_no);
+			foodSetVO.setFood_no(food_no);
+			menuService.insertOneFoodSet(foodSetVO);
+		}
+		
+		
+		ModelAndView view = new ModelAndView();
+
+		view.setViewName("redirect:/menu/manage");
+		return view;
+		
+	}
+	
+	// 식단 등록
 	@RequestMapping(value="/menu/regist", method=RequestMethod.GET)
 	public ModelAndView regist() {
 		ModelAndView view = new ModelAndView();
@@ -109,11 +153,17 @@ public class MenuManageController {
 		
 		List<MenuMainRequestVO> todayMenu = menuService.getTodayMenu();
 		
+<<<<<<< HEAD
 		System.out.println(todayMenu.size());
 		
 		
 		for(int z = 0; z < todayMenu.size(); z++) {
 				menuThreeNo[(todayMenu.get(z).getMenu_kind() / 10) - 1] = todayMenu.get(z).getMenu_number();
+=======
+		for(int z = 0; z < todayMenu.size(); z++) {
+				menuThreeNo[(todayMenu.get(z).getMenu_kind() / 10) - 1] = todayMenu.get(z).getMenu_number();
+				menu_kind += 10;
+>>>>>>> d5685f11f223670a13b2f3878bc4c8919ce152e9
 		}
 		
 
@@ -128,7 +178,6 @@ public class MenuManageController {
 				menuList[(menu_kind/10) - 1] += (todayMenu.get(i).getFood_name()) + "</br>";
 				i++;
 			}
-			
 			
 		}
 		

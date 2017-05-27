@@ -223,5 +223,16 @@ public class MenuServiceImpl implements MenuService{
 	public boolean insertLike(MenuLikeRequestVO menuLikeRequestVO) {
 		return menuDao.insertLike(menuLikeRequestVO) > 0;
 	}
+
+	@Override
+	public MenuResultVO getOneMenu(int menu_no) {
+		return menuDao.getOneMenu(menu_no);
+	}
+
+	@Override
+	public void updateOneMenu(MenuVO menuVO) {
+		menuDao.updateOneMenu(menuVO);
+		
+	}
 	
 }

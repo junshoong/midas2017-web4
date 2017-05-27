@@ -52,14 +52,14 @@
 							</td>
 							<td class="text_center">
 								<c:forEach var="mlf" items="${ml.foodVO }" varStatus="status">
-								${mlf.food_name } <br />
+								${mlf.food_name } (${mlf.food_calory}KCal) <br />
 								</c:forEach>
 							</td>
 							<td>
 								<img class="img-responsive" src="" style="max-height:150px;" />
 							</td>
 							<td>
-								<a class="btn btn-default" href="modify">수정</a>
+								<a class="btn btn-default" href="modify/${ml.menu_no }">수정</a>
 								<form method="post" action="delete">
 									<input type="hidden" name="menu_no" value="${ml.menu_no }" />
 									<button class="btn btn-default" type="submit">삭제</button>
