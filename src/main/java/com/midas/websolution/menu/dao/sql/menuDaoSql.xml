@@ -57,6 +57,33 @@
 		ORDER 	BY 	M.MENU_DT
 					, M.MENU_NO 
 	</select> 
+	
+	<insert id="insertOneMenu" parameterType="MenuVO" useGeneratedKeys="true" keyProperty="menu_number" keyColumn="MENU_NO">
+			INSERT	INTO	MENU	(
+									MENU_DT
+									, MENU_KIND
+									, MENU_FILE_NAME
+								)
+			VALUES				(
+									#{menu_date}
+									, #{menu_kind}
+									, "temp"
+								) 
+	</insert>
+	
+	<insert id="updateOneFood" parameterType="FoodVO" useGeneratedKeys="true" keyProperty="food_no" keyColumn="FOOD_NO">
+			INSERT	INTO	FOOD	(
+									FOOD_NAME
+									, FOOD_CAL
+									, FOOD_KIND
+								)
+			VALUES				(
+									#{food_name}
+									, #{food_calory}
+									, #{food_kind}
+								) 
+			ON DUPLICATE KEY UPDATE FOOD_NAME=#{food_name}, FOOD_CAL=#{food_calory}, FOOD_KIND=#{food_kind} 
+	</insert>
 
 	<select id="getTodayMenu" resultMap="MenuMap">
 		SELECT	M.MENU_NO

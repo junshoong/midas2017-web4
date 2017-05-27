@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 
+import com.midas.websolution.menu.vo.FoodVO;
+import com.midas.websolution.menu.vo.MenuRegistRequestVO;
 import com.midas.websolution.menu.vo.MenuVO;
 
 
@@ -25,8 +27,18 @@ public class MenuDaoImpl extends SqlSessionDaoSupport implements MenuDao {
 	}
 
 	@Override
+<<<<<<< HEAD
 	public List<MenuVO> getTodayMenu() {
 		return getSqlSession().selectList(MD + ".getTodayMenu");
+=======
+	public int insertOneMenu(MenuVO menuVO) {
+		return getSqlSession().insert(MD + ".insertOneMenu", menuVO);
+	}
+
+	@Override
+	public int updateOneFood(FoodVO foodVO) {
+		return getSqlSession().insert(MD + ".updateOneFood", foodVO);
+>>>>>>> dc8a32c0c632782bda0f14e0ba2bd2f22aeb4748
 	}
 
 }
