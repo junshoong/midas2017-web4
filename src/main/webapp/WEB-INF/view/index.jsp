@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title> MIDAS - 밥사조</title>
+    <title> MIDAS - 0칼로리조 </title>
 
     <!-- Bootstrap core CSS -->
      <link href="<c:url value="/static/bootstrap/css/bootstrap.min.css"/>" rel="stylesheet">
@@ -66,7 +66,7 @@
         <c:if test="${sessionScope._USER_.user_permission=='10'}">
         
           <ul class="nav nav-sidebar">
-            <li><a href="<c:url value="menu/manage"/>">식단 관리</a></li>
+            <li><a href="<c:url value="/menu/manage"/>">식단 관리</a></li>
           </ul>
           
        </c:if>   

@@ -153,17 +153,9 @@ public class MenuManageController {
 		
 		List<MenuMainRequestVO> todayMenu = menuService.getTodayMenu();
 		
-		System.out.println(todayMenu.size());
-		
-		for(int l= 0; l < todayMenu.size(); l++)
-			System.out.println("아아아아 " + todayMenu.get(l).getMenu_number() + " " + todayMenu.get(l).getMenu_kind());
-		
 		for(int z = 0; z < todayMenu.size(); z++) {
-			
-	
 				menuThreeNo[(todayMenu.get(z).getMenu_kind() / 10) - 1] = todayMenu.get(z).getMenu_number();
 				menu_kind += 10;
-			
 		}
 		
 		menu_kind = 10;
@@ -178,7 +170,6 @@ public class MenuManageController {
 				menuList[(menu_kind/10) - 1] += (todayMenu.get(i).getFood_name()) + "</br>";
 				i++;
 			}
-			
 			
 		}
 		
