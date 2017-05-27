@@ -55,6 +55,12 @@
 		WHERE USR_NO = #{user_number}
 	</select>
 	
+	<select id="selectLogAll" resultMap="MenuLogMap">
+		SELECT M.MENU_NO, M.MENU_DT, M.MENU_KIND, M.MENU_FILE_NAME, L.LIKE
+		FROM LOG L
+		JOIN MENU M
+		ON L.MENU_NO = M.MENU_NO
+	</select>
 
 	<select id="getOneWeekMenu" parameterType="_int" resultMap="MenuMainMap">
 		SELECT	M.MENU_NO

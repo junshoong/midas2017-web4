@@ -28,22 +28,23 @@ public class MenuStatisticsController {
 	}
 	
 	@RequestMapping(value="/menu/statistics")
-	public ModelAndView hello(HttpServletRequest request) {
-//		Date date= new Date();
-//		Calendar cal = Calendar.getInstance();
-//		cal.setTime(date);
-//		int month = cal.get(Calendar.MONTH);
-		
+	public ModelAndView statistics(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		
 		UserVO userVO = (UserVO) session.getAttribute("_USER_");
-		
+
 		ModelAndView view = new ModelAndView();
 		view.setViewName("/index");
-		view.addObject("meals", menuService.getTimesOfMeal(userVO.getUser_no()));
-		view.addObject("content", "menu/statistics.jsp");
-		
 
+		if (userVO.getUser_permission() == 10) {
+			view.addObject("meals", menuService.getTimesOfMealAll());
+			view.addObject("content", "menu/statistics.jsp");
+			
+		} else {
+			view.addObject("meals", menuService.getTimesOfMeal(userVO.getUser_no()));
+			view.addObject("content", "menu/statistics.jsp");
+		}
+		
 
 		return view;
 	}
