@@ -16,7 +16,7 @@ import com.midas.websolution.menu.dao.MenuDao;
 import com.midas.websolution.menu.vo.FoodSetVO;
 import com.midas.websolution.menu.vo.FoodVO;
 import com.midas.websolution.menu.vo.MenuMainRequestVO;
-import com.midas.websolution.menu.vo.MenuRegistRequestVO;
+import com.midas.websolution.menu.vo.MenuResultVO;
 import com.midas.websolution.menu.vo.MenuVO;
 
 public class MenuServiceImpl implements MenuService{
@@ -140,7 +140,7 @@ public class MenuServiceImpl implements MenuService{
 	}
 
 	@Override
-	public List<MenuRegistRequestVO> getMenuList() {
+	public List<MenuResultVO> getMenuList() {
 		return menuDao.getMenuList();
 	}
 	

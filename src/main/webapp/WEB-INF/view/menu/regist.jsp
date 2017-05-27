@@ -103,7 +103,7 @@
 				
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-10 text-right">
-						<a href="#" class="btn btn-default">취소</a>
+						<a href="manage" class="btn btn-default">취소</a>
 						<button type="submit" class="btn btn-default">식단 등록</button>
 					</div>
 				</div>
