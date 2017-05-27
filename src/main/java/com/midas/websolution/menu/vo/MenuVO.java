@@ -8,8 +8,6 @@ public class MenuVO {
 	private int menu_kind;
 	private String menu_file_name;
 	
-	private FoodSetVO foodSetVO;
-	
 	public int getMenu_number() {
 		return menu_number;
 	}
@@ -41,12 +39,5 @@ public class MenuVO {
 		return "MenuVO [menu_number=" + menu_number + ", menu_date=" + menu_date + ", menu_kind=" + menu_kind
 				+ ", menu_file_name=" + menu_file_name + "]";
 	}
-	public FoodSetVO getFoodSetVO() {
-		return foodSetVO;
-	}
-	public void setFoodSetVO(FoodSetVO foodSetVO) {
-		this.foodSetVO = foodSetVO;
-	}
-	
 	
 }

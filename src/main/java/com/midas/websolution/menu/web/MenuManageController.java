@@ -78,7 +78,7 @@ public class MenuManageController {
 			}
 			
 			else {
-				menuList[(menu_kind/10) - 1].add(todayMenu.get(i).getFoodSetVO().getFoodVO().getFood_name());
+//				menuList[(menu_kind/10) - 1].add(todayMenu.get(i).getFoodSetVO().getFoodVO().getFood_name());
 			}
 			
 			todayMenu.remove(i);
