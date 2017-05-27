@@ -4,49 +4,58 @@ package com.midas.websolution.user.vo;
 public class UserVO {
 	
 	//PK
-	private int userNo;
+	private int user_no;
 
-	private String userId;
-	private String userPassword;
-	private String userName;
-	private int userPermission;
-	private String userJoinDate;
+	private String user_id;
+	private String user_password;
+	private String user_name;
+	private int user_permission;
+	private String user_join_date;
+	
+	
+	public int getUser_no() {
+		return user_no;
+	}
+	public void setUser_no(int user_no) {
+		this.user_no = user_no;
+	}
+	public String getUser_id() {
+		return user_id;
+	}
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
+	}
+	public String getUser_password() {
+		return user_password;
+	}
+	public void setUser_password(String user_password) {
+		this.user_password = user_password;
+	}
+	public String getUser_name() {
+		return user_name;
+	}
+	public void setUser_name(String user_name) {
+		this.user_name = user_name;
+	}
+	public int getUser_permission() {
+		return user_permission;
+	}
+	public void setUser_permission(int user_permission) {
+		this.user_permission = user_permission;
+	}
+	public String getUser_join_date() {
+		return user_join_date;
+	}
+	public void setUser_join_date(String user_join_date) {
+		this.user_join_date = user_join_date;
+	}
 
-	public int getUserNo() {
-		return userNo;
-	}
-	public void setUserNo(int userNo) {
-		this.userNo = userNo;
-	}
-	public String getUserId() {
-		return userId;
-	}
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
-	public String getUserPassword() {
-		return userPassword;
-	}
-	public void setUserPassword(String userPassword) {
-		this.userPassword = userPassword;
-	}
-	public String getUserName() {
-		return userName;
-	}
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-	public int getUserPermission() {
-		return userPermission;
-	}
-	public void setUserPermission(int userPermission) {
-		this.userPermission = userPermission;
-	}
-	public String getUserJoinDate() {
-		return userJoinDate;
-	}
-	public void setUserJoinDate(String userJoinDate) {
-		this.userJoinDate = userJoinDate;
+
+	@Override
+	public String toString() {
+		return "UserVO [user_no=" + user_no + ", user_id=" + user_id + ", user_password=" + user_password
+				+ ", user_name=" + user_name + ", user_permission=" + user_permission + ", user_join_date="
+				+ user_join_date + "]";
 	}
 
 }
