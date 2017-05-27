@@ -61,11 +61,14 @@
         <div class="col-sm-3 col-md-2 sidebar">
         
         <c:if test="${sessionScope._USER_.userPermission=='10'}">
+        
           <ul class="nav nav-sidebar">
-            <li><a href="board">게시판</a></li>
+            <!-- <li><a href="board">게시판</a></li> -->
             <li><a href="menumanage">식단 관리</a></li>
           </ul>
+          
        </c:if>   
+       
           <ul class="nav nav-sidebar">
             <li><a href="menusearch">식단 조회/검색</a></li>
             <li><a href="menutoday">오늘의 식사</a></li>

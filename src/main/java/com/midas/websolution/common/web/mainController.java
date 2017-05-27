@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class mainController {
 	@RequestMapping(value="/", method=RequestMethod.GET)
 	public String index(HttpServletRequest request) {
-		request.setAttribute("content", "basic/basic.jsp");
+		request.setAttribute("content", "menu/weekmenu.jsp");
 		return "/index";
 	}
 }
