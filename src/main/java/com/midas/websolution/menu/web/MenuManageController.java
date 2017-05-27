@@ -99,7 +99,7 @@ public class MenuManageController {
 		
 		int menuThreeNo[] = new int[3];
 		int menu_kind = 10;
-		int i = 0; int count = 1;
+		int i = 0; 
 		String menuList[] = new String[3];
 		
 		for(int j = 0; j < 3; j ++) menuList[j] = "";
@@ -111,13 +111,18 @@ public class MenuManageController {
 		
 		System.out.println(todayMenu.size());
 		
+		for(int l= 0; l < todayMenu.size(); l++)
+			System.out.println("아아아아 " + todayMenu.get(l).getMenu_number() + " " + todayMenu.get(l).getMenu_kind());
+		
 		for(int z = 0; z < todayMenu.size(); z++) {
-			if(todayMenu.get(z).getMenu_kind() == menu_kind) {
+			
+	
+				menuThreeNo[(todayMenu.get(z).getMenu_kind() / 10) - 1] = todayMenu.get(z).getMenu_number();
 				menu_kind += 10;
-				menuThreeNo[(menu_kind / 10) - 1] = todayMenu.get(z).getMenu_kind();
-			}
+			
 		}
 		
+		menu_kind = 10;
 		
 		while(i < todayMenu.size()) {
 			
