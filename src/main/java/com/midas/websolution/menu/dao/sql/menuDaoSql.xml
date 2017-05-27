@@ -10,22 +10,20 @@
 		<result column="MENU_DT" property="menu_date" />
 		<result column="MENU_KIND" property="menu_kind" />
 		<result column="MENU_FILE_NAME" property="menu_file_name" />
-		
-		<association property="foodSetVO" javaType="FoodSetVO">
-			<collection property="foodVO" resultMap="FoodVO"/>
-		</association>
-			
 	
 	</resultMap>
 	
 	
+
+	<resultMap type="MenuMainRequestVO" id="MenuMainMap">
 	
-	<resultMap type="FoodVO" id="FoodVO">
-				<id column="FOOD_NO" property="food_no" />
-				<result column="FOOD_NAME" property="food_name" />
-				<result column="FOOD_CAL" property="food_calory" />
-				<result column="FOOD_KIND" property="food_kind" />
+		<result column="MENU_NO" property="menu_number" />
+		<result column="MENU_DT" property="menu_date" />
+		<result column="MENU_KIND" property="menu_kind" />
+		<result column="FOOD_NAME" property="food_name" />
+
 	</resultMap>
+	
 	
 	<select id="selectById" parameterType="string" resultMap="MenuMap">
 		SELECT MENU_NO, MENU_DT, MENU_KIND, MENU_FILE_NAME
@@ -42,7 +40,7 @@
 		
 	</select>
 
-	<select id="getOneWeekMenu" parameterType="_int" resultMap="MenuMap">
+	<select id="getOneWeekMenu" parameterType="_int" resultMap="MenuMainMap">
 		SELECT	M.MENU_NO
 				, 	M.MENU_DT
 				,	M.MENU_KIND
@@ -86,15 +84,17 @@
 			ON DUPLICATE KEY UPDATE FOOD_NAME=#{food_name}, FOOD_CAL=#{food_calory}, FOOD_KIND=#{food_kind} 
 	</insert>
 
-	<select id="getTodayMenu" resultMap="MenuMap">
-		SELECT		M.MENU_KIND
+	<select id="getTodayMenu" resultMap="MenuMainMap">
+		SELECT	M.MENU_NO
+				, 	M.MENU_DT
+				,	M.MENU_KIND
 				,	F.FOOD_NAME
 		FROM 	FOOD_SET FS
 				, 	MENU M
 				,	FOOD F
 		WHERE	M.MENU_NO = FS.MENU_NO
 		AND		FS.FOOD_NO = F.FOOD_NO 
-		AND		M.MENU_DT = CURDATE()
+		AND		M.MENU_DT = curdate()
 		ORDER 	BY 	M.MENU_NO
 					, M.MENU_KIND 
 	</select>

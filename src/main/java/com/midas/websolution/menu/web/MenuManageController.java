@@ -1,6 +1,5 @@
 package com.midas.websolution.menu.web;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,8 +14,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.midas.websolution.menu.service.MenuService;
 import com.midas.websolution.menu.vo.FoodVO;
+import com.midas.websolution.menu.vo.MenuMainRequestVO;
 import com.midas.websolution.menu.vo.MenuRegistRequestVO;
-import com.midas.websolution.menu.vo.MenuVO;
 
 @Controller
 public class MenuManageController {
@@ -64,12 +63,14 @@ public class MenuManageController {
 		
 		int menu_kind = 10;
 		int i = 0;
-		ArrayList[] menuList = new ArrayList[3];
+		String menuList[] = new String[3];
+		
+		for(int j = 0; j < 3; j ++) menuList[j] = "";
 		
 		ModelAndView view = new ModelAndView();
 		view.setViewName("/index");
 		
-		List<MenuVO> todayMenu = menuService.getTodayMenu();
+		List<MenuMainRequestVO> todayMenu = menuService.getTodayMenu();
 		
 		System.out.println(todayMenu.size());
 		
@@ -80,12 +81,14 @@ public class MenuManageController {
 			}
 			
 			else {
-				menuList[(menu_kind/10) - 1].add(todayMenu.get(i).getFoodSetVO().getFoodVO().getFood_name());
+				if(todayMenu.get(i).getFood_name() != null) 
+					menuList[(menu_kind/10) - 1] += (todayMenu.get(i).getFood_name()) + "</br>";
 			}
 			
-			todayMenu.remove(i);
+			i++;
 		}
 		
+		view.addObject("content", "menu/today.jsp");
 		view.addObject("todayBreakFast", menuList[0]);
 		view.addObject("todayLunch", menuList[1]);
 		view.addObject("todayDinner", menuList[2]);

@@ -41,10 +41,6 @@
 		<property name="userService" ref="userServiceImpl"></property>
 	</bean>
 	
-	<bean id="boardController" class="com.midas.websolution.board.web.BoardController">
-		<property name="boardService" ref="boardServiceImpl"></property>
-	</bean>
-	
 	<bean id="menuUserController" class="com.midas.websolution.menu.web.MenuUserController">
 		<property name="menuService" ref="menuServiceImpl"></property>
 	</bean>

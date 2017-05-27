@@ -1,12 +1,12 @@
 package com.midas.websolution.menu.vo;
 
+public class MenuMainRequestVO {
 
-public class MenuVO {
-	
 	private int menu_number;
 	private String menu_date;
 	private int menu_kind;
-	private String menu_file_name;
+	private String food_name;
+	
 	
 	public int getMenu_number() {
 		return menu_number;
@@ -26,18 +26,17 @@ public class MenuVO {
 	public void setMenu_kind(int menu_kind) {
 		this.menu_kind = menu_kind;
 	}
-	public String getMenu_file_name() {
-		return menu_file_name;
+	public String getFood_name() {
+		return food_name;
 	}
-	public void setMenu_file_name(String menu_file_name) {
-		this.menu_file_name = menu_file_name;
+	public void setFood_name(String food_name) {
+		this.food_name = food_name;
 	}
-	
-	
+
 	@Override
 	public String toString() {
-		return "MenuVO [menu_number=" + menu_number + ", menu_date=" + menu_date + ", menu_kind=" + menu_kind
-				+ ", menu_file_name=" + menu_file_name + "]";
+		return "MenuMainRequestVO [menu_number=" + menu_number + ", menu_date=" + menu_date + ", menu_kind=" + menu_kind
+				+ ", food_name=" + food_name + "]";
 	}
 	
 }

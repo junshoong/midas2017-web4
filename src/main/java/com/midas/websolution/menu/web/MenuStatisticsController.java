@@ -39,9 +39,10 @@ public class MenuStatisticsController {
 		
 		UserVO userVO = (UserVO) session.getAttribute("_USER_");
 		
-		List<MenuVO> list = menuService.getMenuListByIdAndMonth(userVO.getUser_no(), month);
+//		List<MenuVO> list = menuService.getMenuListByIdAndMonth(userVO.getUser_no(), month);
+		int[] nn = menuService.getTimesOfMeal(userVO.getUser_no());
 		
-		logger.info(""+list.size());
+		logger.info(""+nn.length);
 
 
 

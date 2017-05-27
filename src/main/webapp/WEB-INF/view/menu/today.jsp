@@ -18,21 +18,21 @@
 			</tr>
 			
 			<tr>
-				<td>
+				<td colspan="2">
 					<c:forEach items="${todayBreakFast}" var="menuList">
-							${menuList}
+							${menuList} 
 					</c:forEach>
 				</td>
 				
-				<td>
+				<td colspan="2">
 					<c:forEach items="${todayLunch}" var="menuList">
 							${menuList} 
 					</c:forEach>
 				</td>
 				 
-				 <td>
+				 <td colspan="2">
 					<c:forEach items="${todayDinner}" var="menuList">
-							${menuList}
+							${menuList} 
 					</c:forEach>
 				</td>
 				 
