@@ -21,8 +21,8 @@ public class UserDaoImpl extends SqlSessionDaoSupport implements UserDao {
 	}
 
 	@Override
-	public UserVO selectOneUser(String userId) {
-		return getSqlSession().selectOne("UserDao.selectById", userId);
+	public UserVO selectOneUser(String user_id) {
+		return getSqlSession().selectOne("UserDao.selectById", user_id);
 	}
 
 

@@ -4,8 +4,6 @@ import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
 
-import com.midas.websolution.food.vo.FoodVO;
-
 public class MenuRegistRequestVO {
 	private int menu_number;
 	private String menu_date;

@@ -24,8 +24,8 @@ public class UserBizImpl implements UserBiz{
 
 
 	@Override
-	public boolean isDuplicateUserId(String userId) {
-		return (userDao.selectOneUser(userId) == null) ?
+	public boolean isDuplicateUserId(String user_id) {
+		return (userDao.selectOneUser(user_id) == null) ?
 				false : true;
 	}
 
