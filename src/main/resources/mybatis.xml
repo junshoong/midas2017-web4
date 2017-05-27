@@ -13,6 +13,7 @@
 		<typeAlias type="com.midas.websolution.menu.vo.MenuRegistRequestVO" alias="MenuRegistRequestVO"/>	
 		<typeAlias type="com.midas.websolution.menu.vo.MenuMainRequestVO" alias="MenuMainRequestVO"/>
 		<typeAlias type="com.midas.websolution.menu.vo.MenuResultVO" alias="MenuResultVO"/>	
+		<typeAlias type="com.midas.websolution.menu.vo.MenuLikeRequestVO" alias="MenuLikeRequestVO"/>	
 	</typeAliases>
 
     <mappers>

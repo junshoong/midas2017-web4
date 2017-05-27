@@ -7,6 +7,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.midas.websolution.menu.vo.FoodSetVO;
 import com.midas.websolution.menu.vo.FoodVO;
+import com.midas.websolution.menu.vo.MenuLikeRequestVO;
 import com.midas.websolution.menu.vo.MenuLogVO;
 import com.midas.websolution.menu.vo.MenuMainRequestVO;
 import com.midas.websolution.menu.vo.MenuResultVO;
@@ -24,8 +25,10 @@ public interface MenuService {
 	public int updateOneFood(FoodVO foodVO);
 	public void insertOneFoodSet(FoodSetVO foodSetVO);
 	public int getFoodNoByFoodName(String food_name);
+	public boolean insertLike(MenuLikeRequestVO menuLikeRequestVO);
 	public List<MenuResultVO> getMenuList();
 	public List<MenuResultVO> getMenuListByFoodName(String food_name);
 	public List<MenuResultVO> getMenuListByDate(String menu_date);
-	
+	public void deleteFoodSetByMenuNo(int menu_no);
+	public void deleteMenuByMenuNo(int menu_no);
 }

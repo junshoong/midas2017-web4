@@ -67,8 +67,8 @@
 		WHERE	M.MENU_NO = FS.MENU_NO
 		AND		FS.FOOD_NO = F.FOOD_NO 
 		AND		M.MENU_KIND = #{menu_kind}
-		AND		M.MENU_DT >= ADDDATE( CURDATE(), - WEEKDAY(CURDATE())) 
-		AND		M.MENU_DT <![CDATA[<= ]]> ADDDATE( CURDATE(), - WEEKDAY(CURDATE()) + 4 ) 
+		AND		M.MENU_DT >= ADDDATE( CURDATE(), - WEEKDAY(CURDATE()) + 7) 
+		AND		M.MENU_DT <![CDATA[<= ]]> ADDDATE( CURDATE(), - WEEKDAY(CURDATE()) + 11 ) 
 		ORDER 	BY 	M.MENU_DT
 					, M.MENU_NO 
 	</select> 
@@ -132,7 +132,19 @@
 					, M.MENU_KIND 
 	</select>
 	
-	
+	<insert id="insertLike" parameterType="menuLikeRequestVO">
+			INSERT	INTO	LOG	(
+									USR_NO
+									, MENU_NO
+									, LIKE
+								)
+			VALUES				(
+									#{user_no}
+									, #{menu_no}
+									, #{like}
+								) 
+	</insert>
+
 	<select id="getMenuList" resultMap="MenuResultMap">
 		SELECT M.MENU_NO
 			, M.MENU_DT
@@ -150,5 +162,15 @@
 		join FOOD F on F.FOOD_NO = FS.FOOD_NO 
 		where FS.MENU_NO = #{MENU_NO}
 	</select>
+	
+	<delete id="deleteFoodSetByMenuNo" parameterType="int">
+  		DELETE FROM FOOD_SET
+  		WHERE MENU_NO = #{menu_no}
+	</delete>
+	
+	<delete id="deleteMenuByMenuNo" parameterType="_int">
+  		DELETE FROM MENU
+  		WHERE MENU_NO = #{menu_no}
+	</delete>
 	
 </mapper>
