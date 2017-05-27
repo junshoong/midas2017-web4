@@ -1,5 +1,7 @@
 package com.midas.websolution.menu.web;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.midas.websolution.menu.service.MenuService;
+import com.midas.websolution.menu.vo.FoodVO;
 import com.midas.websolution.menu.vo.MenuRegistRequestVO;
 
 @Controller
@@ -32,15 +35,22 @@ public class MenuManageController {
 	
 	@RequestMapping(value="/menu/regist", method=RequestMethod.POST)
 	public ModelAndView registMenu(MenuRegistRequestVO menuRegistRequestVO, HttpServletRequest request) {
-		System.out.println(menuRegistRequestVO.toString());
-		System.out.println(menuRegistRequestVO.getFoodVO().size());
 		
-		HttpSession session = request.getSession(); 
-		String root_path = session.getServletContext().getRealPath("resources/upload/"); 
-		System.out.println(root_path);
-		menuService.uploadFile(menuRegistRequestVO.getImage_file(), root_path);
+//		HttpSession session = request.getSession(); 
+//		String root_path = session.getServletContext().getRealPath("resources/upload/"); 
+//		System.out.println(root_path);
+//		menuService.uploadFile(menuRegistRequestVO.getImage_file(), root_path);
+		
+		int menu_number = menuService.insertOneMenu(menuRegistRequestVO.getMenuVO());
+		List<FoodVO> foodVOs = menuRegistRequestVO.getFoodVO();
+		for(int i=0; i<foodVOs.size(); i++) {
+			int food_no = menuService.updateOneFood(foodVOs.get(i));
+//			menuService.insertOneFoodSet();
+		}
+		
 		
 		ModelAndView view = new ModelAndView();
+
 		view.setViewName("redirect:/menu/regist");
 		return view;
 		
