@@ -38,7 +38,7 @@ public class mainController {
 		view.setViewName("/index");
 		view.addObject("content", "menu/weekmenu.jsp");
 		
-		for(int i = 10; i <= 10; i += 10) {
+	/*	for(int i = 10; i <= 10; i += 10) {
 			 weekMenu = menuService.getOneWeekMenu(i);
 		}
 		
@@ -76,7 +76,7 @@ public class mainController {
 
 		view.addObject("weekMenuBreakFast",  menuText[0]);
 		view.addObject("weekMenuLunch",  menuText[1]);
-		view.addObject("weekMenuDinner",  menuText[2]);
+		view.addObject("weekMenuDinner",  menuText[2]);*/
 
 		
 		return view;

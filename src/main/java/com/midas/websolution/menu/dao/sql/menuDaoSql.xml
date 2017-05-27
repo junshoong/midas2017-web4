@@ -58,5 +58,19 @@
 					, M.MENU_NO 
 	</select> 
 
-
+	<select id="getTodayMenu" resultMap="MenuMap">
+		SELECT	M.MENU_NO
+				, 	M.MENU_DT
+				,	M.MENU_KIND
+				,	F.FOOD_NAME
+		FROM 	FOOD_SET FS
+				, 	MENU M
+				,	FOOD F
+		WHERE	M.MENU_NO = FS.MENU_NO
+		AND		FS.FOOD_NO = F.FOOD_NO 
+		AND		M.MENU_DT = CURDATE()
+		ORDER 	BY 	M.MENU_NO
+					, M.MENU_KIND 
+	</select>
+	
 </mapper>

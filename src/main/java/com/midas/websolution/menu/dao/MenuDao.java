@@ -10,5 +10,6 @@ public interface MenuDao {
 	public MenuVO selectById(String menu_number);
 	public List<MenuVO> getOneWeekMenu(int menu_kind);
 	public List<MenuVO> selectByUserNumber(int user_number);
+	public List<MenuVO> getTodayMenu();
 	
 }

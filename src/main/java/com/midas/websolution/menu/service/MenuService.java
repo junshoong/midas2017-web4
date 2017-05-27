@@ -11,6 +11,6 @@ public interface MenuService {
 	public MenuVO selectById(String menu_number);
 	public List<MenuVO> getOneWeekMenu(int menu_kind);
 	public List<MenuVO> getMenuListByIdAndMonth(int user_number, int month);
-
+	public List<MenuVO> getTodayMenu();
 	public void uploadFile(MultipartFile file, String file_path);
 }
