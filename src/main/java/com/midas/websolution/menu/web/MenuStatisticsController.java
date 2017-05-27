@@ -7,6 +7,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.hibernate.validator.constraints.Length;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -39,6 +40,8 @@ public class MenuStatisticsController {
 		UserVO userVO = (UserVO) session.getAttribute("_USER_");
 		
 		List<MenuVO> list = menuService.getMenuListByIdAndMonth(userVO.getUser_no(), month);
+		
+		logger.info(""+list.size());
 
 
 

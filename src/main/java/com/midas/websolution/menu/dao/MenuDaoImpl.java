@@ -1,6 +1,5 @@
 package com.midas.websolution.menu.dao;
 
-import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.support.SqlSessionDaoSupport;
@@ -21,12 +20,8 @@ public class MenuDaoImpl extends SqlSessionDaoSupport implements MenuDao {
 	}
 
 	@Override
-	public List<MenuVO> selectByIdAndMonth(int user_number, int month) {
-		HashMap<String, Object> hashMap = new HashMap<String, Object>();
-		hashMap.put("user_number", user_number);
-		hashMap.put("month", month);
-
-		return getSqlSession().selectList(MD + ".selectByIdAndMonth", hashMap);
+	public List<MenuVO> selectByUserNumber(int user_number) {
+		return getSqlSession().selectList(MD + ".selectByUserNumber", user_number);
 	}
 
 }

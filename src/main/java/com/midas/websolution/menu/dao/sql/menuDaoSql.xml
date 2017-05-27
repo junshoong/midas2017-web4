@@ -32,6 +32,14 @@
 		WHERE MENU_NO = #{menu_number}
 	</select>
 
+	<select id="selectByUserNumber" parameterType="int" resultMap="MenuMap">
+		SELECT M.MENU_NO, M.MENU_DT, M.MENU_KIND, M.MENU_FILE_NAME
+		FROM LOG L
+		RIGHT JOIN MENU M
+		ON L.MENU_NO = M.MENU_NO
+		WHERE USR_NO = #{user_number}
+		
+	</select>
 
 	<select id="getOneWeekMenu" parameterType="_int" resultMap="MenuMap">
 		SELECT	M.MENU_NO
@@ -50,8 +58,5 @@
 					, M.MENU_NO 
 	</select> 
 
- 	<select id="selectByIdAndMonth" parameterType="hashmap" resultMap="MenuMap">
-
-	</select> 
 
 </mapper>
