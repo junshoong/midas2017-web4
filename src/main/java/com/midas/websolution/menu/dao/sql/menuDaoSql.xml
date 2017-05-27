@@ -10,11 +10,14 @@
 		<result column="MENU_KIND" property="menu_kind" />
 		<result column="MENU_FILE_NAME" property="menu_file_name" />
 	</resultMap>
-
+	
 	<select id="selectById" parameterType="string" resultMap="MenuMap">
 		SELECT MENU_NO, MENU_DT, MENU_KIND, MENU_FILE_NAME
 		FROM MENU
 		WHERE MENU_NO = #{menu_number}
+	</select>
+
+	<select id="selectByIdAndMonth" parameterType="hashmap" resultMap="MenuMap">
 	</select>
 
 </mapper>
