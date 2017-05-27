@@ -13,19 +13,29 @@
 
 	<table class="table">
 	<tr>
-	<th> 구분 </th>
-	<th> 아침 </th>
-	<th> 점심 </th>
-	<th> 저녁 </th>
-		<c:forEach var="meal" items="${meals}">
-			<tr>
-			<td>${meal.key}</td>
-				<c:forEach var="m" items="${meal.value}">
-					<td><c:out value="${m}" /></td>
-				</c:forEach>
-			</tr>
+		<th> 구분 </th>
+		<th> 아침 </th>
+		<th> 점심 </th>
+		<th> 저녁 </th>
+	</tr>
+	<tr>
+		<td> 총 식사 횟수 </td>
+		<c:forEach var="m" items="${meals['all']}">
+			<td><c:out value="${m}" /></td>
 		</c:forEach>
-		</tr>
+	</tr>
+	<tr>
+		<td> 올해 식사 횟수 </td>
+		<c:forEach var="m" items="${meals['year']}">
+			<td><c:out value="${m}" /></td>
+		</c:forEach>
+	</tr>
+	<tr>
+		<td> 이번달 식사 횟수 </td>
+		<c:forEach var="m" items="${meals['month']}">
+			<td><c:out value="${m}" /></td>
+		</c:forEach>
+	</tr>
 	</table>
 
 </div>

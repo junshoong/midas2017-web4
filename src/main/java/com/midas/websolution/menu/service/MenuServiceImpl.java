@@ -55,26 +55,31 @@ public class MenuServiceImpl implements MenuService{
 
 		for(MenuVO menu: menus) {
 			String from = menu.getMenu_date();
+			if (menu.getMenu_kind() == 10)
+				meals[0][0]++;
+			else if (menu.getMenu_kind() == 20)
+				meals[0][1]++;
+			else if (menu.getMenu_kind() == 30)
+				meals[0][2]++;
+			map.put("all", meals[0]);
 			try {
 				Date date = transFormat.parse(from);
 				if (yearFormat.format(now).equals(yearFormat.format(date))) {
-					System.out.println("bbb");
 					if (menu.getMenu_kind() == 10)
-						meals[0][0]++;
+						meals[1][0]++;
 					else if (menu.getMenu_kind() == 20)
-						meals[0][1]++;
+						meals[1][1]++;
 					else if (menu.getMenu_kind() == 30)
-						meals[0][2]++;
-					map.put("연도별", meals[0]);
+						meals[1][2]++;
+					map.put("year", meals[1]);
 					if (monthFormat.format(now).equals(monthFormat.format(date))) {
-						System.out.println("ccc");
 						if (menu.getMenu_kind() == 10)
-							meals[1][0]++;
+							meals[2][0]++;
 						else if (menu.getMenu_kind() == 20)
-							meals[1][1]++;
+							meals[2][1]++;
 						else if (menu.getMenu_kind() == 30)
-							meals[1][2]++;
-						map.put("월별", meals[1]);
+							meals[2][2]++;
+						map.put("month", meals[2]);
 					}
 				}
 
