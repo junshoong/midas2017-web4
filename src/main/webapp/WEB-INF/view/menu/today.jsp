@@ -18,35 +18,33 @@
 			</tr>
 			
 			<tr>
-				<td>
+				<td colspan="2">
 					<c:forEach items="${todayBreakFast}" var="menuList">
-							${menuList}
+							${menuList} 
 					</c:forEach>
 				</td>
 				
-				<td>
+				<td colspan="2">
 					<c:forEach items="${todayLunch}" var="menuList">
 							${menuList} 
 					</c:forEach>
 				</td>
 				 
-				 <td>
+				 <td colspan="2">
 					<c:forEach items="${todayDinner}" var="menuList">
-							${menuList}
+							${menuList} 
 					</c:forEach>
 				</td>
 				 
 			</tr>
-				<td> 좋아요 </td>
-				<td> 싫어요 </td>
-				<td> 좋아요 </td>
-				<td> 싫어요 </td>
-				<td> 좋아요 </td>
-				<td> 싫어요 </td>
+		
 			<tr>
-					
-					<td></td>
-							
+				<td> 좋아요 </td>
+				<td> 싫어요 </td>
+				<td> 좋아요 </td>
+				<td> 싫어요 </td>
+				<td> 좋아요 </td>
+				<td> 싫어요 </td>
 			</tr>
 		
 		</table>

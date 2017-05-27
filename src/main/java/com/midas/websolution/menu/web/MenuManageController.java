@@ -13,9 +13,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.midas.websolution.menu.service.MenuService;
+import com.midas.websolution.menu.vo.FoodSetVO;
 import com.midas.websolution.menu.vo.FoodVO;
+import com.midas.websolution.menu.vo.MenuMainRequestVO;
 import com.midas.websolution.menu.vo.MenuRegistRequestVO;
-import com.midas.websolution.menu.vo.MenuVO;
 
 @Controller
 public class MenuManageController {
@@ -42,11 +43,20 @@ public class MenuManageController {
 //		System.out.println(root_path);
 //		menuService.uploadFile(menuRegistRequestVO.getImage_file(), root_path);
 		
-		int menu_number = menuService.insertOneMenu(menuRegistRequestVO.getMenuVO());
+		int menu_no = menuService.insertOneMenu(menuRegistRequestVO.getMenuVO());
+		
 		List<FoodVO> foodVOs = menuRegistRequestVO.getFoodVO();
 		for(int i=0; i<foodVOs.size(); i++) {
 			int food_no = menuService.updateOneFood(foodVOs.get(i));
-//			menuService.insertOneFoodSet();
+			if(food_no == 0) {
+				String food_name = foodVOs.get(i).getFood_name();
+				food_no = menuService.getFoodNoByFoodName(food_name);
+			}
+			
+			FoodSetVO foodSetVO = new FoodSetVO();
+			foodSetVO.setMenu_no(menu_no);
+			foodSetVO.setFood_no(food_no);
+			menuService.insertOneFoodSet(foodSetVO);
 		}
 		
 		
@@ -63,27 +73,32 @@ public class MenuManageController {
 		
 		int menu_kind = 10;
 		int i = 0;
-		ArrayList[] menuList = new ArrayList[3];
+		String menuList[] = new String[3];
+		
+		for(int j = 0; j < 3; j ++) menuList[j] = "";
 		
 		ModelAndView view = new ModelAndView();
 		view.setViewName("/index");
 		
-		List<MenuVO> todayMenu = menuService.getTodayMenu();
+		List<MenuMainRequestVO> todayMenu = menuService.getTodayMenu();
 		
+		System.out.println(todayMenu.size());
 		
-		
-		while(!todayMenu.isEmpty()) {
+		while(menu_kind <= 30) {
+			
 			if(menu_kind!= todayMenu.get(i).getMenu_kind()) {
 				menu_kind += 10;
 			}
 			
 			else {
-//				menuList[(menu_kind/10) - 1].add(todayMenu.get(i).getFoodSetVO().getFoodVO().getFood_name());
+				if(todayMenu.get(i).getFood_name() != null) 
+					menuList[(menu_kind/10) - 1] += (todayMenu.get(i).getFood_name()) + "</br>";
 			}
 			
-			todayMenu.remove(i);
+			i++;
 		}
 		
+		view.addObject("content", "menu/today.jsp");
 		view.addObject("todayBreakFast", menuList[0]);
 		view.addObject("todayLunch", menuList[1]);
 		view.addObject("todayDinner", menuList[2]);

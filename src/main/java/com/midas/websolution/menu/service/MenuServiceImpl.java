@@ -13,8 +13,10 @@ import java.util.UUID;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.midas.websolution.menu.dao.MenuDao;
+import com.midas.websolution.menu.vo.FoodSetVO;
 import com.midas.websolution.menu.vo.FoodVO;
 import com.midas.websolution.menu.vo.MenuMainRequestVO;
+import com.midas.websolution.menu.vo.MenuRegistRequestVO;
 import com.midas.websolution.menu.vo.MenuVO;
 
 public class MenuServiceImpl implements MenuService{
@@ -104,10 +106,7 @@ public class MenuServiceImpl implements MenuService{
 
 	}
 
-	@Override
-	public List<MenuVO> getTodayMenu() {
-		return menuDao.getTodayMenu();
-	}
+
 
 	@Override
 	public int insertOneMenu(MenuVO menuVO) {
@@ -120,5 +119,20 @@ public class MenuServiceImpl implements MenuService{
 		menuDao.updateOneFood(foodVO);
 		return foodVO.getFood_no();
 	}
+
+	@Override
+	public List<MenuMainRequestVO> getTodayMenu() {
+		return menuDao.getTodayMenu();
+	}
+
+
+	public void insertOneFoodSet(FoodSetVO foodSetVO) {
+		menuDao.insertOneFoodSet(foodSetVO);
+	}
+
+	public int getFoodNoByFoodName(String food_name) {
+		return menuDao.getFoodNoByFoodName(food_name);
+	}
 	
+
 }
