@@ -3,6 +3,7 @@ package com.midas.websolution.menu.web;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.midas.websolution.menu.service.MenuService;
 
@@ -15,4 +16,10 @@ public class MenuStatisticsController {
 	public void setMenuService(MenuService menuService) {
 		this.menuService = menuService;
 	}
+	
+	@RequestMapping(value="/menu/statistics")
+	public String hello() {
+		return "menu/statistics";
+	}
+
 }

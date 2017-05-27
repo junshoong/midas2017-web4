@@ -4,5 +4,18 @@
 	
 <mapper namespace="MenuDao">
 
+	<resultMap type="MenuVO" id="MenuMap">
+		<id column="MENU_NO" property="menu_number" />
+		<result column="MENU_DT" property="menu_date" />
+		<result column="MENU_KIND" property="menu_kind" />
+		<result column="MENU_FILE_NAME" property="menu_file_name" />
+	</resultMap>
+
+	<select id="selectById" parameterType="string" resultMap="MenuMap">
+		SELECT MENU_NO, MENU_DT, MENU_KIND, MENU_FILE_NAME
+		FROM MENU
+		WHERE MENU_NO = #{menu_number}
+	</select>
+
 </mapper>
 
