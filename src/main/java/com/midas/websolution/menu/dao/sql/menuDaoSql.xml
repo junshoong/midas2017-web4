@@ -14,15 +14,15 @@
 		<association property="foodSetVO" javaType="FoodSetVO">
 		
 			<association property="foodVO" javaType="FoodVO">
-				
 				<id column="FOOD_NO" property="food_no" />
 				<result column="FOOD_NAME" property="food_name" />
-				<result column="FOOD_CALORY" property="food_calory" />
+				<result column="FOOD_CAL" property="food_calory" />
 				<result column="FOOD_KIND" property="food_kind" />
-				
 			</association>
 			
 		</association>
+		
+
 		
 	</resultMap>
 	
@@ -50,13 +50,12 @@
 				, 	MENU M
 				,	FOOD F
 		WHERE	M.MENU_NO = FS.MENU_NO
-		AND		FS.FOOD_NO = F.FOOD_NO
+		AND		FS.FOOD_NO = F.FOOD_NO 
 		AND		M.MENU_KIND = #{menu_kind}
-		AND		MENU_DT >= ADDDATE( CURDATE(), - WEEKDAY(CURDATE()) + 0 ) 
-		AND		MENU_DT <![CDATA[<= ]]> ADDDATE( CURDATE(), - WEEKDAY(CURDATE()) + 4 ) 
-		ORDER 	BY MENU_DT
-				, M.MENU_NO
-
+		AND		M.MENU_DT >= ADDDATE( CURDATE(), - WEEKDAY(CURDATE())) 
+		AND		M.MENU_DT <![CDATA[<= ]]> ADDDATE( CURDATE(), - WEEKDAY(CURDATE()) + 4 ) 
+		ORDER 	BY 	M.MENU_DT
+					, M.MENU_NO 
 	</select> 
 	
 	<insert id="insertOneMenu" parameterType="MenuVO" useGeneratedKeys="true" keyProperty="menu_number" keyColumn="MENU_NO">
