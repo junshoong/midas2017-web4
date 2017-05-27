@@ -16,6 +16,7 @@ public interface MenuDao {
 	public MenuVO selectById(String menu_number);
 	public List<MenuMainRequestVO> getOneWeekMenu(int menu_kind);
 	public List<MenuLogVO> selectByUserNumber(int user_number);
+	public List<MenuLogVO> selectLogAll();
 	public List<MenuMainRequestVO>  getTodayMenu();
 	public int insertOneMenu(MenuVO menuVO);
 	public int updateOneFood(FoodVO foodVO);

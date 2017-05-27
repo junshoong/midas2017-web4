@@ -21,26 +21,6 @@
 			
 		});
 		
-/* 		
-		$("#userPassword").keyup(function() {
-			
-			$.post("<c:url value="/signup/passwordcheck/"/>", {
-				
-				"userPassword" : $("#userPassword").val()
-
-			}, function(response) {
-				if(response.SUCCESS == "YES") {
-
-				}
-				
-				else{
-					alert("암호를 다시 체크해주세요...");
-				}
-			});
-			
-		});
-		 */
-		
 	});
 
 </script>

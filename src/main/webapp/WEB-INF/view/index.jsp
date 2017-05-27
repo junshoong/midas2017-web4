@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Dashboard Template for Bootstrap</title>
+    <title> MIDAS - 밥사조</title>
 
     <!-- Bootstrap core CSS -->
      <link href="<c:url value="/static/bootstrap/css/bootstrap.min.css"/>" rel="stylesheet">
@@ -66,21 +66,23 @@
         <c:if test="${sessionScope._USER_.user_permission=='10'}">
         
           <ul class="nav nav-sidebar">
-            <li><a href="menu/manage">식단 관리</a></li>
+            <li><a href="<c:url value="menu/manage"/>">식단 관리</a></li>
           </ul>
           
        </c:if>   
        
           <ul class="nav nav-sidebar">
-            <li><a href="menu/search">식단 조회/검색</a></li>
+            <li><a href="<c:url value="/menu/search"/>">식단 조회/검색</a></li>
             <li><a href="<c:url value="/menu/today"/>">오늘의 식사</a></li>
-            <li><a href="menu/statistics">통계</a></li>
+            <li><a href="<c:url value="/menu/statistics"/>">통계</a></li>
           </ul>
 
         </div>
         
        
  		<jsp:include page="/WEB-INF/view/${content}"></jsp:include> 
+ 		</div>
+ 		</div>
 	
     <!-- Bootstrap core JavaScript
     ================================================== -->

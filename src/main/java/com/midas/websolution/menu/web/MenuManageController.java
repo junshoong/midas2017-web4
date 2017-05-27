@@ -141,8 +141,9 @@ public class MenuManageController {
 	@RequestMapping(value="/menu/today", method=RequestMethod.GET)
 	public ModelAndView today() {
 		
+		int menuThreeNo[] = new int[3];
 		int menu_kind = 10;
-		int i = 0;
+		int i = 0; 
 		String menuList[] = new String[3];
 		
 		for(int j = 0; j < 3; j ++) menuList[j] = "";
@@ -153,6 +154,19 @@ public class MenuManageController {
 		List<MenuMainRequestVO> todayMenu = menuService.getTodayMenu();
 		
 		System.out.println(todayMenu.size());
+		
+		for(int l= 0; l < todayMenu.size(); l++)
+			System.out.println("아아아아 " + todayMenu.get(l).getMenu_number() + " " + todayMenu.get(l).getMenu_kind());
+		
+		for(int z = 0; z < todayMenu.size(); z++) {
+			
+	
+				menuThreeNo[(todayMenu.get(z).getMenu_kind() / 10) - 1] = todayMenu.get(z).getMenu_number();
+				menu_kind += 10;
+			
+		}
+		
+		menu_kind = 10;
 		
 		while(i < todayMenu.size()) {
 			
@@ -172,6 +186,10 @@ public class MenuManageController {
 		view.addObject("todayBreakFast", menuList[0]);
 		view.addObject("todayLunch", menuList[1]);
 		view.addObject("todayDinner", menuList[2]);
+		
+		view.addObject("first", menuThreeNo[0]);
+		view.addObject("second", menuThreeNo[1]);
+		view.addObject("third", menuThreeNo[2]);
 		
 		return view;
 	}
