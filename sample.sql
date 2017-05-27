@@ -4,44 +4,64 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
-CREATE TABLE IF NOT EXISTS `board` (
-  `AR_ID` int(11) NOT NULL AUTO_INCREMENT,
-  `SBJ` varchar(50) NOT NULL,
-  `CONT` text NOT NULL,
-  `USR_NO` int(11) NOT NULL,
-  `CRT_DT` datetime NOT NULL,
-  `MDFY_DT` datetime NOT NULL,
-  `RD_CNT` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`AR_ID`),
-  KEY `FK1` (`USR_NO`),
-  CONSTRAINT `FK1` FOREIGN KEY (`USR_NO`) REFERENCES `usrs` (`USR_NO`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=113 DEFAULT CHARSET=utf8;
+CREATE TABLE IF NOT EXISTS `food` (
+  `FOOD_NO` int(11) NOT NULL AUTO_INCREMENT COMMENT '음식번호',
+  `FOOD_NAME` varchar(50) NOT NULL DEFAULT '0' COMMENT '메뉴 이름',
+  `FOOD_CAL` int(11) NOT NULL DEFAULT '0' COMMENT '칼로리',
+  `FOOL_KIND` int(11) NOT NULL DEFAULT '0' COMMENT '메뉴 구분 (밥/국)',
+  `MENU_NO` int(11) NOT NULL DEFAULT '0' COMMENT '식단번호 (FK)',
+  PRIMARY KEY (`FOOD_NO`),
+  KEY `FK_food_menu` (`MENU_NO`),
+  CONSTRAINT `FK_food_menu` FOREIGN KEY (`MENU_NO`) REFERENCES `menu` (`MENU_NO`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='음식';
 
-DELETE FROM `board`;
-/*!40000 ALTER TABLE `board` DISABLE KEYS */;
-INSERT INTO `board` (`AR_ID`, `SBJ`, `CONT`, `USR_NO`, `CRT_DT`, `MDFY_DT`, `RD_CNT`) VALUES
-	(100, '아몰라', 'ㅋㅋㅋㅋ', 1, '2017-05-23 00:00:00', '2017-05-23 00:00:00', 0),
-	(101, 'ㅋㅋㅋㅋㅋㅋ', '<p>This is my textarea to be replaced with CKEditor. ㅋㅋㅋㅋㅋ</p>\r\n', 1, '2017-05-23 00:00:00', '2017-05-23 00:00:00', 0),
-	(102, 'ㅗㅎ론', '<p>This is my textarㅗㄹ온ea to be replaced with CKㅗㄴ로ㅗEditor.</p>\r\n', 1, '2017-05-23 00:00:00', '2017-05-23 00:00:00', 0);
-/*!40000 ALTER TABLE `board` ENABLE KEYS */;
+DELETE FROM `food`;
+/*!40000 ALTER TABLE `food` DISABLE KEYS */;
+/*!40000 ALTER TABLE `food` ENABLE KEYS */;
+
+CREATE TABLE IF NOT EXISTS `log` (
+  `USR_NO` int(11) NOT NULL COMMENT '회원번호 (FK)',
+  `MENU_NO` int(11) NOT NULL COMMENT '식단번호 (FK)',
+  KEY `FK_log_usrs` (`USR_NO`),
+  KEY `FK_log_menu` (`MENU_NO`),
+  CONSTRAINT `FK_log_menu` FOREIGN KEY (`MENU_NO`) REFERENCES `menu` (`MENU_NO`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `FK_log_usrs` FOREIGN KEY (`USR_NO`) REFERENCES `usrs` (`USR_NO`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='식사 로그';
+
+DELETE FROM `log`;
+/*!40000 ALTER TABLE `log` DISABLE KEYS */;
+/*!40000 ALTER TABLE `log` ENABLE KEYS */;
+
+CREATE TABLE IF NOT EXISTS `menu` (
+  `MENU_NO` int(11) NOT NULL AUTO_INCREMENT COMMENT '식단번호',
+  `MENU_DT` date NOT NULL COMMENT '날짜',
+  `MENU_KIND` int(11) NOT NULL COMMENT '구분 10: 아침, 20: 점심, 30: 저녁',
+  `MENU_FILE_NAME` varchar(50) NOT NULL COMMENT '이미지 파일명',
+  PRIMARY KEY (`MENU_NO`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='식단';
+
+DELETE FROM `menu`;
+/*!40000 ALTER TABLE `menu` DISABLE KEYS */;
+/*!40000 ALTER TABLE `menu` ENABLE KEYS */;
 
 CREATE TABLE IF NOT EXISTS `usrs` (
-  `USR_NO` int(11) NOT NULL AUTO_INCREMENT,
-  `USR_ID` varchar(50) NOT NULL,
-  `USR_NM` varchar(50) NOT NULL,
-  `USR_PWD` varchar(50) NOT NULL,
-  `JOIN_DT` datetime NOT NULL,
+  `USR_NO` int(11) NOT NULL AUTO_INCREMENT COMMENT '회원번호',
+  `USR_ID` varchar(50) NOT NULL COMMENT '아이디 (이메일)',
+  `USR_NM` varchar(50) NOT NULL COMMENT '이름',
+  `USR_PWD` varchar(50) NOT NULL COMMENT '비밀번호',
+  `USR_PM` int(11) NOT NULL COMMENT '권한 10: 관리자, 20: 이용자',
+  `JOIN_DT` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '등록일',
   PRIMARY KEY (`USR_NO`),
   UNIQUE KEY `USR_ID` (`USR_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COMMENT='회원';
 
 DELETE FROM `usrs`;
 /*!40000 ALTER TABLE `usrs` DISABLE KEYS */;
-INSERT INTO `usrs` (`USR_NO`, `USR_ID`, `USR_NM`, `USR_PWD`, `JOIN_DT`) VALUES
-	(1, 'hi', 'choi', 'hi', '2017-05-21 00:00:00'),
-	(2, 'choi', '최성진', 'choi', '2017-05-23 00:00:00'),
-	(3, 'a', 'a', 'pw', '2017-05-24 00:00:00'),
-	(5, 'bb', 'a', 'pw', '2017-05-24 23:22:02');
+INSERT INTO `usrs` (`USR_NO`, `USR_ID`, `USR_NM`, `USR_PWD`, `USR_PM`, `JOIN_DT`) VALUES
+	(1, 'kwongusgn@gmail.com', '권현후', 'test', 20, '2017-05-27 11:34:44'),
+	(2, 'csj21300@naver.com', '최성진', 'test', 20, '2017-05-27 11:35:56'),
+	(3, 'vaporize93@gmail.com', '김준수', 'test', 20, '2017-05-27 11:36:15'),
+	(4, 'team.kimkongko@gmail.com', '관리자', 'test', 10, '2017-05-27 11:37:07');
 /*!40000 ALTER TABLE `usrs` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
