@@ -71,6 +71,23 @@
 								) 
 			ON DUPLICATE KEY UPDATE FOOD_NAME=#{food_name}, FOOD_CAL=#{food_calory}, FOOD_KIND=#{food_kind} 
 	</insert>
+	
+	<insert id="insertOneFoodSet" parameterType="FoodSetVO">
+			INSERT	INTO	FOOD_SET	(
+									MENU_NO
+									, FOOD_NO
+								)
+			VALUES				(
+									#{menu_no}
+									, #{food_no}
+								) 
+	</insert>
+	
+	<select id="getFoodNoByFoodName" parameterType="string" resultType="_int">
+		SELECT FOOD_NO
+		FROM FOOD
+		WHERE FOOD_NAME = #{food_name}
+	</select>
 
 	<select id="getTodayMenu" resultMap="MenuMap">
 		SELECT	M.MENU_NO
