@@ -3,44 +3,43 @@ package com.midas.websolution.food.vo;
 public class FoodVO {
 	
 	// PK
-	private int foodNo;
-	private String foodName;
-	private int foodCalory;
-	private int foodKind;
+	private int food_no;
+	private String food_name;
+	private int food_calory;
+	private int food_kind;
 	
 	
-	public int getFoodNo() {
-		return foodNo;
+	public int getFood_no() {
+		return food_no;
 	}
-	public void setFoodNo(int foodNo) {
-		this.foodNo = foodNo;
+	public void setFood_no(int food_no) {
+		this.food_no = food_no;
 	}
-	public String getFoodName() {
-		return foodName;
+	public String getFood_name() {
+		return food_name;
 	}
-	public void setFoodName(String foodName) {
-		this.foodName = foodName;
+	public void setFood_name(String food_name) {
+		this.food_name = food_name;
 	}
-	public int getFoodCalory() {
-		return foodCalory;
+	public int getFood_calory() {
+		return food_calory;
 	}
-	public void setFoodCalory(int foodCalory) {
-		this.foodCalory = foodCalory;
+	public void setFood_calory(int food_calory) {
+		this.food_calory = food_calory;
 	}
-	public int getFoodKind() {
-		return foodKind;
+	public int getFood_kind() {
+		return food_kind;
 	}
-	public void setFoodKind(int foodKind) {
-		this.foodKind = foodKind;
+	public void setFood_kind(int food_kind) {
+		this.food_kind = food_kind;
 	}
-
-
+	
+	
 	@Override
 	public String toString() {
-		return "FoodVO [foodNo=" + foodNo + ", foodName=" + foodName + ", foodCalory=" + foodCalory + ", foodKind="
-				+ foodKind + "]";
+		return "FoodVO [food_no=" + food_no + ", food_name=" + food_name + ", food_calory=" + food_calory
+				+ ", food_kind=" + food_kind + "]";
 	}
-
 
 	
 }
