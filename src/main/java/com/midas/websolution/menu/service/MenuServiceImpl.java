@@ -88,6 +88,47 @@ public class MenuServiceImpl implements MenuService{
 	}
 		
 	@Override
+	public Map<String, int[][]> getTimesOfMealAll() {
+		List<MenuLogVO> menus = menuDao.selectLogAll();
+		Map<String, int[][]> map = new HashMap<String, int[][]>();
+		int meals[][][] = new int[3][3][2];
+		Date now = new Date();
+		SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat yearFormat = new SimpleDateFormat("yyyy");
+		SimpleDateFormat monthFormat = new SimpleDateFormat("MM");
+
+		for(MenuLogVO menu: menus) {
+			String from = menu.getMenu_date();
+			if(menu.getLog_like())
+				meals[0][(menu.getMenu_kind()/10)-1][0]++;
+			else
+				meals[0][(menu.getMenu_kind()/10)-1][1]++;
+			try {
+				Date date = transFormat.parse(from);
+				if (yearFormat.format(now).equals(yearFormat.format(date))) {
+					if(menu.getLog_like())
+						meals[1][(menu.getMenu_kind()/10)-1][0]++;
+					else
+						meals[1][(menu.getMenu_kind()/10)-1][1]++;
+					if (monthFormat.format(now).equals(monthFormat.format(date))) {
+						if(menu.getLog_like())
+							meals[2][(menu.getMenu_kind()/10)-1][0]++;
+						else
+							meals[2][(menu.getMenu_kind()/10)-1][1]++;
+					}
+				}
+
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+			map.put("all", meals[0]);
+			map.put("year", meals[1]);
+			map.put("month", meals[2]);
+		}
+		return map;
+	}
+	
+	@Override
 	public void uploadFile(MultipartFile file, String file_path) {
 		// TODO Auto-generated method stub
 		String origin_file_name = file.getOriginalFilename();
