@@ -29,17 +29,14 @@ public class MenuStatisticsController {
 	
 	@RequestMapping(value="/menu/statistics")
 	public ModelAndView hello(HttpServletRequest request) {
-		Date date= new Date();
-		Calendar cal = Calendar.getInstance();
-		cal.setTime(date);
-		int month = cal.get(Calendar.MONTH);
-		logger.info(""+month+date.toString());
+//		Date date= new Date();
+//		Calendar cal = Calendar.getInstance();
+//		cal.setTime(date);
+//		int month = cal.get(Calendar.MONTH);
 		
 		HttpSession session = request.getSession();
 		
 		UserVO userVO = (UserVO) session.getAttribute("_USER_");
-		
-//		List<MenuVO> list = menuService.getMenuListByIdAndMonth(userVO.getUser_no(), month);
 		
 		ModelAndView view = new ModelAndView();
 		view.setViewName("/index");

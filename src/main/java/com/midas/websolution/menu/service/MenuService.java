@@ -17,7 +17,7 @@ public interface MenuService {
 	public MenuVO selectById(String menu_number);
 	public List<MenuMainRequestVO> getOneWeekMenu(int menu_kind);
 	public List<MenuLogVO> getMenuListByUserNumber(int user_number);
-	public Map<String, int[]> getTimesOfMeal(int user_number);
+	public Map<String, int[][]> getTimesOfMeal(int user_number);
 	public List<MenuMainRequestVO> getTodayMenu();
 	public void uploadFile(MultipartFile file, String file_path);
 	public int insertOneMenu(MenuVO menuVO);

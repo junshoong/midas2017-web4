@@ -45,10 +45,10 @@ public class MenuServiceImpl implements MenuService{
 	}
 	
 	@Override
-	public Map<String, int[]> getTimesOfMeal(int user_number) {
+	public Map<String, int[][]> getTimesOfMeal(int user_number) {
 		List<MenuLogVO> menus = menuDao.selectByUserNumber(user_number);
-		Map<String, int[]> map = new HashMap<String, int[]>();
-		int meals[][] = new int[3][3];
+		Map<String, int[][]> map = new HashMap<String, int[][]>();
+		int meals[][][] = new int[3][3][2];
 		Date now = new Date();
 		SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");
 		SimpleDateFormat yearFormat = new SimpleDateFormat("yyyy");
@@ -56,37 +56,31 @@ public class MenuServiceImpl implements MenuService{
 
 		for(MenuLogVO menu: menus) {
 			String from = menu.getMenu_date();
-			if (menu.getMenu_kind() == 10)
-				meals[0][0]++;
-			else if (menu.getMenu_kind() == 20)
-				meals[0][1]++;
-			else if (menu.getMenu_kind() == 30)
-				meals[0][2]++;
-			map.put("all", meals[0]);
+			if(menu.getLog_like())
+				meals[0][(menu.getMenu_kind()/10)-1][0]++;
+			else
+				meals[0][(menu.getMenu_kind()/10)-1][1]++;
 			try {
 				Date date = transFormat.parse(from);
 				if (yearFormat.format(now).equals(yearFormat.format(date))) {
-					if (menu.getMenu_kind() == 10)
-						meals[1][0]++;
-					else if (menu.getMenu_kind() == 20)
-						meals[1][1]++;
-					else if (menu.getMenu_kind() == 30)
-						meals[1][2]++;
-					map.put("year", meals[1]);
+					if(menu.getLog_like())
+						meals[1][(menu.getMenu_kind()/10)-1][0]++;
+					else
+						meals[1][(menu.getMenu_kind()/10)-1][1]++;
 					if (monthFormat.format(now).equals(monthFormat.format(date))) {
-						if (menu.getMenu_kind() == 10)
-							meals[2][0]++;
-						else if (menu.getMenu_kind() == 20)
-							meals[2][1]++;
-						else if (menu.getMenu_kind() == 30)
-							meals[2][2]++;
-						map.put("month", meals[2]);
+						if(menu.getLog_like())
+							meals[2][(menu.getMenu_kind()/10)-1][0]++;
+						else
+							meals[2][(menu.getMenu_kind()/10)-1][1]++;
 					}
 				}
 
 			} catch (ParseException e) {
 				e.printStackTrace();
 			}
+			map.put("all", meals[0]);
+			map.put("year", meals[1]);
+			map.put("month", meals[2]);
 		}
 		return map;
 	}
