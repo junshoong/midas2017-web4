@@ -5,6 +5,29 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script>
+
+		$("#likeBreakfast").click(function() {
+			
+			$.post("<c:url value="/menu/insertLike/"/>", {
+				
+				"user_no" : $("#user_").val() ,
+				"menu_no" : $("#userPassword").val() ,
+				"like" : true
+		
+			}, function(response) {
+				if(response.SUCCESS == "YES") {
+		
+				}
+				
+				else{
+				}
+			});
+			
+		});
+
+</script>
+
 <title>Insert title here</title>
 </head>
 <body>
@@ -26,31 +49,51 @@
 			<tr>
 				<td colspan="2">
 					<c:forEach items="${todayBreakFast}" var="menuList">
-							${menuList} 
+								${menuList} 
 					</c:forEach>
+		
+					
+					<c:if test="empty ${todayBreakFast}">
+						<td> 해당하는 식단이 없습니다. </td>
+					</c:if>
+					
 				</td>
 				
 				<td colspan="2">
-					<c:forEach items="${todayLunch}" var="menuList">
+				
+						<c:forEach items="${todayLunch}" var="menuList">
 							${menuList} 
-					</c:forEach>
+						</c:forEach>
+					
+					
+					<c:if test="empty ${todayLunch}">
+						<td> 해당하는 식단이 없습니다. </td>
+					</c:if>
+					
 				</td>
 				 
 				 <td colspan="2">
-					<c:forEach items="${todayDinner}" var="menuList">
-							${menuList} 
-					</c:forEach>
+				 	
+						<c:forEach items="${todayDinner}" var="menuList">
+								${menuList} 
+						</c:forEach>
+					
+					
+					<c:if test="empty ${todayDinner}">
+						<td> 해당하는 식단이 없습니다. </td>
+					</c:if>
+					
 				</td>
 				 
 			</tr>
 		
 			<tr>
-				<td> 좋아요 </td>
-				<td> 싫어요 </td>
-				<td> 좋아요 </td>
-				<td> 싫어요 </td>
-				<td> 좋아요 </td>
-				<td> 싫어요 </td>
+				<td><button type="button" class="btn-primary" id="likeBreakfast">좋아요 </button></td>
+				<td><button type="button" class="btn-danger" id="dislikeBreakfast">싫어요 </button></td>
+				<td><button type="button" class="btn-primary" id="likeLunch">좋아요 </button></td>
+				<td><button type="button" class="btn-danger" id="dislikeLunch">싫어요 </button></td>
+				<td><button type="button" class="btn-primary" id="likeDinner">좋아요 </button></td>
+				<td><button type="button" class="btn-danger" id="dislikeDinner">싫어요 </button></td>
 			</tr>
 		
 		</table>

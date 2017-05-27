@@ -9,14 +9,17 @@
 </head>
 <body>
 	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+		
+		<h1> 주간 식단표</h1>
+		
 		<table class="table">
 			<tr> 
-				<th> 5월(test) </th>
-				<th> 월 </th>
-				<th> 화 </th>
-				<th> 수 </th>
-				<th> 목 </th>
-				<th> 금 </th>
+				<th> ${month} </th>
+				<th> 월 (${dayArray[0]}) </th>
+				<th> 화 (${dayArray[1]}) </th>
+				<th> 수 (${dayArray[2]}) </th>
+				<th> 목 (${dayArray[3]}) </th>
+				<th> 금 (${dayArray[4]}) </th>
 			</tr>
 			
 			<tr>

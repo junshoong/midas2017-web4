@@ -51,8 +51,8 @@
 		WHERE	M.MENU_NO = FS.MENU_NO
 		AND		FS.FOOD_NO = F.FOOD_NO 
 		AND		M.MENU_KIND = #{menu_kind}
-		AND		M.MENU_DT >= ADDDATE( CURDATE(), - WEEKDAY(CURDATE())) 
-		AND		M.MENU_DT <![CDATA[<= ]]> ADDDATE( CURDATE(), - WEEKDAY(CURDATE()) + 4 ) 
+		AND		M.MENU_DT >= ADDDATE( CURDATE(), - WEEKDAY(CURDATE()) + 7) 
+		AND		M.MENU_DT <![CDATA[<= ]]> ADDDATE( CURDATE(), - WEEKDAY(CURDATE()) + 11 ) 
 		ORDER 	BY 	M.MENU_DT
 					, M.MENU_NO 
 	</select> 
@@ -115,5 +115,19 @@
 		ORDER 	BY 	M.MENU_NO
 					, M.MENU_KIND 
 	</select>
+	
+	<insert id="insertLike" parameterType="menuLikeRequestVO">
+			INSERT	INTO	LOG	(
+									USR_NO
+									, MENU_NO
+									, LIKE
+								)
+			VALUES				(
+									#{user_no}
+									, #{menu_no}
+									, #{like}
+								) 
+	</insert>
+	
 	
 </mapper>

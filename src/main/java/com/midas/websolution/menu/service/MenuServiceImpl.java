@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.midas.websolution.menu.dao.MenuDao;
 import com.midas.websolution.menu.vo.FoodSetVO;
 import com.midas.websolution.menu.vo.FoodVO;
+import com.midas.websolution.menu.vo.MenuLikeRequestVO;
 import com.midas.websolution.menu.vo.MenuMainRequestVO;
 import com.midas.websolution.menu.vo.MenuRegistRequestVO;
 import com.midas.websolution.menu.vo.MenuVO;
@@ -138,6 +139,11 @@ public class MenuServiceImpl implements MenuService{
 	public int getFoodNoByFoodName(String food_name) {
 		return menuDao.getFoodNoByFoodName(food_name);
 	}
-	
 
+	@Override
+	public boolean insertLike(MenuLikeRequestVO menuLikeRequestVO) {
+		return menuDao.insertLike(menuLikeRequestVO) > 0;
+	}
+	
+	
 }
