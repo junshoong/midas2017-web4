@@ -156,12 +156,13 @@
 	</select>
 	
 	<select id="getFoodListByMenuNo" resultType="FoodVO">
-		SELECT F.FOOD_NAME
-			, F.FOOD_CAL
-			, F.FOOD_KIND
+		SELECT F.FOOD_NAME as food_name
+			, F.FOOD_CAL as food_calory
+			, F.FOOD_KIND as food_kind
 		FROM FOOD_SET FS
 		join FOOD F on F.FOOD_NO = FS.FOOD_NO 
 		where FS.MENU_NO = #{MENU_NO}
+		ORDER BY F.FOOD_KIND
 	</select>
 	
 	<delete id="deleteFoodSetByMenuNo" parameterType="int">
@@ -173,5 +174,21 @@
   		DELETE FROM MENU
   		WHERE MENU_NO = #{menu_no}
 	</delete>
+	
+	<select id="getOneMenu" resultMap="MenuResultMap">
+		SELECT M.MENU_NO
+			, M.MENU_DT
+			, M.MENU_KIND
+			, M.MENU_FILE_NAME
+		FROM MENU M
+		WHERE MENU_NO = #{menu_no}
+	</select>
+	
+	<update id="updateOneMenu">
+	UPDATE MENU SET
+		MENU_DT = #{menu_date}
+		, MENU_KIND = #{menu_kind}
+	WHERE MENU_NO = #{menu_number}
+</update>
 	
 </mapper>

@@ -29,5 +29,7 @@ public interface MenuService {
 	public List<MenuResultVO> getMenuList();
 	public void deleteFoodSetByMenuNo(int menu_no);
 	public void deleteMenuByMenuNo(int menu_no);
+	public MenuResultVO getOneMenu(int menu_no);
+	public void updateOneMenu(MenuVO menuVO);
 
 }
