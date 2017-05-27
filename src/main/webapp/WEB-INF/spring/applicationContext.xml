@@ -15,6 +15,7 @@
 	<mvc:resources location="/WEB-INF/resources/js/" mapping="/static/js/**"></mvc:resources>
 	<mvc:resources location="/WEB-INF/resources/css/" mapping="/static/css/**"></mvc:resources>
 	<mvc:resources location="/WEB-INF/resources/img/" mapping="/static/img/**"></mvc:resources>
+	<mvc:resources location="/WEB-INF/resources/upload/" mapping="/static/upload/**"></mvc:resources>
 	<mvc:resources location="/WEB-INF/resources/bootstrap/" mapping="/static/bootstrap/**"></mvc:resources>
 	
 	

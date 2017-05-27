@@ -21,7 +21,7 @@ public interface MenuService {
 	public Map<String, int[][]> getTimesOfMeal(int user_number);
 	public Map<String, int[][]> getTimesOfMealAll();
 	public List<MenuMainRequestVO> getTodayMenu();
-	public void uploadFile(MultipartFile file, String file_path);
+	public String uploadFile(MultipartFile file, String root_path);
 	public int insertOneMenu(MenuVO menuVO);
 	public int updateOneFood(FoodVO foodVO);
 	public void insertOneFoodSet(FoodSetVO foodSetVO);
@@ -34,5 +34,6 @@ public interface MenuService {
 	public void deleteMenuByMenuNo(int menu_no);
 	public MenuResultVO getOneMenu(int menu_no);
 	public void updateOneMenu(MenuVO menuVO);
+	public String updateFile(MultipartFile image_file, String file_name, String root_path);
 
 }

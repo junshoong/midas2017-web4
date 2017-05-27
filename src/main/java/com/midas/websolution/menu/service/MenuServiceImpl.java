@@ -29,6 +29,8 @@ public class MenuServiceImpl implements MenuService{
 	public void setMenuDao(MenuDao menuDao) {
 		this.menuDao = menuDao;
 	}
+	
+	private String temp_path = "C:\\Users\\ElonBusiness\\Documents\\midas2017-web4\\src\\main\\webapp\\WEB-INF\\resources\\upload\\";
 
 	@Override
 	public MenuVO selectById(String menu_number) {
@@ -129,12 +131,13 @@ public class MenuServiceImpl implements MenuService{
 	}
 	
 	@Override
-	public void uploadFile(MultipartFile file, String file_path) {
+	public String uploadFile(MultipartFile file, String root_path) {
 		// TODO Auto-generated method stub
 		String origin_file_name = file.getOriginalFilename();
+		
 		String file_name = UUID.randomUUID().toString() + origin_file_name;
 		
-		File new_file = new File(file_path + file_name);
+		File new_file = new File(temp_path + file_name);
 		
 		if(new_file.exists() == false){
 			new_file.mkdirs();
@@ -146,7 +149,29 @@ public class MenuServiceImpl implements MenuService{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		return file_name;
 
+	}
+	
+	public String updateFile(MultipartFile image_file, String file_name, String root_path) {
+		// TODO Auto-generated method stub
+		
+		File new_file = new File(temp_path + file_name);
+		
+		if(new_file.exists() == false){
+			new_file.mkdirs();
+	    }
+		
+		try {
+			image_file.transferTo(new_file);
+		} catch (IllegalStateException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return file_name;
+		
 	}
 
 

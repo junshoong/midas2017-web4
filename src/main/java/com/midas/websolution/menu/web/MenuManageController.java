@@ -22,6 +22,7 @@ import com.midas.websolution.menu.vo.FoodVO;
 import com.midas.websolution.menu.vo.MenuLikeRequestVO;
 import com.midas.websolution.menu.vo.MenuMainRequestVO;
 import com.midas.websolution.menu.vo.MenuRegistRequestVO;
+import com.midas.websolution.menu.vo.MenuVO;
 
 @Controller
 public class MenuManageController {
@@ -67,11 +68,26 @@ public class MenuManageController {
 	}
 	
 	@RequestMapping(value="/menu/modify", method=RequestMethod.POST)
-	public ModelAndView registMenu(MenuRegistRequestVO menuRegistRequestVO) {
-		
+	public ModelAndView modify(MenuRegistRequestVO menuRegistRequestVO, HttpServletRequest request) {
+		 String file_name = "";
 		 System.out.println(menuRegistRequestVO.toString());
+		 if(menuRegistRequestVO.getImage_file() != null) {
+			 file_name = menuRegistRequestVO.getMenuVO().getMenu_file_name();
+			 String root_path = request.getSession().getServletContext().getRealPath("resources/upload/");
+			 System.out.println(root_path);
+			 if(file_name == null || file_name.equals("")) {
+				 file_name = menuService.uploadFile(menuRegistRequestVO.getImage_file(), root_path);
+			 }
+			 else {
+				 file_name = menuService.updateFile(menuRegistRequestVO.getImage_file(), file_name, root_path);
+			 }
+			 
+		 }
 
 		 int menu_no = menuRegistRequestVO.getMenuVO().getMenu_number();
+		 MenuVO menuVO = menuRegistRequestVO.getMenuVO();
+		 menuVO.setMenu_file_name(file_name);
+		 
 		 menuService.updateOneMenu(menuRegistRequestVO.getMenuVO());
 		 
 		 menuService.deleteFoodSetByMenuNo(menu_no);
@@ -109,9 +125,11 @@ public class MenuManageController {
 	@RequestMapping(value="/menu/regist", method=RequestMethod.POST)
 	public ModelAndView registMenu(MenuRegistRequestVO menuRegistRequestVO, HttpServletRequest request) {
 		
-		String root_path = request.getSession().getServletContext().getRealPath("resources/upload/"); 
-		menuService.uploadFile(menuRegistRequestVO.getImage_file(), root_path);
-		System.out.println(root_path);
+		String root_path = request.getSession().getServletContext().getRealPath("resources/upload/");
+		String menu_file_name = menuService.uploadFile(menuRegistRequestVO.getImage_file(), root_path);
+		
+		MenuVO menuVO = menuRegistRequestVO.getMenuVO();
+		menuVO.setMenu_file_name(menu_file_name);
 		
 		int menu_no = menuService.insertOneMenu(menuRegistRequestVO.getMenuVO());
 		

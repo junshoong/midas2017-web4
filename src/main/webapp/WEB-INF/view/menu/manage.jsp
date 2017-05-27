@@ -56,7 +56,8 @@
 								</c:forEach>
 							</td>
 							<td>
-								<img class="img-responsive" src="" style="max-height:150px;" />
+<%-- 								<img class="img-responsive" src="<c:url value="/static/upload/a.jpg"/>" style="max-height:150px;" /> --%>
+								<img class="img-responsive" src="<c:url value="/static/upload/${ml.menu_file_name }"/>" style="max-height:150px;" />
 							</td>
 							<td>
 								<a class="btn btn-default" href="modify/${ml.menu_no }">수정</a>
