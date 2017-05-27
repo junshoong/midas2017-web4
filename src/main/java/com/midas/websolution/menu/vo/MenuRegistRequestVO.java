@@ -5,18 +5,18 @@ import java.util.List;
 import org.springframework.web.multipart.MultipartFile;
 
 public class MenuRegistRequestVO {
-	private MenuVO MenuVO;
+	private MenuVO menuVO;
 	private MultipartFile image_file;
 	
 	private List<FoodVO> foodVO;
 
 	
 	public MenuVO getMenuVO() {
-		return MenuVO;
+		return menuVO;
 	}
 
 	public void setMenuVO(MenuVO menuVO) {
-		MenuVO = menuVO;
+		this.menuVO = menuVO;
 	}
 
 	public MultipartFile getImage_file() {
@@ -33,12 +33,6 @@ public class MenuRegistRequestVO {
 
 	public void setFoodVO(List<FoodVO> foodVO) {
 		this.foodVO = foodVO;
-	}
-	
-	
-	@Override
-	public String toString() {
-		return "MenuRegistRequestVO [MenuVO=" + MenuVO + ", image_file=" + image_file + ", foodVO=" + foodVO + "]";
 	}
 	
 	
