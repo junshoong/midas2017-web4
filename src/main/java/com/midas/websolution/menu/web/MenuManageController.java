@@ -1,7 +1,8 @@
 package com.midas.websolution.menu.web;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -11,11 +12,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.midas.websolution.menu.service.MenuService;
 import com.midas.websolution.menu.vo.FoodSetVO;
 import com.midas.websolution.menu.vo.FoodVO;
+import com.midas.websolution.menu.vo.MenuLikeRequestVO;
 import com.midas.websolution.menu.vo.MenuMainRequestVO;
 import com.midas.websolution.menu.vo.MenuRegistRequestVO;
 
@@ -114,11 +117,11 @@ public class MenuManageController {
 			}
 			
 			else {
-				if(todayMenu.get(i).getFood_name() != null) 
-					menuList[(menu_kind/10) - 1] += (todayMenu.get(i).getFood_name()) + "</br>";
+				menuList[(menu_kind/10) - 1] += (todayMenu.get(i).getFood_name()) + "</br>";
+				i++;
 			}
 			
-			i++;
+			
 		}
 		
 		view.addObject("content", "menu/today.jsp");
@@ -127,6 +130,24 @@ public class MenuManageController {
 		view.addObject("todayDinner", menuList[2]);
 		
 		return view;
+	}
+	
+	
+	@ResponseBody
+	@RequestMapping(value="/menu/insertLike", method=RequestMethod.POST)
+	public Map<String, String> insertLike(MenuLikeRequestVO menuLikeRequestVO) {
+		
+		Map<String, String> result = new HashMap<String, String>();
+		
+		if(menuService.insertLike(menuLikeRequestVO)) {
+			result.put("SUCCESS", "YES");
+		}
+		
+		else {
+			result.put("NO", "FAIL");
+		}
+		
+		return result;
 	}
 	
 	
