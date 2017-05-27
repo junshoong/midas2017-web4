@@ -10,28 +10,16 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-
-
     <title>Dashboard Template for Bootstrap</title>
 
     <!-- Bootstrap core CSS -->
      <link href="<c:url value="/static/bootstrap/css/bootstrap.min.css"/>" rel="stylesheet">
      
  
-
     <!-- Custom styles for this template -->
     <link href="<c:url value="/static/css/dashboard.css"/>" rel="stylesheet">
+    <script src="<c:url value="/static/bootstrap/js/ie-emulation-modes-warning.js"/>"></script>
 
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-     <script src="<c:url value="/static/bootstrap/js/ie-emulation-modes-warning.js"/>"></script>
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    
       
    <style>
 		span {
@@ -75,14 +63,13 @@
         <c:if test="${sessionScope._USER_.userPermission=='10'}">
           <ul class="nav nav-sidebar">
             <li><a href="board">게시판</a></li>
-            <li><a href="#">식단 등록</a></li>
-            <li><a href="#">식단 관리</a></li>
+            <li><a href="menumanage">식단 관리</a></li>
           </ul>
        </c:if>   
           <ul class="nav nav-sidebar">
-            <li><a href="">식단 조회/검색</a></li>
-            <li><a href="">오늘의 식사</a></li>
-            <li><a href="">통계</a></li>
+            <li><a href="menusearch">식단 조회/검색</a></li>
+            <li><a href="menutoday">오늘의 식사</a></li>
+            <li><a href="menustatistics">통계</a></li>
           </ul>
 
         </div>

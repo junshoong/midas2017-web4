@@ -12,24 +12,11 @@
 	<property name="boardBiz" ref="boardBizImpl"></property>
 	</bean>
 
-	<bean id="junsuServiceImpl" class="com.midas.websolution.board.service.JunsuServiceImpl">
-		<property name="junsuDao" ref="junsuDaoImpl"></property>
-	</bean>
-	
-	<bean id="junsuDaoImpl" class="com.midas.websolution.board.dao.JunsuDaoImpl">
-		<property name="sqlSessionTemplate" ref="sqlSessionTemplate"></property>
-	</bean>
 	
 	<bean id="boardDaoImpl" class="com.midas.websolution.board.dao.BoardDaoImpl">
 		<property name="sqlSessionTemplate" ref="sqlSessionTemplate"></property>
 	</bean>
 	
-	<bean id="elonServiceImpl" class="com.midas.websolution.board.service.ElonServiceImpl">
-		<property name="elonDao" ref="elonDaoImpl"></property>
-	</bean>
-	
-	<bean id="elonDaoImpl" class="com.midas.websolution.board.dao.ElonDaoImpl">
-		<property name="sqlSessionTemplate" ref="sqlSessionTemplate"></property>
-	</bean>
+
 
 </beans>
