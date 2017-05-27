@@ -5,7 +5,6 @@ import java.io.IOException;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
@@ -14,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.servlet.DispatcherServlet;
 
 import com.midas.websolution.user.vo.UserVO;
 
@@ -25,7 +23,7 @@ public class LoginFilter implements Filter {
 	private Logger logger = LoggerFactory.getLogger(LoginFilter.class);
 	
     public LoginFilter() {
-        // TODO Auto-generated constructor stub
+
     }
 
 	
@@ -47,17 +45,6 @@ public class LoginFilter implements Filter {
 		}
 		
 		else {
-			logger.info(user.getUser_id());
-			System.out.println(req.getContextPath()+"/menu/manage");
-	
-			
-		/*	if(user.getUser_permission() == 20 && "/websolution/menu/manage".equals(req.getContextPath()+"/menu/manage")) {
-				
-				HttpServletResponse res = (HttpServletResponse) response;
-				res.sendRedirect(req.getContextPath()+"/signin");
-				chain.doFilter(request, response);
-				return ;
-			}*/
 			
 			request.setAttribute("_USER_", user);
 		}
