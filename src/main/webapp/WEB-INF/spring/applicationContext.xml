@@ -49,6 +49,14 @@
 		<property name="menuService" ref="menuServiceImpl"></property>
 	</bean>
 
+	<bean id="menuManageController" class="com.midas.websolution.menu.web.MenuManageController">
+		<property name="menuService" ref="menuServiceImpl"></property>
+	</bean>
+
+	<bean id="menuStatisticsController" class="com.midas.websolution.menu.web.MenuStatisticsController">
+		<property name="menuService" ref="menuServiceImpl"></property>
+	</bean>
+
 	<bean id="mainController" class="com.midas.websolution.common.web.mainController">
 	</bean>
 	
