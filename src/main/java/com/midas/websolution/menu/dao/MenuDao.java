@@ -9,5 +9,6 @@ public interface MenuDao {
 	public static final String MD = "MenuDao";
 	public MenuVO selectById(String menu_number);
 	public List<MenuVO> getOneWeekMenu(int menu_kind);
+	public List<MenuVO> selectByIdAndMonth(int user_number,int month);
 	
 }

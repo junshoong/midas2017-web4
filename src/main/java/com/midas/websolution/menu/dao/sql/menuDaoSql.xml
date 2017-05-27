@@ -25,12 +25,13 @@
 		</association>
 		
 	</resultMap>
-
+	
 	<select id="selectById" parameterType="string" resultMap="MenuMap">
 		SELECT MENU_NO, MENU_DT, MENU_KIND, MENU_FILE_NAME
 		FROM MENU
 		WHERE MENU_NO = #{menu_number}
 	</select>
+
 
 	<select id="getOneWeekMenu" parameterType="_int" resultMap="MenuMap">
 		SELECT	M.MENU_NO
@@ -47,7 +48,11 @@
 		AND		MENU_DT <![CDATA[<= ]]> ADDDATE( CURDATE(), - WEEKDAY(CURDATE()) + 4 ) 
 		ORDER 	BY MENU_DT
 				, M.MENU_NO
-	</select>
+
+	</select> 
+
+ 	<select id="selectByIdAndMonth" parameterType="hashmap" resultMap="MenuMap">
+
+	</select> 
 
 </mapper>
-

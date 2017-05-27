@@ -49,7 +49,7 @@
         </div>
 
           <ul class="nav navbar-nav navbar-right">
-            	<span> ${sessionScope._USER_.userName}님, 환영합니다.! </span>
+            	<span> ${sessionScope._USER_.user_name}님, 환영합니다! </span>
 			 	<a href="<c:url value="/logout"/>"> 로그 아웃 </a>
           </ul>
 
@@ -60,19 +60,19 @@
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
         
-        <c:if test="${sessionScope._USER_.userPermission=='10'}">
+        <c:if test="${sessionScope._USER_.user_permission=='10'}">
         
           <ul class="nav nav-sidebar">
             <!-- <li><a href="board">게시판</a></li> -->
-            <li><a href="menumanage">식단 관리</a></li>
+            <li><a href="menu/manage">식단 관리</a></li>
           </ul>
           
        </c:if>   
        
           <ul class="nav nav-sidebar">
-            <li><a href="menusearch">식단 조회/검색</a></li>
-            <li><a href="menutoday">오늘의 식사</a></li>
-            <li><a href="menustatistics">통계</a></li>
+            <li><a href="menu/search">식단 조회/검색</a></li>
+            <li><a href="menu/today">오늘의 식사</a></li>
+            <li><a href="menu/statistics">통계</a></li>
           </ul>
 
         </div>
