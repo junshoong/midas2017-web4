@@ -1,13 +1,17 @@
 package com.midas.websolution.menu.service;
 
 import java.io.File;
+import java.io.IOException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
-import java.io.IOException;
 
 import org.springframework.web.multipart.MultipartFile;
+
 import com.midas.websolution.menu.dao.MenuDao;
 import com.midas.websolution.menu.vo.FoodSetVO;
 import com.midas.websolution.menu.vo.FoodVO;
@@ -40,30 +44,50 @@ public class MenuServiceImpl implements MenuService{
 	}
 	
 	@Override
-	public int[] getTimesOfMeal(int user_number) {
+	public Map<String, int[]> getTimesOfMeal(int user_number) {
 		List<MenuVO> menus = menuDao.selectByUserNumber(user_number);
-		int breakfast = 0;
-		int lunch = 0;
-		int dinner = 0;
+		Map<String, int[]> map = new HashMap<String, int[]>();
+		int meals[][] = new int[3][3];
 		Date now = new Date();
-		SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		String nowDate = transFormat.format(now);
-		System.out.println(nowDate);
+		SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat yearFormat = new SimpleDateFormat("yyyy");
+		SimpleDateFormat monthFormat = new SimpleDateFormat("MM");
 
-//		int month = cal.get(Calendar.MONTH) + 1;
-	
+		for(MenuVO menu: menus) {
+			String from = menu.getMenu_date();
+			if (menu.getMenu_kind() == 10)
+				meals[0][0]++;
+			else if (menu.getMenu_kind() == 20)
+				meals[0][1]++;
+			else if (menu.getMenu_kind() == 30)
+				meals[0][2]++;
+			map.put("all", meals[0]);
+			try {
+				Date date = transFormat.parse(from);
+				if (yearFormat.format(now).equals(yearFormat.format(date))) {
+					if (menu.getMenu_kind() == 10)
+						meals[1][0]++;
+					else if (menu.getMenu_kind() == 20)
+						meals[1][1]++;
+					else if (menu.getMenu_kind() == 30)
+						meals[1][2]++;
+					map.put("year", meals[1]);
+					if (monthFormat.format(now).equals(monthFormat.format(date))) {
+						if (menu.getMenu_kind() == 10)
+							meals[2][0]++;
+						else if (menu.getMenu_kind() == 20)
+							meals[2][1]++;
+						else if (menu.getMenu_kind() == 30)
+							meals[2][2]++;
+						map.put("month", meals[2]);
+					}
+				}
 
-//		for(MenuVO menu: menus) {
-//			if(menu.getMenu_kind() == 10) {
-
-				
-				
-//			}
-//		}
-
-//		int meal[] = [];
-		// TODO Auto-generated method stub
-		return null;
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+		}
+		return map;
 	}
 		
 	@Override
