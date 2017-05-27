@@ -26,10 +26,10 @@
 					<div class="form-group">
 						<label class="col-sm-2 control-label">날짜</label>
 						<div class="col-sm-7">
-							<input type="text" class="form-control" name="menu_date" placeholder="2017-05-28" required>
+							<input type="text" class="form-control" name="MenuVO.menu_date" placeholder="2017-05-28" required>
 						</div>
 						<div class="col-sm-3">
-							<select class="form-control" name="menu_kind">
+							<select class="form-control" name="MenuVO.menu_kind">
 								<option value="10">아침</option>
 								<option value="20">점심</option>
 								<option value="30">저녁</option>
@@ -50,33 +50,53 @@
 					<div class="form-group">
 						<label class="col-sm-2 control-label">밥 (칼로리)</label>
 						<div class="col-sm-7">
-							<input type="text" class="form-control" name="foodVO.foodName" required>
-							<input type="hidden" name="foodVO.foodKind" value="10" />
+							<input type="text" class="form-control" name="foodVO[0].food_name" required>
+							<input type="hidden" name="foodVO[0].food_kind" value="10" />
 						</div>
 						<div class="col-sm-3">
-							<input type="number" class="form-control" name="foodVo.foodCalory" placeholder="300" min="1" required>
+							<input type="number" class="form-control" name="foodVO[0].food_calory" placeholder="300" min="1" required>
 						</div>
 					</div>
-<!-- 					<div class="form-group"> -->
-<!-- 						<label class="col-sm-2 control-label">국 (칼로리)</label> -->
-<!-- 						<div class="col-sm-7"> -->
-<!-- 							<input type="text" class="form-control" name="foodVO.foodName" required> -->
-<!-- 							<input type="hidden" name="foodVO.foodKind" value="20" /> -->
-<!-- 						</div> -->
-<!-- 						<div class="col-sm-3"> -->
-<!-- 							<input type="number" class="form-control" name="foodVo.foodCalory" placeholder="300" min="1" required> -->
-<!-- 						</div> -->
-<!-- 					</div> -->
-<!-- 					<div class="form-group"> -->
-<!-- 						<label class="col-sm-2 control-label">반찬 1</label> -->
-<!-- 						<div class="col-sm-7"> -->
-<!-- 							<input type="text" class="form-control" name="foodVO.foodName" required> -->
-<!-- 							<input type="hidden" name="foodVO.foodKind" value="30" /> -->
-<!-- 						</div> -->
-<!-- 						<div class="col-sm-3"> -->
-<!-- 							<input type="number" class="form-control" name="foodVo.foodCalory" placeholder="300" min="1" required> -->
-<!-- 						</div> -->
-<!-- 					</div> -->
+					<div class="form-group">
+						<label class="col-sm-2 control-label">국 (칼로리)</label>
+						<div class="col-sm-7">
+							<input type="text" class="form-control" name="foodVO[1].food_name" required>
+							<input type="hidden" name="foodVO[1].food_kind" value="20" />
+						</div>
+						<div class="col-sm-3">
+							<input type="number" class="form-control" name="foodVO[1].food_calory" placeholder="300" min="1" required>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">반찬 1</label>
+						<div class="col-sm-7">
+							<input type="text" class="form-control" name="foodVO[2].food_name" required>
+							<input type="hidden" name="foodVO[2].food_kind" value="30" />
+						</div>
+						<div class="col-sm-3">
+							<input type="number" class="form-control" name="foodVO[2].food_calory" placeholder="300" min="1" required>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">반찬 2</label>
+						<div class="col-sm-7">
+							<input type="text" class="form-control" name="foodVO[3].food_name" required>
+							<input type="hidden" name="foodVO[3].food_kind" value="30" />
+						</div>
+						<div class="col-sm-3">
+							<input type="number" class="form-control" name="foodVO[3].food_calory" placeholder="300" min="1" required>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">반찬 3</label>
+						<div class="col-sm-7">
+							<input type="text" class="form-control" name="foodVO[4].food_name" required>
+							<input type="hidden" name="foodVO[4].food_kind" value="30" />
+						</div>
+						<div class="col-sm-3">
+							<input type="number" class="form-control" name="foodVO[4].food_calory" placeholder="300" min="1" required>
+						</div>
+					</div>
 				</div>
 				
 				

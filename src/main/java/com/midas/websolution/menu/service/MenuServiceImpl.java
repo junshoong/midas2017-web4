@@ -2,12 +2,14 @@ package com.midas.websolution.menu.service;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
+import java.io.IOException;
 
 import org.springframework.web.multipart.MultipartFile;
 import com.midas.websolution.menu.dao.MenuDao;
+import com.midas.websolution.menu.vo.FoodVO;
 import com.midas.websolution.menu.vo.MenuVO;
 
 public class MenuServiceImpl implements MenuService{
@@ -64,9 +66,39 @@ public class MenuServiceImpl implements MenuService{
 	@Override
 	public void uploadFile(MultipartFile file, String file_path) {
 		// TODO Auto-generated method stub
-		String file_name = file.getOriginalFilename();
+		String origin_file_name = file.getOriginalFilename();
+		String file_name = UUID.randomUUID().toString() + origin_file_name;
 		
-		File new_file = new File("");
+		File new_file = new File(file_path + file_name);
+		
+		if(new_file.exists() == false){
+			new_file.mkdirs();
+	    }
+		
+		try {
+			file.transferTo(new_file);
+		} catch (IllegalStateException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+	@Override
+	public List<MenuVO> getTodayMenu() {
+		return menuDao.getTodayMenu();
+	}
+
+	@Override
+	public int insertOneMenu(MenuVO menuVO) {
+		menuDao.insertOneMenu(menuVO);
+		return menuVO.getMenu_number();
+	}
+
+	@Override
+	public int updateOneFood(FoodVO foodVO) {
+		menuDao.updateOneFood(foodVO);
+		return foodVO.getFood_no();
 	}
 	
 }
