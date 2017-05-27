@@ -142,7 +142,7 @@
 			INSERT	INTO	LOG	(
 									USR_NO
 									, MENU_NO
-									, LIKE
+									, `LIKE`
 								)
 			VALUES				(
 									#{user_no}
