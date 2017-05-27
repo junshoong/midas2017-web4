@@ -37,16 +37,14 @@
 				</td>
 				 
 			</tr>
-				<td> 좋아요 </td>
-				<td> 싫어요 </td>
-				<td> 좋아요 </td>
-				<td> 싫어요 </td>
-				<td> 좋아요 </td>
-				<td> 싫어요 </td>
+		
 			<tr>
-					
-					<td></td>
-							
+				<td> 좋아요 </td>
+				<td> 싫어요 </td>
+				<td> 좋아요 </td>
+				<td> 싫어요 </td>
+				<td> 좋아요 </td>
+				<td> 싫어요 </td>
 			</tr>
 		
 		</table>

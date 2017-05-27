@@ -56,12 +56,12 @@ public class MenuServiceImpl implements MenuService{
 
 	}
 
-<<<<<<< HEAD
+
 	@Override
 	public List<MenuVO> getTodayMenu() {
 		return menuDao.getTodayMenu();
 	}
-=======
+
 	public int insertOneMenu(MenuVO menuVO) {
 		menuDao.insertOneMenu(menuVO);
 		return menuVO.getMenu_number();
@@ -74,6 +74,5 @@ public class MenuServiceImpl implements MenuService{
 	}
 
 
->>>>>>> dc8a32c0c632782bda0f14e0ba2bd2f22aeb4748
 	
 }

@@ -1,13 +1,10 @@
 package com.midas.websolution.menu.web;
 
-<<<<<<< HEAD
+
 import java.util.ArrayList;
-=======
->>>>>>> dc8a32c0c632782bda0f14e0ba2bd2f22aeb4748
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -74,9 +71,10 @@ public class MenuManageController {
 		
 		List<MenuVO> todayMenu = menuService.getTodayMenu();
 		
+		System.out.println(todayMenu.size());
 		
-		
-		while(!todayMenu.isEmpty()) {
+		while(menu_kind <= 30) {
+			
 			if(menu_kind!= todayMenu.get(i).getMenu_kind()) {
 				menu_kind += 10;
 			}

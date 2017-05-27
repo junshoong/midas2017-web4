@@ -12,18 +12,19 @@
 		<result column="MENU_FILE_NAME" property="menu_file_name" />
 		
 		<association property="foodSetVO" javaType="FoodSetVO">
-		
-			<association property="foodVO" javaType="FoodVO">
+			<collection property="foodVO" resultMap="FoodVO"/>
+		</association>
+			
+	
+	</resultMap>
+	
+	
+	
+	<resultMap type="FoodVO" id="FoodVO">
 				<id column="FOOD_NO" property="food_no" />
 				<result column="FOOD_NAME" property="food_name" />
 				<result column="FOOD_CAL" property="food_calory" />
 				<result column="FOOD_KIND" property="food_kind" />
-			</association>
-			
-		</association>
-		
-
-		
 	</resultMap>
 	
 	<select id="selectById" parameterType="string" resultMap="MenuMap">
@@ -86,9 +87,7 @@
 	</insert>
 
 	<select id="getTodayMenu" resultMap="MenuMap">
-		SELECT	M.MENU_NO
-				, 	M.MENU_DT
-				,	M.MENU_KIND
+		SELECT		M.MENU_KIND
 				,	F.FOOD_NAME
 		FROM 	FOOD_SET FS
 				, 	MENU M
