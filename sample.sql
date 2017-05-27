@@ -8,12 +8,21 @@ CREATE TABLE IF NOT EXISTS `food` (
   `FOOD_NO` int(11) NOT NULL AUTO_INCREMENT COMMENT '음식번호',
   `FOOD_NAME` varchar(50) NOT NULL DEFAULT '0' COMMENT '메뉴 이름',
   `FOOD_CAL` int(11) DEFAULT '0' COMMENT '칼로리',
-  `FOOD_KIND` int(11) NOT NULL DEFAULT '0' COMMENT '메뉴 구분 (10: 밥/ 20: 국/ 30: 면 40: 반찬 50:후식)',
+  `FOOD_KIND` int(11) NOT NULL DEFAULT '0' COMMENT '메뉴 구분 (10: 밥 20: 국 30: 반찬)',
   PRIMARY KEY (`FOOD_NO`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='음식';
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COMMENT='음식';
 
 DELETE FROM `food`;
 /*!40000 ALTER TABLE `food` DISABLE KEYS */;
+INSERT INTO `food` (`FOOD_NO`, `FOOD_NAME`, `FOOD_CAL`, `FOOD_KIND`) VALUES
+	(1, '밥', 300, 10),
+	(2, '미역국', 150, 20),
+	(3, '장어', 500, 30),
+	(4, '두부', 100, 30),
+	(5, '제육볶음', 400, 30),
+	(6, '콩밥', 250, 10),
+	(7, '순두부찌개', 200, 20),
+	(8, '오징어볶음', 300, 30);
 /*!40000 ALTER TABLE `food` ENABLE KEYS */;
 
 CREATE TABLE IF NOT EXISTS `food_set` (
@@ -27,6 +36,23 @@ CREATE TABLE IF NOT EXISTS `food_set` (
 
 DELETE FROM `food_set`;
 /*!40000 ALTER TABLE `food_set` DISABLE KEYS */;
+INSERT INTO `food_set` (`MENU_NO`, `FOOD_NO`) VALUES
+	(1, 1),
+	(3, 1),
+	(1, 2),
+	(4, 2),
+	(1, 3),
+	(4, 3),
+	(1, 4),
+	(3, 4),
+	(2, 5),
+	(3, 5),
+	(2, 6),
+	(4, 6),
+	(2, 7),
+	(3, 7),
+	(2, 8),
+	(4, 8);
 /*!40000 ALTER TABLE `food_set` ENABLE KEYS */;
 
 CREATE TABLE IF NOT EXISTS `log` (
@@ -46,12 +72,17 @@ CREATE TABLE IF NOT EXISTS `menu` (
   `MENU_NO` int(11) NOT NULL AUTO_INCREMENT COMMENT '식단번호',
   `MENU_DT` date NOT NULL COMMENT '날짜',
   `MENU_KIND` int(11) NOT NULL COMMENT '구분 10: 아침, 20: 점심, 30: 저녁',
-  `MENU_FILE_NAME` varchar(50) NOT NULL COMMENT '이미지 파일명',
+  `MENU_FILE_NAME` varchar(200) NOT NULL COMMENT '이미지 파일명',
   PRIMARY KEY (`MENU_NO`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='식단';
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='식단';
 
 DELETE FROM `menu`;
 /*!40000 ALTER TABLE `menu` DISABLE KEYS */;
+INSERT INTO `menu` (`MENU_NO`, `MENU_DT`, `MENU_KIND`, `MENU_FILE_NAME`) VALUES
+	(1, '2017-05-27', 20, '.'),
+	(2, '2017-05-28', 20, '.'),
+	(3, '2017-05-29', 30, '.'),
+	(4, '2017-05-30', 10, '.');
 /*!40000 ALTER TABLE `menu` ENABLE KEYS */;
 
 CREATE TABLE IF NOT EXISTS `usrs` (
