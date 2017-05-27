@@ -57,18 +57,18 @@ public class UserController {
 	@RequestMapping(value="/signup", method=RequestMethod.POST)
 	public String signUp(HttpServletRequest request) {
 		
-		String userId = request.getParameter("userId");
-		String userPassword = request.getParameter("userPassword");
-		String userName = request.getParameter("userName");
+		String user_id = request.getParameter("user_id");
+		String user_password = request.getParameter("user_password");
+		String user_name = request.getParameter("user_name");
 		
 		UserVO user = new UserVO();
 		
-		if(userService.isDuplicateUserId(userId))
+		if(userService.isDuplicateUserId(user_id))
 			return "user/signUp";
 		
-		user.setUser_id(userId);
-		user.setUser_password(userPassword);
-		user.setUser_name(userName);
+		user.setUser_id(user_id);
+		user.setUser_password(user_password);
+		user.setUser_name(user_name);
 		
 		if(userService.registNewUser(user))
 			return "redirect:/signin";
