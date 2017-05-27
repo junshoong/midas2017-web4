@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.midas.websolution.menu.service.MenuService;
+import com.midas.websolution.menu.vo.MenuMainRequestVO;
 import com.midas.websolution.menu.vo.MenuVO;
 
 @Controller
@@ -34,18 +35,19 @@ public class mainController {
 		int count = 0;
 	
 		ModelAndView view = new ModelAndView();
-		List<MenuVO> weekMenu = new ArrayList<MenuVO>();
+		List<MenuMainRequestVO> weekMenu = new ArrayList<MenuMainRequestVO>();
 		view.setViewName("/index");
 		view.addObject("content", "menu/weekmenu.jsp");
 		
-	/*	for(int i = 10; i <= 10; i += 10) {
+		for(int i = 10; i <= 10; i += 10) {
 			 weekMenu = menuService.getOneWeekMenu(i);
 		}
 		
 		
 		for(int i = 0; i < weekMenu.size(); i ++)
-			System.out.println(weekMenu.get(i).getFoodSetVO().getFoodVO().getFood_name());
+			System.out.println(weekMenu.get(i));
 		
+		/*
 		for(int j = 0; j < 3; j ++) {
 			
 			while(week <= 6) {

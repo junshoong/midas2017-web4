@@ -10,6 +10,7 @@
 		<typeAlias type="com.midas.websolution.menu.vo.FoodVO" alias="FoodVO"/>
 		<typeAlias type="com.midas.websolution.menu.vo.FoodSetVO" alias="FoodSetVO"/>	
 		<typeAlias type="com.midas.websolution.menu.vo.MenuRegistRequestVO" alias="MenuRegistRequestVO"/>	
+		<typeAlias type="com.midas.websolution.menu.vo.MenuMainRequestVO" alias="MenuMainRequestVO"/>	
 	</typeAliases>
 
     <mappers>
