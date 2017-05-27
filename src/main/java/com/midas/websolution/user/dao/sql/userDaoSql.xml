@@ -23,8 +23,8 @@
 						,		USR_PM
 						,		JOIN_DT
 		FROM					USRS
-		WHERE					USR_ID = #{userId}
-		AND						USR_PWD = #{userPassword}
+		WHERE					USR_ID = #{user_id}
+		AND						USR_PWD = #{user_password}
 	</select>
 	
 	<select id="selectById" parameterType="String" resultMap="userMap">
@@ -32,7 +32,7 @@
 						,		USR_NM
 						,		USR_PWD
 		FROM					USRS         
-		WHERE					USR_ID = #{userId} 	
+		WHERE					USR_ID = #{user_id} 	
 	</select>
 
 	
@@ -45,9 +45,9 @@
 										,	JOIN_DT 	 
 									)               	 
 			VALUES					(               	 
-											#{userId}       	 
-										,	#{userName}	 
-										,	#{userPassword}       	 
+											#{user_id}       	 
+										,	#{user_name}	 
+										,	#{user_password}       	 
 										,	NOW()        
 									)                  
 	</insert>
