@@ -6,12 +6,12 @@
 
 	<resultMap type="UserVO" id="userMap">
 	
-		<id column="USR_NO" property="userNo" />
-		<result column="USR_ID" property="userId" />
-		<result column="USR_NM" property="userName" />
-		<result column="USR_PWD" property="userPassword" />
-		<result column="USR_PM" property="userPermission" />
-		<result column="JOIN_DT" property="userJoinDate" />
+		<id column="USR_NO" property="user_no" />
+		<result column="USR_ID" property="user_id" />
+		<result column="USR_NM" property="user_name" />
+		<result column="USR_PWD" property="user_password" />
+		<result column="USR_PM" property="user_permission" />
+		<result column="JOIN_DT" property="user_join_date" />
 		
 	</resultMap>
 	
