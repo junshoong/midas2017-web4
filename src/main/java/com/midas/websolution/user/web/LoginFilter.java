@@ -46,7 +46,7 @@ public class LoginFilter implements Filter {
 		}
 		
 		else {
-			logger.info(user.getUserId());
+			logger.info(user.getUser_id());
 			request.setAttribute("_USER_", user);
 		}
 		

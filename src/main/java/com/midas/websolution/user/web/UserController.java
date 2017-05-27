@@ -38,7 +38,7 @@ public class UserController {
 		
 		if(user != null) {
 			HttpSession session = request.getSession();
-			logger.info(user.getUserId());
+			logger.info(user.getUser_id());
 			session.setAttribute("_USER_", user);
 			return "redirect:/";
 		}
@@ -66,9 +66,9 @@ public class UserController {
 		if(userService.isDuplicateUserId(userId))
 			return "user/signUp";
 		
-		user.setUserId(userId);
-		user.setUserPassword(userPassword);
-		user.setUserName(userName);
+		user.setUser_id(userId);
+		user.setUser_password(userPassword);
+		user.setUser_name(userName);
 		
 		if(userService.registNewUser(user))
 			return "redirect:/signin";
