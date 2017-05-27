@@ -28,6 +28,16 @@ public class MenuManageController {
 		this.menuService = menuService;
 	}
 	
+	@RequestMapping(value="/menu/manage", method=RequestMethod.GET)
+	public ModelAndView manage() {
+		ModelAndView view = new ModelAndView();
+		view.addObject("menu_list", menuService.getMenuList());
+		
+		view.addObject("content", "menu/manage.jsp");
+		view.setViewName("/index");
+		return view;
+	}
+	
 	@RequestMapping(value="/menu/regist", method=RequestMethod.GET)
 	public ModelAndView regist() {
 		ModelAndView view = new ModelAndView();

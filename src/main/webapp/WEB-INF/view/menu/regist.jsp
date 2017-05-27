@@ -26,10 +26,10 @@
 					<div class="form-group">
 						<label class="col-sm-2 control-label">날짜</label>
 						<div class="col-sm-7">
-							<input type="date" class="form-control" name="MenuVO.menu_date" placeholder="2017-05-28" required>
+							<input type="date" class="form-control" name="menuVO.menu_date" placeholder="2017-05-28" required>
 						</div>
 						<div class="col-sm-3">
-							<select class="form-control" name="MenuVO.menu_kind">
+							<select class="form-control" name="menuVO.menu_kind">
 								<option value="10">아침</option>
 								<option value="20">점심</option>
 								<option value="30">저녁</option>
