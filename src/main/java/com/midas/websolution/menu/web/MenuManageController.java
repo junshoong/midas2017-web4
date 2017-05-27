@@ -36,12 +36,9 @@ public class MenuManageController {
 		System.out.println(menuRegistRequestVO.getFoodVO().size());
 		
 		HttpSession session = request.getSession(); 
-		String root_path = session.getServletContext().getRealPath("/"); 
-		String attach_path = "resources/upload/";
-		String file_path = root_path + attach_path;
-		System.out.println(file_path);
-		
-		menuService.uploadFile(menuRegistRequestVO.getImage_file(), file_path);
+		String root_path = session.getServletContext().getRealPath("resources/upload/"); 
+		System.out.println(root_path);
+		menuService.uploadFile(menuRegistRequestVO.getImage_file(), root_path);
 		
 		ModelAndView view = new ModelAndView();
 		view.setViewName("redirect:/menu/regist");

@@ -1,7 +1,9 @@
 package com.midas.websolution.menu.service;
 
 import java.util.List;
+import java.util.UUID;
 import java.io.File;
+import java.io.IOException;
 
 import org.springframework.web.multipart.MultipartFile;
 import com.midas.websolution.menu.dao.MenuDao;
@@ -35,9 +37,22 @@ public class MenuServiceImpl implements MenuService{
 	@Override
 	public void uploadFile(MultipartFile file, String file_path) {
 		// TODO Auto-generated method stub
-		String file_name = file.getOriginalFilename();
+		String origin_file_name = file.getOriginalFilename();
+		String file_name = UUID.randomUUID().toString() + origin_file_name;
 		
-		File new_file = new File("");
+		File new_file = new File(file_path + file_name);
+		
+		if(new_file.exists() == false){
+			new_file.mkdirs();
+	    }
+		
+		try {
+			file.transferTo(new_file);
+		} catch (IllegalStateException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 	
 }
