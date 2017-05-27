@@ -28,7 +28,7 @@ public class MenuServiceImpl implements MenuService{
 	
 	@Override
 	public List<MenuVO> getMenuListByIdAndMonth(int user_number, int month) {
-		return menuDao.selectByIdAndMonth(user_number, month);
+		return menuDao.selectByUserNumber(user_number);
 		
 	}
 		
