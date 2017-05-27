@@ -1,5 +1,8 @@
 package com.midas.websolution.menu.web;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -28,9 +31,18 @@ public class MenuManageController {
 	}
 	
 	@RequestMapping(value="/menu/regist", method=RequestMethod.POST)
-	public ModelAndView registMenu(MenuRegistRequestVO menuRegistRequestVO) {
+	public ModelAndView registMenu(MenuRegistRequestVO menuRegistRequestVO, HttpServletRequest request) {
 		System.out.println(menuRegistRequestVO.toString());
 		System.out.println(menuRegistRequestVO.getFoodVO().size());
+		
+		HttpSession session = request.getSession(); 
+		String root_path = session.getServletContext().getRealPath("/"); 
+		String attach_path = "resources/upload/";
+		String file_path = root_path + attach_path;
+		System.out.println(file_path);
+		
+		menuService.uploadFile(menuRegistRequestVO.getImage_file(), file_path);
+		
 		ModelAndView view = new ModelAndView();
 		view.setViewName("redirect:/menu/regist");
 		return view;

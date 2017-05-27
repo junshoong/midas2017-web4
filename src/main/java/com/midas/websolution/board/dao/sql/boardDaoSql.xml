@@ -14,9 +14,9 @@
 		<result column="RD_CNT" property="readCount" />
 		
 		<association property="userVO" javaType="UserVO">
-			<id column="USR_NO" property="userNo" />
-			<id column="USR_ID" property="userId" />
-			<id column="USR_NM" property="userName" />
+			<id column="USR_NO" property="user_no" />
+			<id column="USR_ID" property="user_id" />
+			<id column="USR_NM" property="user_name" />
 		</association>
 		
 		
@@ -86,7 +86,7 @@
 			VALUES				(
 									#{subject}
 									, #{content}
-									, #{userNo}
+									, #{user_no}
 									, NOW()
 									, NOW()
 									, 0
