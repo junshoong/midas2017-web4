@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.midas.websolution.menu.vo.FoodSetVO;
 import com.midas.websolution.menu.vo.FoodVO;
+import com.midas.websolution.menu.vo.MenuLogVO;
 import com.midas.websolution.menu.vo.MenuMainRequestVO;
 import com.midas.websolution.menu.vo.MenuResultVO;
 import com.midas.websolution.menu.vo.MenuVO;
@@ -13,7 +14,7 @@ public interface MenuDao {
 	public static final String MD = "MenuDao";
 	public MenuVO selectById(String menu_number);
 	public List<MenuMainRequestVO> getOneWeekMenu(int menu_kind);
-	public List<MenuVO> selectByUserNumber(int user_number);
+	public List<MenuLogVO> selectByUserNumber(int user_number);
 	public List<MenuMainRequestVO>  getTodayMenu();
 	public int insertOneMenu(MenuVO menuVO);
 	public int updateOneFood(FoodVO foodVO);
