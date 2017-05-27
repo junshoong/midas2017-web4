@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.midas.websolution.menu.service.MenuService;
@@ -28,6 +29,7 @@ public class MenuManageController {
 		this.menuService = menuService;
 	}
 	
+	// 식단 관리
 	@RequestMapping(value="/menu/manage", method=RequestMethod.GET)
 	public ModelAndView manage() {
 		ModelAndView view = new ModelAndView();
@@ -35,6 +37,18 @@ public class MenuManageController {
 		
 		view.addObject("content", "menu/manage.jsp");
 		view.setViewName("/index");
+		return view;
+	}
+	
+	// 식단 삭제
+	@RequestMapping(value="/menu/delete", method=RequestMethod.POST)
+	public ModelAndView delete(@RequestParam("menu_no") int menu_no) {
+		ModelAndView view = new ModelAndView();
+		System.out.println(menu_no);
+		
+		menuService.deleteFoodSetByMenuNo(menu_no);
+		menuService.deleteMenuByMenuNo(menu_no);
+		view.setViewName("redirect:/menu/manage");
 		return view;
 	}
 	

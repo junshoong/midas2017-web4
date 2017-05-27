@@ -150,4 +150,14 @@
 		where FS.MENU_NO = #{MENU_NO}
 	</select>
 	
+	<delete id="deleteFoodSetByMenuNo" parameterType="int">
+  		DELETE FROM FOOD_SET
+  		WHERE MENU_NO = #{menu_no}
+	</delete>
+	
+	<delete id="deleteMenuByMenuNo" parameterType="_int">
+  		DELETE FROM MENU
+  		WHERE MENU_NO = #{menu_no}
+	</delete>
+	
 </mapper>

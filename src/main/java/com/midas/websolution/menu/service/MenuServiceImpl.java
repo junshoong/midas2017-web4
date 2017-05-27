@@ -144,6 +144,16 @@ public class MenuServiceImpl implements MenuService{
 	public List<MenuResultVO> getMenuList() {
 		return menuDao.getMenuList();
 	}
+
+	@Override
+	public void deleteFoodSetByMenuNo(int menu_no) {
+		menuDao.deleteFoodSetByMenuNo(menu_no);
+	}
+
+	@Override
+	public void deleteMenuByMenuNo(int menu_no) {
+		menuDao.deleteMenuByMenuNo(menu_no);
+	}
 	
 
 }

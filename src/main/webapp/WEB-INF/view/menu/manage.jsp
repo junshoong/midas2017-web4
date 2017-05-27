@@ -14,7 +14,7 @@
 			<div class="panel-heading">
 				<div class="row">
 					<div class="col col-xs-6">
-						Panel heading
+					
 					</div>
 					<div class="col col-xs-6 text-right">
 						<a class="btn btn-primary" href="regist">추가</a>
@@ -29,7 +29,7 @@
 							<th>요일</th>
 							<th>메뉴</th>
 							<th>이미지</th>
-							<th>수정</th>
+							<th>수정/삭제</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -60,6 +60,10 @@
 							</td>
 							<td>
 								<a class="btn btn-default" href="modify">수정</a>
+								<form method="post" action="delete">
+									<input type="hidden" name="menu_no" value="${ml.menu_no }" />
+									<button class="btn btn-default" type="submit">삭제</button>
+								</form>
 							</td>
 						</tr>
 						</c:forEach>

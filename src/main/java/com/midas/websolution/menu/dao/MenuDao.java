@@ -22,5 +22,7 @@ public interface MenuDao {
 	public int insertOneFoodSet(FoodSetVO foodSetVO);
 	public int getFoodNoByFoodName(String food_name);
 	public List<MenuResultVO> getMenuList();
+	public void deleteFoodSetByMenuNo(int menu_no);
+	public void deleteMenuByMenuNo(int menu_no);
 	
 }
