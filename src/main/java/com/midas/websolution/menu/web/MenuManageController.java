@@ -3,8 +3,12 @@ package com.midas.websolution.menu.web;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.midas.websolution.menu.service.MenuService;
+import com.midas.websolution.menu.vo.MenuRegistRequestVO;
 
 @Controller
 public class MenuManageController {
@@ -16,4 +20,20 @@ public class MenuManageController {
 		this.menuService = menuService;
 	}
 	
+	@RequestMapping(value="/menu/regist", method=RequestMethod.GET)
+	public ModelAndView regist() {
+		ModelAndView view = new ModelAndView();
+		view.setViewName("/menu/regist");
+		return view;
+	}
+	
+	@RequestMapping(value="/menu/regist", method=RequestMethod.POST)
+	public ModelAndView registMenu(MenuRegistRequestVO menuRegistRequestVO) {
+		System.out.println(menuRegistRequestVO.toString());
+		System.out.println(menuRegistRequestVO.getFoodVO().size());
+		ModelAndView view = new ModelAndView();
+		view.setViewName("redirect:/menu/regist");
+		return view;
+		
+	}
 }
