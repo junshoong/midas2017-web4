@@ -8,7 +8,7 @@ import com.midas.websolution.menu.vo.FoodSetVO;
 import com.midas.websolution.menu.vo.FoodVO;
 import com.midas.websolution.menu.vo.MenuLogVO;
 import com.midas.websolution.menu.vo.MenuMainRequestVO;
-import com.midas.websolution.menu.vo.MenuRegistRequestVO;
+import com.midas.websolution.menu.vo.MenuResultVO;
 import com.midas.websolution.menu.vo.MenuVO;
 
 
@@ -56,7 +56,7 @@ public class MenuDaoImpl extends SqlSessionDaoSupport implements MenuDao {
 	}
 
 	@Override
-	public List<MenuRegistRequestVO> getMenuList() {
+	public List<MenuResultVO> getMenuList() {
 		return getSqlSession().selectList(MD + ".getMenuList");
 	}
 
