@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="MenuDao">
+
+	<resultMap type="MenuVO" id="MenuMap">
+	
+		<id column="MENU_NO" property="menu_number" />
+		<result column="MENU_DT" property="menu_date" />
+		<result column="MENU_KIND" property="menu_kind" />
+		<result column="MENU_FILE_NAME" property="menu_file_name" />
+	
+	</resultMap>
+	
+	
+
+	<resultMap type="MenuMainRequestVO" id="MenuMainMap">
+	
+		<result column="MENU_NO" property="menu_number" />
+		<result column="MENU_DT" property="menu_date" />
+		<result column="MENU_KIND" property="menu_kind" />
+		<result column="FOOD_NAME" property="food_name" />
+
+	</resultMap>
+	
+	<resultMap id="MenuRegistMap" type="MenuRegistRequestVO">
+		<association property="menuVO" javaType="MenuVO">
+			<id column="MENU_NO" property="menu_number" />
+			<result column="MENU_DT" property="menu_date" />
+			<result column="MENU_KIND" property="menu_kind" />
+			<result column="MENU_FILE_NAME" property="menu_file_name" />
+		</association>
+
+		<collection property="foodVO" ofType="FoodVO">
+			<id column="FOOD_NO" property="food_no" />
+			<result column="FOOD_NAME" property="food_name" />
+			<result column="FOOD_CAL" property="food_calory" />
+			<result column="FOOD_KIND" property="food_kind" />
+		</collection>
+	</resultMap>
+	
+	
+	<select id="selectById" parameterType="string" resultMap="MenuMap">
+		SELECT MENU_NO, MENU_DT, MENU_KIND, MENU_FILE_NAME
+		FROM MENU
+		WHERE MENU_NO = #{menu_number}
+	</select>
+
+	<select id="selectByUserNumber" parameterType="int" resultMap="MenuMap">
+		SELECT M.MENU_NO, M.MENU_DT, M.MENU_KIND, M.MENU_FILE_NAME
+		FROM LOG L
+		RIGHT JOIN MENU M
+		ON L.MENU_NO = M.MENU_NO
+		WHERE USR_NO = #{user_number}
+		
+	</select>
+
+	<select id="getOneWeekMenu" parameterType="_int" resultMap="MenuMainMap">
+		SELECT	M.MENU_NO
+				, 	M.MENU_DT
+				,	M.MENU_KIND
+				,	F.FOOD_NAME
+		FROM 	FOOD_SET FS
+				, 	MENU M
+				,	FOOD F
+		WHERE	M.MENU_NO = FS.MENU_NO
+		AND		FS.FOOD_NO = F.FOOD_NO 
+		AND		M.MENU_KIND = #{menu_kind}
+		AND		M.MENU_DT >= ADDDATE( CURDATE(), - WEEKDAY(CURDATE())) 
+		AND		M.MENU_DT <![CDATA[<= ]]> ADDDATE( CURDATE(), - WEEKDAY(CURDATE()) + 4 ) 
+		ORDER 	BY 	M.MENU_DT
+					, M.MENU_NO 
+	</select> 
+	
+	<insert id="insertOneMenu" parameterType="MenuVO" useGeneratedKeys="true" keyProperty="menu_number" keyColumn="MENU_NO">
+			INSERT	INTO	MENU	(
+									MENU_DT
+									, MENU_KIND
+									, MENU_FILE_NAME
+								)
+			VALUES				(
+									#{menu_date}
+									, #{menu_kind}
+									, "temp"
+								) 
+	</insert>
+	
+	<insert id="updateOneFood" parameterType="FoodVO" useGeneratedKeys="true" keyProperty="food_no" keyColumn="FOOD_NO">
+			INSERT	INTO	FOOD	(
+									FOOD_NAME
+									, FOOD_CAL
+									, FOOD_KIND
+								)
+			VALUES				(
+									#{food_name}
+									, #{food_calory}
+									, #{food_kind}
+								) 
+			ON DUPLICATE KEY UPDATE FOOD_NAME=#{food_name}, FOOD_CAL=#{food_calory}, FOOD_KIND=#{food_kind} 
+	</insert>
+	
+	<insert id="insertOneFoodSet" parameterType="FoodSetVO">
+			INSERT	INTO	FOOD_SET	(
+									MENU_NO
+									, FOOD_NO
+								)
+			VALUES				(
+									#{menu_no}
+									, #{food_no}
+								) 
+	</insert>
+	
+	<select id="getFoodNoByFoodName" parameterType="string" resultType="_int">
+		SELECT FOOD_NO
+		FROM FOOD
+		WHERE FOOD_NAME = #{food_name}
+	</select>
+
+	<select id="getTodayMenu" resultMap="MenuMainMap">
+		SELECT	M.MENU_NO
+				, 	M.MENU_DT
+				,	M.MENU_KIND
+				,	F.FOOD_NAME
+		FROM 	FOOD_SET FS
+				, 	MENU M
+				,	FOOD F
+		WHERE	M.MENU_NO = FS.MENU_NO
+		AND		FS.FOOD_NO = F.FOOD_NO 
+		AND		M.MENU_DT = curdate()
+		ORDER 	BY 	M.MENU_NO
+					, M.MENU_KIND 
+	</select>
+	
+	<select id="getMenuList" resultMap="MenuRegistMap">
+		SELECT DISTINCT M.MENU_NO
+			, M.MENU_DT
+			, M.MENU_KIND
+			, M.MENU_FILE_NAME
+			, F.FOOD_NAME
+			, F.FOOD_CAL
+			, F.FOOD_KIND
+		FROM MENU M
+		join FOOD_SET FS on M.MENU_NO = FS.MENU_NO
+		join FOOD F on FS.FOOD_NO = F.FOOD_NO
+
+		ORDER BY m.MENU_DT DESC
+	</select>
+	
+</mapper>

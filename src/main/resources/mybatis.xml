@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+         "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+	<typeAliases>
+		<typeAlias type="com.midas.websolution.user.vo.UserVO" alias="UserVO"/>	
+		<typeAlias type="com.midas.websolution.menu.vo.MenuVO" alias="MenuVO"/>	
+		<typeAlias type="com.midas.websolution.menu.vo.FoodVO" alias="FoodVO"/>
+		<typeAlias type="com.midas.websolution.menu.vo.FoodSetVO" alias="FoodSetVO"/>	
+		<typeAlias type="com.midas.websolution.menu.vo.MenuRegistRequestVO" alias="MenuRegistRequestVO"/>	
+		<typeAlias type="com.midas.websolution.menu.vo.MenuMainRequestVO" alias="MenuMainRequestVO"/>	
+	</typeAliases>
+
+    <mappers>
+    	<!-- Paging 관련 쿼리들이 있는 매퍼 -->
+        <mapper resource="commonDaoSql.xml"/>
+		<mapper resource="com/midas/websolution/user/dao/sql/userDaoSql.xml"/>
+		<mapper resource="com/midas/websolution/menu/dao/sql/menuDaoSql.xml"/>
+    </mappers>
+
+</configuration>

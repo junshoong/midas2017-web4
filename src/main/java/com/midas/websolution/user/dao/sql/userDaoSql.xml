@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="UserDao">
+
+	<resultMap type="UserVO" id="userMap">
+	
+		<id column="USR_NO" property="user_no" />
+		<result column="USR_ID" property="user_id" />
+		<result column="USR_NM" property="user_name" />
+		<result column="USR_PWD" property="user_password" />
+		<result column="USR_PM" property="user_permission" />
+		<result column="JOIN_DT" property="user_join_date" />
+		
+	</resultMap>
+	
+	<select id="selectOneUser" parameterType="UserVO" resultMap="userMap">
+		SELECT					USR_NO
+						,		USR_ID
+						,		USR_NM
+						,		USR_PWD
+						,		USR_PM
+						,		JOIN_DT
+		FROM					USRS
+		WHERE					USR_ID = #{user_id}
+		AND						USR_PWD = #{user_password}
+	</select>
+	
+	<select id="selectById" parameterType="String" resultMap="userMap">
+		SELECT					USR_ID
+						,		USR_NM
+						,		USR_PWD
+		FROM					USRS         
+		WHERE					USR_ID = #{user_id} 	
+	</select>
+
+	
+	
+	<insert id="insertNewUser" parameterType="UserVO">
+			INSERT	INTO	USRS	(                
+											USR_ID  	 
+										,	USR_NM 	 
+										,	USR_PWD 	 
+										,	JOIN_DT 	 
+									)               	 
+			VALUES					(               	 
+											#{user_id}       	 
+										,	#{user_name}	 
+										,	#{user_password}       	 
+										,	NOW()        
+									)                  
+	</insert>
+
+</mapper>
+
