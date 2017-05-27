@@ -13,7 +13,13 @@
 	
 	</resultMap>
 	
-	
+	<resultMap type="MenuLogVO" id="MenuLogMap">
+		<id column="MENU_NO" property="menu_number" />
+		<result column="MENU_DT" property="menu_date" />
+		<result column="MENU_KIND" property="menu_kind" />
+		<result column="MENU_FILE_NAME" property="menu_file_name" />
+		<result column="LIKE" property="log_like" />
+	</resultMap>
 
 	<resultMap type="MenuMainRequestVO" id="MenuMainMap">
 	
@@ -24,6 +30,16 @@
 
 	</resultMap>
 	
+	<resultMap id="MenuResultMap" type="MenuResultVO">
+		<id column="MENU_NO" property="menu_no" />
+		<result column="MENU_DT" property="menu_date" />
+		<result column="MENU_KIND" property="menu_kind" />
+		<result column="MENU_FILE_NAME" property="menu_file_name" />
+		
+		<collection property="foodVO" javaType="ArrayList" column="MENU_NO" ofType="FoodVO" select="getFoodListByMenuNo"/>
+
+	</resultMap>
+	
 	
 	<select id="selectById" parameterType="string" resultMap="MenuMap">
 		SELECT MENU_NO, MENU_DT, MENU_KIND, MENU_FILE_NAME
@@ -31,14 +47,14 @@
 		WHERE MENU_NO = #{menu_number}
 	</select>
 
-	<select id="selectByUserNumber" parameterType="int" resultMap="MenuMap">
-		SELECT M.MENU_NO, M.MENU_DT, M.MENU_KIND, M.MENU_FILE_NAME
+	<select id="selectByUserNumber" parameterType="int" resultMap="MenuLogMap">
+		SELECT M.MENU_NO, M.MENU_DT, M.MENU_KIND, M.MENU_FILE_NAME, L.LIKE
 		FROM LOG L
-		RIGHT JOIN MENU M
+		JOIN MENU M
 		ON L.MENU_NO = M.MENU_NO
 		WHERE USR_NO = #{user_number}
-		
 	</select>
+	
 
 	<select id="getOneWeekMenu" parameterType="_int" resultMap="MenuMainMap">
 		SELECT	M.MENU_NO
@@ -116,6 +132,7 @@
 					, M.MENU_KIND 
 	</select>
 	
+<<<<<<< HEAD
 	<insert id="insertLike" parameterType="menuLikeRequestVO">
 			INSERT	INTO	LOG	(
 									USR_NO
@@ -129,5 +146,24 @@
 								) 
 	</insert>
 	
+=======
+	<select id="getMenuList" resultMap="MenuResultMap">
+		SELECT M.MENU_NO
+			, M.MENU_DT
+			, M.MENU_KIND
+			, M.MENU_FILE_NAME
+		FROM MENU M
+		ORDER BY m.MENU_DT DESC
+	</select>
+	
+	<select id="getFoodListByMenuNo" resultType="FoodVO">
+		SELECT F.FOOD_NAME
+			, F.FOOD_CAL
+			, F.FOOD_KIND
+		FROM FOOD_SET FS
+		join FOOD F on F.FOOD_NO = FS.FOOD_NO 
+		where FS.MENU_NO = #{MENU_NO}
+	</select>
+>>>>>>> 749fed50a1f7482736c89b76c58bebfad21702ed
 	
 </mapper>

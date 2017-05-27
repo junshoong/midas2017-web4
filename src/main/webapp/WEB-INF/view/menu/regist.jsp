@@ -26,10 +26,10 @@
 					<div class="form-group">
 						<label class="col-sm-2 control-label">날짜</label>
 						<div class="col-sm-7">
-							<input type="date" class="form-control" name="MenuVO.menu_date" placeholder="2017-05-28" required>
+							<input type="date" class="form-control" name="menuVO.menu_date" placeholder="2017-05-28" required>
 						</div>
 						<div class="col-sm-3">
-							<select class="form-control" name="MenuVO.menu_kind">
+							<select class="form-control" name="menuVO.menu_kind">
 								<option value="10">아침</option>
 								<option value="20">점심</option>
 								<option value="30">저녁</option>
@@ -103,7 +103,7 @@
 				
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-10 text-right">
-						<a href="#" class="btn btn-default">취소</a>
+						<a href="manage" class="btn btn-default">취소</a>
 						<button type="submit" class="btn btn-default">식단 등록</button>
 					</div>
 				</div>

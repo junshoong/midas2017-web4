@@ -31,6 +31,16 @@ public class MenuManageController {
 		this.menuService = menuService;
 	}
 	
+	@RequestMapping(value="/menu/manage", method=RequestMethod.GET)
+	public ModelAndView manage() {
+		ModelAndView view = new ModelAndView();
+		view.addObject("menu_list", menuService.getMenuList());
+		
+		view.addObject("content", "menu/manage.jsp");
+		view.setViewName("/index");
+		return view;
+	}
+	
 	@RequestMapping(value="/menu/regist", method=RequestMethod.GET)
 	public ModelAndView regist() {
 		ModelAndView view = new ModelAndView();
@@ -41,10 +51,9 @@ public class MenuManageController {
 	@RequestMapping(value="/menu/regist", method=RequestMethod.POST)
 	public ModelAndView registMenu(MenuRegistRequestVO menuRegistRequestVO, HttpServletRequest request) {
 		
-//		HttpSession session = request.getSession(); 
-//		String root_path = session.getServletContext().getRealPath("resources/upload/"); 
-//		System.out.println(root_path);
-//		menuService.uploadFile(menuRegistRequestVO.getImage_file(), root_path);
+		String root_path = request.getSession().getServletContext().getRealPath("resources/upload/"); 
+		menuService.uploadFile(menuRegistRequestVO.getImage_file(), root_path);
+		System.out.println(root_path);
 		
 		int menu_no = menuService.insertOneMenu(menuRegistRequestVO.getMenuVO());
 		
@@ -65,7 +74,7 @@ public class MenuManageController {
 		
 		ModelAndView view = new ModelAndView();
 
-		view.setViewName("redirect:/menu/regist");
+		view.setViewName("redirect:/menu/manage");
 		return view;
 		
 	}
