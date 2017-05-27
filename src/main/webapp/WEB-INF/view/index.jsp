@@ -49,7 +49,7 @@
         </div>
 
           <ul class="nav navbar-nav navbar-right">
-            	<span> ${sessionScope._USER_.user_name}님, 환영합니다.! </span>
+            	<span> ${sessionScope._USER_.user_name}님, 환영합니다! </span>
 			 	<a href="<c:url value="/logout"/>"> 로그 아웃 </a>
           </ul>
 
