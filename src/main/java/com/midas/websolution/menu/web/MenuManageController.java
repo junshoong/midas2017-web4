@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.midas.websolution.menu.service.MenuService;
+import com.midas.websolution.menu.vo.FoodSetVO;
 import com.midas.websolution.menu.vo.FoodVO;
 import com.midas.websolution.menu.vo.MenuMainRequestVO;
 import com.midas.websolution.menu.vo.MenuRegistRequestVO;
@@ -42,11 +43,20 @@ public class MenuManageController {
 //		System.out.println(root_path);
 //		menuService.uploadFile(menuRegistRequestVO.getImage_file(), root_path);
 		
-		int menu_number = menuService.insertOneMenu(menuRegistRequestVO.getMenuVO());
+		int menu_no = menuService.insertOneMenu(menuRegistRequestVO.getMenuVO());
+		
 		List<FoodVO> foodVOs = menuRegistRequestVO.getFoodVO();
 		for(int i=0; i<foodVOs.size(); i++) {
 			int food_no = menuService.updateOneFood(foodVOs.get(i));
-//			menuService.insertOneFoodSet();
+			if(food_no == 0) {
+				String food_name = foodVOs.get(i).getFood_name();
+				food_no = menuService.getFoodNoByFoodName(food_name);
+			}
+			
+			FoodSetVO foodSetVO = new FoodSetVO();
+			foodSetVO.setMenu_no(menu_no);
+			foodSetVO.setFood_no(food_no);
+			menuService.insertOneFoodSet(foodSetVO);
 		}
 		
 		

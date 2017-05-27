@@ -9,6 +9,7 @@ import java.io.IOException;
 
 import org.springframework.web.multipart.MultipartFile;
 import com.midas.websolution.menu.dao.MenuDao;
+import com.midas.websolution.menu.vo.FoodSetVO;
 import com.midas.websolution.menu.vo.FoodVO;
 import com.midas.websolution.menu.vo.MenuMainRequestVO;
 import com.midas.websolution.menu.vo.MenuRegistRequestVO;
@@ -104,5 +105,15 @@ public class MenuServiceImpl implements MenuService{
 	public List<MenuMainRequestVO> getTodayMenu() {
 		return menuDao.getTodayMenu();
 	}
+
+
+	public void insertOneFoodSet(FoodSetVO foodSetVO) {
+		menuDao.insertOneFoodSet(foodSetVO);
+	}
+
+	public int getFoodNoByFoodName(String food_name) {
+		return menuDao.getFoodNoByFoodName(food_name);
+	}
+	
 
 }
