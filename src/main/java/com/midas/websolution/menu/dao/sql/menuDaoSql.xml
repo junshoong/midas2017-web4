@@ -13,7 +13,13 @@
 	
 	</resultMap>
 	
-	
+	<resultMap type="MenuLogVO" id="MenuLogMap">
+		<id column="MENU_NO" property="menu_number" />
+		<result column="MENU_DT" property="menu_date" />
+		<result column="MENU_KIND" property="menu_kind" />
+		<result column="MENU_FILE_NAME" property="menu_file_name" />
+		<result column="LIKE" property="log_like" />
+	</resultMap>
 
 	<resultMap type="MenuMainRequestVO" id="MenuMainMap">
 	
@@ -47,14 +53,14 @@
 		WHERE MENU_NO = #{menu_number}
 	</select>
 
-	<select id="selectByUserNumber" parameterType="int" resultMap="MenuMap">
-		SELECT M.MENU_NO, M.MENU_DT, M.MENU_KIND, M.MENU_FILE_NAME
+	<select id="selectByUserNumber" parameterType="int" resultMap="MenuLogMap">
+		SELECT M.MENU_NO, M.MENU_DT, M.MENU_KIND, M.MENU_FILE_NAME, L.LIKE
 		FROM LOG L
-		RIGHT JOIN MENU M
+		JOIN MENU M
 		ON L.MENU_NO = M.MENU_NO
 		WHERE USR_NO = #{user_number}
-		
 	</select>
+	
 
 	<select id="getOneWeekMenu" parameterType="_int" resultMap="MenuMainMap">
 		SELECT	M.MENU_NO
