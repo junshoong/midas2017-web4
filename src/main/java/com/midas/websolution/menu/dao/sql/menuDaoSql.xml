@@ -12,6 +12,15 @@
 		<result column="MENU_FILE_NAME" property="menu_file_name" />
 		
 	</resultMap>
+	<resultMap type="MenuMainRequestVO" id="MenuMainMap">
+	
+		<result column="MENU_NO" property="menu_number" />
+		<result column="MENU_DT" property="menu_date" />
+		<result column="MENU_KIND" property="menu_kind" />
+		<result column="FOOD_NAME" property="food_name" />
+		
+	</resultMap>
+	
 	
 	<select id="selectById" parameterType="string" resultMap="MenuMap">
 		SELECT MENU_NO, MENU_DT, MENU_KIND, MENU_FILE_NAME
@@ -28,7 +37,7 @@
 		
 	</select>
 
-	<select id="getOneWeekMenu" parameterType="_int" resultMap="MenuMap">
+	<select id="getOneWeekMenu" parameterType="_int" resultMap="MenuMainMap">
 		SELECT	M.MENU_NO
 				, 	M.MENU_DT
 				,	M.MENU_KIND
