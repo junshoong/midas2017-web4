@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -107,7 +108,6 @@ public class MenuServiceImpl implements MenuService{
 	}
 
 
-
 	@Override
 	public int insertOneMenu(MenuVO menuVO) {
 		menuDao.insertOneMenu(menuVO);
@@ -126,10 +126,12 @@ public class MenuServiceImpl implements MenuService{
 	}
 
 
+	@Override
 	public void insertOneFoodSet(FoodSetVO foodSetVO) {
 		menuDao.insertOneFoodSet(foodSetVO);
 	}
 
+	@Override
 	public int getFoodNoByFoodName(String food_name) {
 		return menuDao.getFoodNoByFoodName(food_name);
 	}
@@ -140,4 +142,30 @@ public class MenuServiceImpl implements MenuService{
 	}
 	
 
+	@Override
+	public List<MenuResultVO> getMenuListByFoodName(String food_name) {
+		List<MenuResultVO> list = menuDao.getMenuList();
+		List<MenuResultVO> result = new ArrayList<MenuResultVO>();
+		for(MenuResultVO mr : list) {
+			for(FoodVO food : mr.getFoodVO()) {
+				if(food.getFood_name().equals(food_name)) {
+					result.add(mr);
+					break;
+				}
+				
+			}
+		}
+		return result;
+	}
+
+	@Override
+	public List<MenuResultVO> getMenuListByDate(String menu_date) {
+		List<MenuResultVO> list = menuDao.getMenuList();
+		List<MenuResultVO> result = new ArrayList<MenuResultVO>();
+		for(MenuResultVO mr : list)
+			if(mr.getMenu_date().equals(menu_date))
+				result.add(mr);
+		return result;
+	}
+	
 }

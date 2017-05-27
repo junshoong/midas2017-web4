@@ -25,5 +25,7 @@ public interface MenuService {
 	public void insertOneFoodSet(FoodSetVO foodSetVO);
 	public int getFoodNoByFoodName(String food_name);
 	public List<MenuResultVO> getMenuList();
+	public List<MenuResultVO> getMenuListByFoodName(String food_name);
+	public List<MenuResultVO> getMenuListByDate(String menu_date);
 	
 }

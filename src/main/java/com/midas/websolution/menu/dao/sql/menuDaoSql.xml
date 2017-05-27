@@ -132,6 +132,7 @@
 					, M.MENU_KIND 
 	</select>
 	
+	
 	<select id="getMenuList" resultMap="MenuResultMap">
 		SELECT M.MENU_NO
 			, M.MENU_DT
