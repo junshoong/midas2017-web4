@@ -61,7 +61,7 @@ public class MenuManageController {
 	@RequestMapping(value="/menu/modify/{menu_no}", method=RequestMethod.GET)
 	public ModelAndView modify(@PathVariable int menu_no) {
 		ModelAndView view = new ModelAndView();
-		view.addObject("menu_info", menuService.getOneWeekMenu(menu_no));
+		view.addObject("menu_info", menuService.getOneMenu(menu_no));
 		
 		view.setViewName("/menu/modify");
 		return view;
@@ -69,26 +69,27 @@ public class MenuManageController {
 	
 	@RequestMapping(value="/menu/modify", method=RequestMethod.POST)
 	public ModelAndView modify(MenuRegistRequestVO menuRegistRequestVO, HttpServletRequest request) {
-		 String file_name = "";
 		 System.out.println(menuRegistRequestVO.toString());
-		 if(menuRegistRequestVO.getImage_file() != null) {
-			 file_name = menuRegistRequestVO.getMenuVO().getMenu_file_name();
-			 String root_path = request.getSession().getServletContext().getRealPath("resources/upload/");
-			 System.out.println(root_path);
-			 if(file_name == null || file_name.equals("")) {
-				 file_name = menuService.uploadFile(menuRegistRequestVO.getImage_file(), root_path);
-			 }
-			 else {
-				 file_name = menuService.updateFile(menuRegistRequestVO.getImage_file(), file_name, root_path);
-			 }
-			 
-		 }
+//		 if(menuRegistRequestVO.getImage_file() != null) {
+//			 file_name = menuRegistRequestVO.getMenuVO().getMenu_file_name();
+//			 String root_path = request.getSession().getServletContext().getRealPath("resources/upload/");
+//			 System.out.println(root_path);
+//			 if(file_name == null || file_name.equals("")) {
+//				 file_name = menuService.uploadFile(menuRegistRequestVO.getImage_file(), root_path);
+//			 }
+//			 else {
+//				 file_name = menuService.updateFile(menuRegistRequestVO.getImage_file(), file_name, root_path);
+//			 }
+//			 
+//		 }
+		 String root_path = request.getSession().getServletContext().getRealPath("resources/upload/");
+		 String file_name = menuService.uploadFile(menuRegistRequestVO.getImage_file(), root_path);
 
 		 int menu_no = menuRegistRequestVO.getMenuVO().getMenu_number();
 		 MenuVO menuVO = menuRegistRequestVO.getMenuVO();
 		 menuVO.setMenu_file_name(file_name);
 		 
-		 menuService.updateOneMenu(menuRegistRequestVO.getMenuVO());
+		 menuService.updateOneMenu(menuVO);
 		 
 		 menuService.deleteFoodSetByMenuNo(menu_no);
 		 
