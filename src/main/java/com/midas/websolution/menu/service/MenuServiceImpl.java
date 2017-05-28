@@ -30,7 +30,7 @@ public class MenuServiceImpl implements MenuService{
 		this.menuDao = menuDao;
 	}
 	
-	private String temp_path = "C:\\Users\\ElonBusiness\\Documents\\midas2017-web4\\src\\main\\webapp\\WEB-INF\\resources\\upload\\";
+	private String temp_path = "/home/harvey/midasit/midas2017-web4/src/main/webapp/WEB-INF/resources/upload/";
 
 	@Override
 	public MenuVO selectById(String menu_number) {
