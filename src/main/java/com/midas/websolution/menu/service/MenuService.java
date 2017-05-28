@@ -33,7 +33,10 @@ public interface MenuService {
 	public void deleteFoodSetByMenuNo(int menu_no);
 	public void deleteMenuByMenuNo(int menu_no);
 	public MenuResultVO getOneMenu(int menu_no);
-	public void updateOneMenu(MenuVO menuVO);
+//	public void updateOneMenu(MenuVO menuVO);
 	public String updateFile(MultipartFile image_file, String file_name, String root_path);
+	public boolean updateOneMenu(MenuVO menuVO);
+	public MenuLikeRequestVO checkLike(MenuLikeRequestVO menuLikeRequestVO);
+
 
 }

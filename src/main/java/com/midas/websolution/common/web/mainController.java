@@ -42,7 +42,7 @@ public class mainController {
 		
 		for(int i = 0; i < 5; i ++) {
 			cal.set(Calendar.DAY_OF_WEEK, week);
-			dayArray[i] = day.format(cal.getTime()) + "ÀÏ";
+			dayArray[i] = day.format(cal.getTime()) + "ì¼";
 			week++;
 		}
 		
@@ -95,8 +95,7 @@ public class mainController {
 		view.addObject("dayArray", dayArray);
 		
 		cal.set(Calendar.DAY_OF_WEEK, 2);
-		view.addObject("month",month.format(cal.getTime()) + "¿ù");
-
+		view.addObject("month",month.format(cal.getTime()) + "ì¼");
 		return view;
 	}
 }

@@ -61,7 +61,7 @@ public class MenuManageController {
 	@RequestMapping(value="/menu/modify/{menu_no}", method=RequestMethod.GET)
 	public ModelAndView modify(@PathVariable int menu_no) {
 		ModelAndView view = new ModelAndView();
-		view.addObject("menu_info", menuService.getOneMenu(menu_no));
+		view.addObject("menu_info", menuService.getOneWeekMenu(menu_no));
 		
 		view.setViewName("/menu/modify");
 		return view;
@@ -171,20 +171,16 @@ public class MenuManageController {
 		
 		List<MenuMainRequestVO> todayMenu = menuService.getTodayMenu();
 		
+
 		System.out.println(todayMenu.size());
 		
-		for(int l= 0; l < todayMenu.size(); l++)
-			System.out.println("아아아아 " + todayMenu.get(l).getMenu_number() + " " + todayMenu.get(l).getMenu_kind());
-		
+
 		for(int z = 0; z < todayMenu.size(); z++) {
-			
-	
 				menuThreeNo[(todayMenu.get(z).getMenu_kind() / 10) - 1] = todayMenu.get(z).getMenu_number();
-				menu_kind += 10;
-			
+
 		}
 		
-		menu_kind = 10;
+
 		
 		while(i < todayMenu.size()) {
 			
@@ -196,7 +192,6 @@ public class MenuManageController {
 				menuList[(menu_kind/10) - 1] += (todayMenu.get(i).getFood_name()) + "</br>";
 				i++;
 			}
-			
 			
 		}
 		
@@ -224,7 +219,25 @@ public class MenuManageController {
 		}
 		
 		else {
-			result.put("NO", "FAIL");
+			result.put("SUCCESS", "NO");
+		}
+		
+		return result;
+	}
+	
+	
+	@ResponseBody
+	@RequestMapping(value="/menu/checkLike", method=RequestMethod.POST)
+	public Map<String, String> checkLike(MenuLikeRequestVO menuLikeRequestVO) {
+		
+		Map<String, String> result = new HashMap<String, String>();
+		MenuLikeRequestVO test = menuService.checkLike(menuLikeRequestVO);
+		if(test.getUser_no() != 0) {
+			result.put("SUCCESS", "YES");
+		}
+		
+		else {
+			result.put("SUCCESS", "NO");
 		}
 		
 		return result;

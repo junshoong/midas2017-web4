@@ -87,9 +87,14 @@ public class MenuDaoImpl extends SqlSessionDaoSupport implements MenuDao {
 	}
 
 	@Override
-	public void updateOneMenu(MenuVO menuVO) {
-		getSqlSession().update(MD + ".updateOneMenu", menuVO);
+	public int updateOneMenu(MenuVO menuVO) {
+		return getSqlSession().update(MD + ".updateOneMenu", menuVO);
 		
+	}
+
+	@Override
+	public MenuLikeRequestVO checkLike(MenuLikeRequestVO menuLikeRequestVO) {
+		return getSqlSession().selectOne(MD + ".checkLike", menuLikeRequestVO);
 	}
 
 }
